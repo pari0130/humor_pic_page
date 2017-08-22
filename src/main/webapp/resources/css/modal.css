@@ -1,0 +1,283 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    display: none;
+}
+
+.popupContainer_login {
+    position: absolute;
+    width: 330px;
+    /* hwi default 330px */
+    height: auto;
+    left: 45%;
+    top: 80px;
+    background: #FFF;
+}
+
+.popupContainer_upload {
+    position: absolute;
+    width: 480px;
+    /* hwi default 330px */
+    height: auto;
+    left: 45%;
+    top: 80px;
+    background: #FFF;
+}
+
+
+/* #modal_trigger {margin:100px auto; width:100px; display:block;} */
+
+.btn {
+    padding: 10px 20px;
+    background: #5d83dc;
+}
+
+
+/* F4F4F2 basic color*/
+
+.btn_red {
+    background: #ED6347;
+    color: #FFF;
+}
+
+.btn:hover {
+    background: #4878e8;
+}
+
+.btn_red:hover {
+    background: #C12B05;
+}
+
+a.btn {
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.btn_red {
+    color: #FFF;
+}
+
+.one_half {
+    width: 50%;
+    display: block;
+    float: left;
+}
+
+.one_half.last {
+    width: 45%;
+    margin-left: 5%;
+}
+
+
+/* Popup Styles*/
+
+.popupHeader {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.popupHeader {
+    background: #F4F4F2;
+    position: relative;
+    padding: 10px 20px;
+    border-bottom: 1px solid #DDD;
+    font-weight: bold;
+}
+
+.popupHeader .modal_close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 15px;
+    background: #E4E4E2;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 16px;
+}
+
+.popupBody {
+    padding: 20px;
+}
+
+
+
+/* Social Login Form /* #hwi menus */*/
+
+.modal_popup {}
+
+.modal_popup .social_box {
+    display: block;
+    clear: both;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #F4F4F2;
+    overflow: hidden;
+}
+
+.modal_popup .icon {
+    display: block;
+    width: 10px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    float: left;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+}
+
+.modal_popup .fb .icon {
+    background: #3B5998;
+}
+
+.modal_popup .gg .icon {
+    background: #DD4B39;
+}
+
+.modal_popup .kk .icon { /* #hwi menus */
+    background-image: url('../img/kakao_icon.png');
+    background-size: cover;
+}
+
+.modal_popup .nv .icon { /* #hwi menus */
+    background-image: url('../img/naver_icon.png');
+    background-size: cover;
+}
+
+.modal_popup .icon_title {
+    display: block;
+    padding: 5px 0;
+    float: left;
+    font-weight: bold;
+    font-size: 16px;
+    color: #777;
+}
+
+.modal_popup .social_box:hover {
+    background: #E4E4E2;
+}
+
+.centeredText {
+    text-align: center;
+    margin: 20px 0;
+    clear: both;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+.action_btns {
+    clear: both;
+    overflow: hidden;
+}
+
+.action_btns a {
+    display: block;
+}
+
+
+/* User Upload Form */
+
+.user_upload {}
+
+.user_upload label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user_upload input[type="text"],
+.user_upload input[type="email"],
+.user_upload input[type="password"] {
+    display: block;
+    width: 95%; /* #hwi menus 기존 90% */
+    padding: 10px;
+    border: 1px solid #DDD;
+    color: #666;
+}
+
+.user_upload input[type="checkbox"] {
+    float: left;
+    margin-right: 5px;
+}
+
+.user_upload input[type="checkbox"]+label {
+    float: left;
+}
+
+.user_upload .checkbox {
+    margin-bottom: 10px;
+    clear: both;
+    overflow: hidden;
+}
+
+.forgot_password {
+    display: block;
+    margin: 20px 0 10px;
+    clear: both;
+    overflow: hidden;
+    text-decoration: none;
+    color: #ED6347;
+}
+
+
+/* User Register Form */
+
+
+/* .user_register {display: none;}
+.user_register label {display: block; margin-bottom:5px;}
+.user_register input[type="text"], .user_register input[type="email"], .user_register input[type="password"] {display: block; width:90%; padding: 10px; border:1px solid #DDD; color:#666;}
+.user_register input[type="checkbox"] {float:left; margin-right:5px;}
+.user_register input[type="checkbox"]+label {float:left;}
+
+.user_register .checkbox {margin-bottom: 10px; clear: both; overflow: hidden;} */
+
+
+/* UPLOAD MENU SELECT /* #hwi menus */*/
+
+#demo-htmlselect {
+    width: 100% !important;
+}
+
+.dd-select,
+.dd-options {
+    width: 440px !important;
+}
+
+.dd-option-image, .dd-selected-image{
+    margin-right: 10px !important;
+}
+
+/* Mobile phones (Landscape) and Tablets (Portrait) */
+
+@media only screen and (max-width: 480px) {
+    .popupContainer_upload {
+        position: absolute;
+        width: 320px;
+        /* hwi default 330px */
+        height: auto;
+        left: 50% !important;
+        top: 80px;
+        background: #FFF;
+    }
+    .dd-select,
+    .dd-options {
+        width: 274px !important;
+    }
+    .user_upload input[type="text"],
+    .user_upload input[type="email"],
+    .user_upload input[type="password"] {
+        width: 90%;
+    }
+}

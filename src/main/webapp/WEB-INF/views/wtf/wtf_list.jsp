@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/detail.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css" />
@@ -33,47 +33,106 @@
     <div id="wrapper-container">
         <div class="container object">
             <div id="main-container-image">
-                <section class="work">
-                    <figure class="white showthis">
-                        <a href="details.html">
-                           <img  data-original="${pageContext.request.contextPath }/resources/img/psd-4.jpg" class="lazy" alt="" />
-                           <dl>
-                            <dt>Wordpress theme</dt>
-                            <dd>Symphony is a responsive one page website template designed with sketches and coded with html5 and php. Freebie released by Lacoste Xavier.</dd>    
-                        </dl>
-                    </a>
-                        <div id="wrapper-part-info">
-                            <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div>
-                            <div id="part-info">Wordpress theme</div>
-                        </div>
-                    </figure>                   
-                </section>
-            </div>
-        </div>
-        <div id="wrapper-oldnew">
-            <div class="oldnew">
-                <div class="wrapper-oldnew-prev">
-                    <div id="oldnew-prev"></div>
+                <div class="title-item">
+                    <div class="title-icon"></div>
+                    <div class="title-text">Ipad Pro Mockup </div>
+                    <div class="title-text-2">Sept 25, 2015 by Onuur</div>
                 </div>
-                <div class="wrapper-oldnew-next">
-                    <div id="oldnew-next"></div>
+                <div class="work">
+                    <figure class="white">
+                        <img src="${pageContext.request.contextPath }/resources/img/psd-4.jpg" alt="" />
+                        <div id="wrapper-part-info">
+                            <div class="part-info-image-single">
+                                <img src="${pageContext.request.contextPath }/resources/img/mockup-1.jpg" alt="" width="628" height="437" />
+                                <img src="${pageContext.request.contextPath }/resources/img/mockup-2.jpg" alt="" width="628" height="437" />
+                                <img src="${pageContext.request.contextPath }/resources/img/mockup-3.jpg" alt="" width="628" height="437" />
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="wrapper-text-description">
+                        <div class="wrapper-view">
+                            <div class="icon-view"><img src="${pageContext.request.contextPath }/resources/img/icon-eye.svg" alt="" width="24" height="16" /></div>
+                            <div class="text-view">2,451 views</div>
+                        </div>
+                        <div class="wrapper-file">
+                            <div class="icon-file"><img src="${pageContext.request.contextPath }/resources/img/icon-psdfile.svg" alt="" width="21" height="21" /></div>
+                            <div class="text-file">Photoshop</div>
+                        </div>
+                        <div class="wrapper-weight">
+                            <div class="icon-weight"><img src="${pageContext.request.contextPath }/resources/img/icon-weight.svg" alt="" width="20" height="23" /></div>
+                            <div class="text-weight">23 Mo</div>
+                        </div>
+                        <div class="wrapper-desc">
+                            <div class="icon-desc"><img src="${pageContext.request.contextPath }/resources/img/icon-desc.svg" alt="" width="24" height="24" /></div>
+                            <div class="text-desc">TAG TAG TAG TAG TAG TAG TAG TAG TAG TAG TAG  </div>
+                        </div>
+                        <div class="wrapper-download">
+                            <div class="icon-download"><img src="${pageContext.request.contextPath }/resources/img/icon-download.svg" alt="" width="19" height="26" /></div>
+                            <div class="text-download"><a href="#"><b>Download</b></a></div>
+                        </div>
+                        <div class="wrapper-morefrom">
+                            <div class="text-morefrom">More from .psd</div>
+                            <div class="image-morefrom">
+                                <a href="#">
+                                    <div class="image-morefrom-1"><img src="${pageContext.request.contextPath }/resources/img/psd-1.jpg" alt="" width="430" height="330" /></div>
+                                </a>
+                                <a href="#">
+                                    <div class="image-morefrom-2"><img src="${pageContext.request.contextPath }/resources/img/psd-2.jpg" alt="" width="430" height="330" /></div>
+                                </a>
+                                <a href="#">
+                                    <div class="image-morefrom-3"><img src="${pageContext.request.contextPath }/resources/img/psd-3.jpg" alt="" width="430" height="330" /></div>
+                                </a>
+                                <a href="#">
+                                    <div class="image-morefrom-4"><img src="${pageContext.request.contextPath }/resources/img/psd-6.jpg" alt="" width="430" height="330" /></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-reply">
+                        <div class="image-reply-post"></div>
+                        <div class="name-reply-post">Igor vlademir</div>
+                        <div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
+                    </div>
+                    <div class="post-reply-2">
+                        <div class="image-reply-post-2"></div>
+                        <div class="name-reply-post-2">Nathan Shaw</div>
+                        <div class="text-reply-post-2">Well done ! I like the way you did it. Awesome ! </div>
+                    </div>
+                    <div class="post-send">
+                        <div id="main-post-send">
+                            <div id="title-post-send">Add your comment</div>
+                            <form id="contact" method="post" action="/onclickprod/formsubmit_op.asp">
+                                <fieldset>
+                                    <p>
+                                        <textarea id="message" name="message" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea>
+                                    </p>
+                                </fieldset>
+                                <div style="text-align:center;">
+                                    <input type="submit" name="envoi" value="Envoyer" />
+                                </div>
+                                <div style="text-align:center;">
+                                    <input type="submit" name="envoi" value="CHECK" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="wrapper-thank">
             <div class="thank">
-                <div class="thank-text">Pic<span style="letter-spacing:-5px;">h</span>umor</div>
+                <div class="thank-text">bu<span style="letter-spacing:-5px;">rs</span>tfly</div>
             </div>
         </div>
         <div id="main-container-footer">
             <div class="container-footer">
                 <div id="row-1f">
-                    <div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">What is Platz</span>
-                        <br>Platz is a blog showcasing hand-picked free themes, design stuff, free fonts and other resources for web designers.</div>
+                    <div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">What is Burstfly</span>
+                        <br>Burstfly is just a blog showcasing hand-picked free themes, design stuff, free fonts and other resources for web designers.</div>
                 </div>
                 <div id="row-2f">
                     <div class="text-row-2f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">How does it work</span>
-                        <br>Platz offers you all the latest freebies found all over the fourth corners without to pay.</div>
+                        <br>Burstfly offers you all the latest freebies found all over the fourth corners without to pay.</div>
                 </div>
                 <div id="row-3f">
                     <div class="text-row-3f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Get in touch!</span>
@@ -92,7 +151,7 @@
         </div>
         <div id="wrapper-copyright">
             <div class="copyright">
-                <div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="https://dcrazed.com/">Dcrazed</a></div>
+                <div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="http://designscrazed.org/">Dcrazed</a></div>
                 <div class="wrapper-navbouton">
                     <div class="google object">g</div>
                     <div class="facebook object">f</div>
