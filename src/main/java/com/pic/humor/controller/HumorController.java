@@ -11,4 +11,5 @@ public class HumorController {
 		
 		return "wtf/wtf_list";
 	}
+
 }

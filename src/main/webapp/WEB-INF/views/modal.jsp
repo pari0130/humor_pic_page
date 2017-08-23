@@ -21,7 +21,7 @@
 					</span>
 					<span class="icon_title">Connect with Facebook</span>
 				</a>
-				<a href="#" class="social_box gg">
+				<a href="${google_url2 }" class="social_box gg">
 					<span class="icon">
 						<i class="fa fa-google-plus"></i>
 					</span>
@@ -33,7 +33,7 @@
 					</span>
 					<span class="icon_title">Connect with Kakao</span>
 				</a>
-				<a href="#" class="social_box nv">
+				<a href="${naver_url2}" class="social_box nv">
 					<span class="icon">
 						<i class="fa"></i>
 					</span>

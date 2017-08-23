@@ -380,18 +380,18 @@ body,html{
 }
 
 .work figure:hover img.lazy {
-    /* opacity: 1; */
+    opacity: 1;
     /* hwi hover 시 확대 되도록 수정함 */
-    -webkit-transform:scale(1.2);
-    -moz-transform:scale(1.2);
-    -ms-transform:scale(1.2); 
-    -o-transform:scale(1.2);  
-    transform:scale(1.2);
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+   /*  -webkit-transform:scale(1.15);
+    -moz-transform:scale(1.15);
+    -ms-transform:scale(1.15); 
+    -o-transform:scale(1.15);  
+    transform:scale(1.15);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; */
 }
 
 .work figure dl dt {

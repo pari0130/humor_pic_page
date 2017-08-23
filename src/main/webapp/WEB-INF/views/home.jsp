@@ -12,14 +12,14 @@
     <link rel="icon" type="image/png" href="img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=1' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=1" />
     <!-- UPLOAD > TAG -->
     <!-- <link type="text/css" rel="stylesheet" href="css/tags.css" /> -->
     <!-- TEST -->
-    <link href="${pageContext.request.contextPath }/resources/css/tagify.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,7 @@
         <div class="container object">
             <div id="main-container-image">
                 <section class="work">
+                <% for(int i=0; i < 20; i++){ %>
                     <figure class="white showthis">
                         <a href="details.html">
                            <img  data-original="${pageContext.request.contextPath }/resources/img/psd-4.jpg" class="lazy" alt="" />
@@ -44,9 +45,10 @@
                     </a>
                         <div id="wrapper-part-info">
                             <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div>
-                            <div id="part-info">Wordpress theme</div>
+                            <div id="part-info">SymphonySymphonySymphonySymphony</div>
                         </div>
-                    </figure>                   
+                    </figure>  
+                 <%} %>                
                 </section>
             </div>
         </div>
@@ -356,6 +358,10 @@
             effectTime: 500
         });
     });
+    
+    
+    console.log(${naverResult});
+
     </script>
 </body>
 </html>

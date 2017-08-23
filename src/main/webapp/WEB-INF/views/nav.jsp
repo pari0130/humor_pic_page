@@ -10,10 +10,10 @@
 			<a href="#">
 				<div id="modal_trigger_upload" href="#modal_upload"
 					style="font-size: 15px" class="oldies object">UPLOAD</div>
-			</a>
-			<a href="#">
+			</a>	
+				<a href="#">
 				<div id="modal_trigger_login" href="#modal_login"
-					style="font-size: 15px" class="oldies object">LOGIN</div>
+					style="font-size: 15px" class="oldies object">LOGIN ${google_ok }</div>
 			</a>
 			<!-- <a href="#">
                     <div style="font-size:15px" class="oldies object">LOGOUT</div>
