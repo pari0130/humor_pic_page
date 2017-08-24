@@ -39,7 +39,7 @@ public class LoginController {
 	private OAuth2Parameters googleOAuth2Parameters;
 	
 	/*홈 컨트롤러를 하위 소셜 로그인 home 이동으로 대체함*/
-	@RequestMapping(value = "/home.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = {"/home.do", "/home"}, method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {
 
 		/*
@@ -49,16 +49,16 @@ public class LoginController {
 
 		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
-		model.addAttribute("naver_url", naverAuthUrl);
-		session.setAttribute("naver_url2", naverAuthUrl);
+		// System.out.println("네이버:" + naverAuthUrl);
+		// model.addAttribute("naver_url", naverAuthUrl);
+		session.setAttribute("naver_url", naverAuthUrl);
 		
 		/* 구글code 발행 */
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String googleAuthUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-		System.out.println("구글:" + googleAuthUrl);
-		model.addAttribute("google_url", googleAuthUrl);
-		session.setAttribute("google_url2", googleAuthUrl);
+		// System.out.println("구글:" + googleAuthUrl);
+		// model.addAttribute("google_url", googleAuthUrl);
+		session.setAttribute("google_url", googleAuthUrl);
 
 		/* 생성한 인증 URL을 View로 전달 */
 		return "home";
@@ -76,14 +76,14 @@ public class LoginController {
 		model.addAttribute("naverResult", apiResult);
 
 		/* 네이버 로그인 성공 페이지 View 호출 */
-		return "home";
+		return "home.do";
 	}
 	
 	// 구글 Callback호출 메소드
 	@RequestMapping(value = "/googlecallback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleCallback(Model model, @RequestParam String code, HttpSession session) throws IOException {
 		System.out.println("여기는 googleCallback");
-		model.addAttribute("google_ok", "google ok");
-		return "home";
+		model.addAttribute("googleResult", "google ok");
+		return "home.do";
 	}
 }

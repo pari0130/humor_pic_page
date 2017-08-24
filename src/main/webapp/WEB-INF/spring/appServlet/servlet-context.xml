@@ -10,6 +10,7 @@
 
 	<context:component-scan base-package="com.pic.humor" />
 	<context:component-scan base-package="com.pic.humor.*" />
+	<context:component-scan base-package="com.pic.humor.social" />
 	<context:component-scan base-package="com.pic.humor.social.*" />
 
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
@@ -25,7 +26,7 @@
 	<bean id="googleOAuth2Parameters"
 		class="org.springframework.social.oauth2.OAuth2Parameters">
 		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
-		<property name="redirectUri" value="http://127.0.0.1:8888/googlecallback" />
+		<property name="redirectUri" value="http://localhost:8888/googlecallback" />
 	</bean>
 
 	<mvc:annotation-driven />
