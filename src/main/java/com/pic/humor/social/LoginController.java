@@ -1,89 +1,83 @@
 package com.pic.humor.social;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.github.scribejava.core.model.OAuth2AccessToken;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class LoginController {
-
-	/* NaverLoginBO */
-	private NaverLoginBO naverLoginBO;
-	private String apiResult = null;
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	/* NaberLogin */
-	@Autowired
-	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-		this.naverLoginBO = naverLoginBO;
+	@RequestMapping(value = "/facebookSignin.do")
+	public String getfacebookSigninCode(HttpSession session) {
+		logger.debug("facebookSignin");
+
+		String facebookUrl = "https://www.facebook.com/v2.8/dialog/oauth?"+
+						"client_id="+"308579496284145"+
+						"&redirect_uri=http://localhost:8888/facebookAccessToken.do"+
+						"&scope=public_profile,email";
+
+		return "redirect:"+facebookUrl;
 	}
-	/* GoogleLogin */
-	@Autowired
-	private GoogleConnectionFactory googleConnectionFactory;
-	@Autowired
-	private OAuth2Parameters googleOAuth2Parameters;
 	
-	/*홈 컨트롤러를 하위 소셜 로그인 home 이동으로 대체함*/
-	@RequestMapping(value = {"/home.do", "/home"}, method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(Model model, HttpSession session) {
-
-		/*
-		 * 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출
-		 */
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-
-		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		// System.out.println("네이버:" + naverAuthUrl);
-		// model.addAttribute("naver_url", naverAuthUrl);
-		session.setAttribute("naver_url", naverAuthUrl);
+	@RequestMapping(value = "/facebookAccessToken.do")
+	public String getFacebookSignIn(String code, HttpSession session, String state) throws Exception {
+		logger.debug("facebookAccessToken / code : "+code);
 		
-		/* 구글code 발행 */
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String googleAuthUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-		// System.out.println("구글:" + googleAuthUrl);
-		// model.addAttribute("google_url", googleAuthUrl);
-		session.setAttribute("google_url", googleAuthUrl);
-
-		/* 생성한 인증 URL을 View로 전달 */
-		return "home";
-	}
-
-	// 네이버 로그인 성공시 callback호출 메소드
-	@RequestMapping(value = "/navercallback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String naverCallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-			throws IOException {
-		System.out.println("여기는 callback");
-		OAuth2AccessToken oauthToken;
-		oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		// 로그인 사용자 정보를 읽어온다.
-		apiResult = naverLoginBO.getUserProfile(oauthToken);
-		model.addAttribute("naverResult", apiResult);
-
-		/* 네이버 로그인 성공 페이지 View 호출 */
-		return "home.do";
+		String accessToken = requesFaceBooktAccesToken(session, code);
+		facebookUserDataLoadAndSave(accessToken, session);
+		
+		return "redirect:home.do";
 	}
 	
-	// 구글 Callback호출 메소드
-	@RequestMapping(value = "/googlecallback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String googleCallback(Model model, @RequestParam String code, HttpSession session) throws IOException {
-		System.out.println("여기는 googleCallback");
-		model.addAttribute("googleResult", "google ok");
-		return "home.do";
+	private String requesFaceBooktAccesToken(HttpSession session, String code) throws Exception {
+		String facebookUrl = "https://graph.facebook.com/v2.8/oauth/access_token?"+
+							"client_id="+"308579496284145"+
+							"&redirect_uri=http://localhost:8888/home.do"+
+						 	"&client_secret="+"fa3d69a63220b926556154991aed9c6a"+
+						 	"&code="+code;
+		
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpGet getRequest = new HttpGet(facebookUrl);
+		String rawJsonString = client.execute(getRequest, new BasicResponseHandler());
+		logger.debug("facebookAccessToken / raw json : "+rawJsonString);
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
+		String faceBookAccessToken = (String) jsonObject.get("access_token");
+		logger.debug("facebookAccessToken / accessToken : "+faceBookAccessToken);
+		
+		session.setAttribute("faceBookAccessToken", faceBookAccessToken);
+		
+		return faceBookAccessToken;
+	}
+	
+	private void facebookUserDataLoadAndSave(String accessToken, HttpSession session) throws Exception {
+	    String facebookUrl = "https://graph.facebook.com/me?"+
+	            "access_token="+accessToken+
+	            "&fields=id,name,email,picture";
+
+	    HttpClient client = HttpClientBuilder.create().build();
+	    HttpGet getRequest = new HttpGet(facebookUrl);
+	    String rawJsonString = client.execute(getRequest, new BasicResponseHandler());
+	    logger.debug("facebookAccessToken / rawJson!  : "+rawJsonString);
+
+	    JSONParser jsonParser = new JSONParser();
+	    JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
+	    logger.debug("facebookUserDataLoadAndSave / raw json : "+jsonObject);
+
+
 	}
 }

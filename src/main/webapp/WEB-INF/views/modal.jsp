@@ -15,12 +15,18 @@
 		<!-- Social Login -->
 		<div class="modal_popup">
 			<div class="">
-				<a href="#" class="social_box fb">
+				<div style="cursor:pointer" onclick="facebooklogin()" class="social_box fb">
 					<span class="icon">
 						<i class="fa fa-facebook"></i>
 					</span>
 					<span class="icon_title">Connect with Facebook</span>
-				</a>
+				</div>
+				<%-- <a href="${pageContext.request.contextPath }/facebookSignin.do" class="social_box fb">
+					<span class="icon">
+						<i class="fa fa-facebook"></i>
+					</span>
+					<span class="icon_title">Connect with Facebook</span>
+				</a> --%>
 				<div style="cursor:pointer" class="social_box gg" id="customBtn">
 					<span class="icon">
 						<i class="fa fa-google-plus"></i>
@@ -28,11 +34,11 @@
 					<span class="icon_title">Connect with Google</span>
 					<script>startApp();</script>
 				</div>
-				<a href="${google_url}" class="social_box gg">
+				<a href="#" class="social_box tw">
 					<span class="icon">
-						<i class="fa fa-google-plus"></i>
+						<i class="fa fa-twitter"></i>
 					</span>
-					<span class="icon_title">Connect with Google</span>
+					<span class="icon_title">Connect with Twitter</span>
 				</a>
 				<a href="#" class="social_box kk">
 					<span class="icon">

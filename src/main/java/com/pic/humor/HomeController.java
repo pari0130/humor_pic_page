@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
-	@RequestMapping({"/home.do2", "/home2"})
+	@RequestMapping({"/home.do", "*/home.do"})
 	public ModelAndView home(){
 		ModelAndView mView = new ModelAndView();
 		mView.setViewName("home");

@@ -12,10 +12,5 @@ public class HumorController {
 		return "wtf/wtf_list";
 	}
 	
-	@RequestMapping("/callback")
-	public String callback(){
-		
-		return "callback";
-	}
 
 }

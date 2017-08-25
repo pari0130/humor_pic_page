@@ -12,23 +12,7 @@
 	<context:component-scan base-package="com.pic.humor.*" />
 	<context:component-scan base-package="com.pic.humor.social" />
 	<context:component-scan base-package="com.pic.humor.social.*" />
-
-	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
-	<bean id="naverLoginBO" class="com.pic.humor.social.NaverLoginBO" />
 	
-	<!-- google Class Bean설정 추가 -->
-	<!-- 클라이언트ID와 보안비밀 세팅 -->
-	<bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
-		<constructor-arg value="221557223102-0gp35bn76pkch9bn8ru3k463oghpoqbq.apps.googleusercontent.com" />
-		<constructor-arg value="kMVWG5QyyjAW1xLI1AhcqXlG" />
-	</bean>
-	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
-	<bean id="googleOAuth2Parameters"
-		class="org.springframework.social.oauth2.OAuth2Parameters">
-		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
-		<property name="redirectUri" value="http://localhost:8888/googlecallback" />
-	</bean>
-
 	<mvc:annotation-driven />
 	<!-- View Page 설정 -->
 	<bean

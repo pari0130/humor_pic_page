@@ -147,13 +147,17 @@ a.btn_red {
     background: #DD4B39;
 }
 
+.modal_popup .tw .icon { /* #hwi menus */
+    background: #4fadd2;
+}
+
 .modal_popup .kk .icon { /* #hwi menus */
     background-image: url('../img/kakao_icon.png');
     background-size: cover;
 }
 
 .modal_popup .nv .icon { /* #hwi menus */
-    background-image: url('../img/naver_icon.png');
+    background-image: url('../img/naver_icon.png');    
     background-size: cover;
 }
 
