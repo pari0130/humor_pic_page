@@ -4,14 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>NaverLoginTest</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 네이버 로그인 연동 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
+<script>
+	
+</script>
 <body>
-<br>
-<div style="text-align:center">
-<h3>성공 페이지</h3>
-    <p>${naverResult}</p>
-    <p>${googleResult}</p>
-</div>
+	<script>
+	</script>
 </body>
 </html>

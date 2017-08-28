@@ -27,31 +27,44 @@
 					</span>
 					<span class="icon_title">Connect with Facebook</span>
 				</a> --%>
-				<div style="cursor:pointer" class="social_box gg" id="customBtn">
+				<div style="cursor:pointer" class="social_box gg" id="customBtn_gg">
 					<span class="icon">
 						<i class="fa fa-google-plus"></i>
 					</span>
 					<span class="icon_title">Connect with Google</span>
 					<script>startApp();</script>
 				</div>
-				<a href="#" class="social_box tw">
+				<!-- <a href="#" class="social_box tw">
 					<span class="icon">
 						<i class="fa fa-twitter"></i>
 					</span>
 					<span class="icon_title">Connect with Twitter</span>
-				</a>
+				</a> -->
+				<div style="cursor:pointer" class="social_box tw" id="customBtn_tw">
+					<span class="icon">
+						<i class="fa fa-twitter"></i>
+					</span>
+					<span class="icon_title">Connect with Twitter</span>					
+				</div>
 				<a href="#" class="social_box kk">
 					<span class="icon">
 						<i class="fa"></i>
 					</span>
 					<span class="icon_title">Connect with Kakao</span>
 				</a>
-				<a href="${naver_url}" class="social_box nv">
+				<div style="cursor:pointer" class="social_box nv" id="customBtn_nv">
+					<span class="icon">
+						<i class="fa"></i>
+					</span>
+					<span class="icon_title">Connect with Naver</span>					
+				</div>
+				<div class="naver_sign" id="naver_id_login"></div> <!-- style="display:none" -->
+				<%-- <a href="${naver_url}" class="social_box nv" id="customBtn_nv">
 					<span class="icon">
 						<i class="fa"></i>
 					</span>
 					<span class="icon_title">Connect with Naver</span>
-				</a>
+				</a> --%>
 				<!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
 			</div>
 			<div class="centeredText">

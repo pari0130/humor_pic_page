@@ -138,6 +138,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
+    <!-- 네이버 로그인 연동 -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.naver-login.js"></script>
     <script>
     /* lazyload 처리 */
     $(function() {
@@ -146,6 +149,11 @@
             effectTime: 500
         });
     });    
+    
+    $('#customBtn_nv').click(function(){ 
+    	// 네이버 로그인 처리
+    	 $('#naver_id_login').click();
+    });
     </script>
 </body>
 </html>

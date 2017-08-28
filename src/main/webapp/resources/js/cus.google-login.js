@@ -9,7 +9,7 @@
           // Request scopes in addition to 'profile' and 'email'
           //scope: 'additional_scope'
         });
-        attachSignin(document.getElementById('customBtn'));
+        attachSignin(document.getElementById('customBtn_gg'));
       });
     };
 
