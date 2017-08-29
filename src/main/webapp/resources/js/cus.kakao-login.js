@@ -13,6 +13,7 @@ $(document).ready(function(){
 					}
 				});
 			}
+			//
 			function createKakaotalkLogin(){		
 				$("#customBtn_kk").click(function(){
 					Kakao.Auth.login({
