@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+pre {
+	display: none;
+}
+</style>
+<script>
+	OAuth.initialize('MpnCNnhVAq_zL089ua883AevC1o');
+
+	$('button').click(function() {
+		OAuth.popup('twitter', {
+			authorize : {
+				force_login : true
+			}
+		}).then(function(twitter) {
+			return twitter.me();
+		}).done(function(me) {
+			$('pre').html(JSON.stringify(me, null, 2)).show();
+		}).error(function(err) {
+			alert('something goes wrong...');
+		})
+	});
+</script>
+</head>
+<body>
+	<button>Connect with Twitter</button>
+	<pre></pre>
+</body>
+</html>

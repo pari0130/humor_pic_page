@@ -1,8 +1,13 @@
 package com.pic.humor;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.pic.humor.social.service.SocialService;
 
 /**
  * Handles requests for the application home page.
@@ -10,9 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
+	@Autowired
+	private SocialService socialService;
+	
 	@RequestMapping({"/home.do", "/"})
-	public ModelAndView home(){
-		ModelAndView mView = new ModelAndView();
+	public ModelAndView home(HttpServletRequest request){
+		// twitter login에 대한 service 수행
+		ModelAndView mView=socialService.twitterSignin(request);
+		
 		mView.setViewName("home");
 		
 		return mView;

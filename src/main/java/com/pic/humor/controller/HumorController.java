@@ -12,16 +12,16 @@ public class HumorController {
 		return "wtf/wtf_list";
 	}
 	
-	@RequestMapping("/callback")
+	@RequestMapping("/callback.do")
 	public String callBack(){
 		
-		return "callback";
+		return "socialCallback";
 	}
 	
-	@RequestMapping("/test")
+	@RequestMapping("/twitterLogin")
 	public String test(){
 		
-		return "test";
+		return "twitterLogin";
 	}
 
 }

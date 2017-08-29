@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="twitter4j.Twitter" %>
+<%@ page import="twitter4j.TwitterFactory" %>
+<%@ page import="twitter4j.auth.RequestToken" %>
+<%@ page import="twitter4j.auth.AccessToken" %>
+<%
+/* String consumerKey = "jzHhSZ4DIrdW9OOPmpJ2lduOG";
+String consumerSecret = "kHWmYuoYA3gDwR5tRmfNZh2xRKpmHOXT12Nehc1n9LUJbZpviA";
+
+Twitter twitter = new TwitterFactory().getInstance();			
+twitter.setOAuthConsumer(consumerKey, consumerSecret); //저장된 consumerKey, consumerSecret
+AccessToken accessToken = null;		
+
+String oauth_verifier = request.getParameter("oauth_verifier");
+
+//트위터 로그인 연동시 담은 requestToken 의 세션값을 가져온다.
+RequestToken requestToken = (RequestToken )request.getSession().getAttribute("requestToken");			
+accessToken = twitter.getOAuthAccessToken(requestToken, oauth_verifier);			
+twitter.setOAuthAccessToken(accessToken);
+
+//해당 트위터 사용자의 이름과 아이디를 가져온다.
+System.out.println(accessToken.getUserId());    //트위터의 사용자 아이디
+System.out.println(accessToken.getScreenName()); //트워터에 표시되는 사용자명 */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,9 +161,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
-    <!-- 네이버 로그인 연동 -->
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.naver-login.js"></script>
+
     <script>
     /* lazyload 처리 */
     $(function() {
@@ -150,10 +171,6 @@
         });
     });    
     
-    $('#customBtn_nv').click(function(){ 
-    	// 네이버 로그인 처리
-    	 $('#naver_id_login').click();
-    });
     </script>
 </body>
 </html>
