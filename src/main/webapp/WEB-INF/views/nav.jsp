@@ -13,13 +13,10 @@
 			</a>	
 				<a href="#">
 				<div id="modal_trigger_login" href="#modal_login"
-					style="font-size: 15px" class="oldies object">LOGIN ${google_ok }</div>
+					style="font-size: 15px" class="oldies object">LOGIN</div>
 			</a>
-			<a href="${pageContext.request.contextPath }/twitterLogin.do">test</a>
-			<!-- <a href="#">
-                    <div style="font-size:15px" class="oldies object">LOGOUT</div>
-                </a> -->
-			<!--  <a href=""><img src="img/logo-burst.png" alt="logo platz" height="38" width="90"></a> -->
+			<a href="${pageContext.request.contextPath }/test.do">test.do</a>
+			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a>
 		</div>
 		<div id="main_tip_search">
 			<form>

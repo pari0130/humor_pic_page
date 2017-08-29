@@ -20,7 +20,7 @@ public class HomeController {
 	
 	@RequestMapping({"/home.do", "/"})
 	public ModelAndView home(HttpServletRequest request){
-		// twitter login에 대한 service 수행
+		// twitter login에 대한 url 받아서 home에 넘겨주기
 		ModelAndView mView=socialService.twitterSignin(request);
 		
 		mView.setViewName("home");

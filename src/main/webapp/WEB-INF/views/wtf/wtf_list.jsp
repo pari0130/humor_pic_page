@@ -19,7 +19,7 @@
     <!-- UPLOAD > TAG -->
     <!-- <link type="text/css" rel="stylesheet" href="css/tags.css" /> -->
     <!-- TEST -->
-    <link href="${pageContext.request.contextPath }/resources/css/tagify.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/tagify.css" rel="stylesheet">   
     <!-- 구글 로그인 연동 -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="221557223102-0gp35bn76pkch9bn8ru3k463oghpoqbq.apps.googleusercontent.com">
@@ -28,7 +28,7 @@
     <script src="https://apis.google.com/js/api:client.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js"></script>
     <!-- 페북 로그인 연동 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script> 
 </head>
 
 <body>
@@ -171,8 +171,7 @@
         </div>
     </div>
     <!-- modal 팝업창 -->
-    <jsp:include page="/WEB-INF/views/modal.jsp" /> 
-    
+    <jsp:include page="/WEB-INF/views/modal.jsp" />     
     <!-- SCRIPT -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
@@ -196,6 +195,8 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
-   
+    <%-- <!-- 카톡 로그인 연동 -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script> --%>
 </body>
 </html>

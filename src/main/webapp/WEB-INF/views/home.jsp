@@ -1,29 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="twitter4j.Twitter" %>
-<%@ page import="twitter4j.TwitterFactory" %>
-<%@ page import="twitter4j.auth.RequestToken" %>
-<%@ page import="twitter4j.auth.AccessToken" %>
-<%
-/* String consumerKey = "jzHhSZ4DIrdW9OOPmpJ2lduOG";
-String consumerSecret = "kHWmYuoYA3gDwR5tRmfNZh2xRKpmHOXT12Nehc1n9LUJbZpviA";
-
-Twitter twitter = new TwitterFactory().getInstance();			
-twitter.setOAuthConsumer(consumerKey, consumerSecret); //저장된 consumerKey, consumerSecret
-AccessToken accessToken = null;		
-
-String oauth_verifier = request.getParameter("oauth_verifier");
-
-//트위터 로그인 연동시 담은 requestToken 의 세션값을 가져온다.
-RequestToken requestToken = (RequestToken )request.getSession().getAttribute("requestToken");			
-accessToken = twitter.getOAuthAccessToken(requestToken, oauth_verifier);			
-twitter.setOAuthAccessToken(accessToken);
-
-//해당 트위터 사용자의 이름과 아이디를 가져온다.
-System.out.println(accessToken.getUserId());    //트위터의 사용자 아이디
-System.out.println(accessToken.getScreenName()); //트워터에 표시되는 사용자명 */
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +20,7 @@ System.out.println(accessToken.getScreenName()); //트워터에 표시되는 사
     <!-- <link type="text/css" rel="stylesheet" href="css/tags.css" /> -->
     <!-- TEST -->
     <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
+    
     <!-- 구글 로그인 연동 -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="221557223102-0gp35bn76pkch9bn8ru3k463oghpoqbq.apps.googleusercontent.com">
@@ -137,7 +115,6 @@ System.out.println(accessToken.getScreenName()); //트워터에 표시되는 사
     </div>
     <!-- modal 팝업창 -->
     <jsp:include page="/WEB-INF/views/modal.jsp" /> 
-    
     <!-- SCRIPT -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
@@ -161,7 +138,9 @@ System.out.println(accessToken.getScreenName()); //트워터에 표시되는 사
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
-
+   <%--  <!-- 카톡 로그인 연동 -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script> --%>
     <script>
     /* lazyload 처리 */
     $(function() {

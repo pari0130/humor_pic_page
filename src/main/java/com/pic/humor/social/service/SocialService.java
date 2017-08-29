@@ -6,4 +6,5 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface SocialService {
 	public ModelAndView twitterSignin(HttpServletRequest request);
+	public ModelAndView twitterCallback(HttpServletRequest request);
 }

@@ -21,12 +21,6 @@
 					</span>
 					<span class="icon_title">Connect with Facebook</span>
 				</div>
-				<%-- <a href="${pageContext.request.contextPath }/facebookSignin.do" class="social_box fb">
-					<span class="icon">
-						<i class="fa fa-facebook"></i>
-					</span>
-					<span class="icon_title">Connect with Facebook</span>
-				</a> --%>
 				<div style="cursor:pointer" class="social_box gg" id="customBtn_gg">
 					<span class="icon">
 						<i class="fa fa-google-plus"></i>
@@ -34,37 +28,18 @@
 					<span class="icon_title">Connect with Google</span>
 					<script>startApp();</script>
 				</div>
-				<a href="${authUrl }" class="social_box tw">
+				<a href="${twitterAuthUrl }" class="social_box tw">
 					<span class="icon">
 						<i class="fa fa-twitter"></i>
 					</span>
 					<span class="icon_title">Connect with Twitter</span>
 				</a>
-				<div style="cursor:pointer" class="social_box tw" id="customBtn_tw">
+				<div style="cursor:pointer" class="social_box kk" id="customBtn_kk">
 					<span class="icon">
-						<i class="fa fa-twitter"></i>
+						<i class="fa"></i>
 					</span>
-					<span class="icon_title">Connect with Twitter2</span>					
+					<span class="icon_title">Connect with Kakao</span>				
 				</div>
-				<a href="#" class="social_box kk">
-					<span class="icon">
-						<i class="fa"></i>
-					</span>
-					<span class="icon_title">Connect with Kakao</span>
-				</a>
-				<div style="cursor:pointer" class="social_box nv" id="customBtn_nv">
-					<span class="icon">
-						<i class="fa"></i>
-					</span>
-					<span class="icon_title">Connect with Naver</span>					
-				</div>
-				<%-- <a href="${naver_url}" class="social_box nv" id="customBtn_nv">
-					<span class="icon">
-						<i class="fa"></i>
-					</span>
-					<span class="icon_title">Connect with Naver</span>
-				</a> --%>
-				<!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
 			</div>
 			<div class="centeredText">
 				<span>WE CAN ONLY DO SOCIAL LOGIN</span>

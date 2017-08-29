@@ -13,22 +13,21 @@ $(document).ready(function(){
 					}
 				});
 			}
-			function createKakaotalkLogin(){
-				$("#kakao-login").click(function(){
+			function createKakaotalkLogin(){		
+				$("#customBtn_kk").click(function(){
 					Kakao.Auth.login({
 						persistAccessToken: true,
 						persistRefreshToken: true,
 						success: function(authObj) {
-							getKakaotalkUserProfile();
-							/* createKakaotalkLogout(); */
+							getKakaotalkUserProfile();							
 						},
 						fail: function(err) {
 							console.log(err);
 						}
 					});
-				});
+				});				
 			}
-			if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
+			if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){				
 				getKakaotalkUserProfile();
 			}else{
 				createKakaotalkLogin();
