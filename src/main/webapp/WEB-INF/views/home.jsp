@@ -27,9 +27,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>  
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=2"></script>
     <!-- 페북 로그인 연동 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js?var=1"></script>
 </head>
 <body>
 	<a name="ancre"></a>
@@ -54,7 +54,7 @@
                     </a>
                         <div id="wrapper-part-info">
                             <%-- <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div> --%>
-                            <div id="part-info">SymphonySymphonySymphonySymphony</div>
+                            <div id="part-info">${user_id }</div>
                         </div>
                     </figure>  
                  <%} %>                
@@ -138,9 +138,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
-   <%--  <!-- 카톡 로그인 연동 -->
+   	<!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script> --%>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?var=1"></script>
     <script>
     /* lazyload 처리 */
     $(function() {

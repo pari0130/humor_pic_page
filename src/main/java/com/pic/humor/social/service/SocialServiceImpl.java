@@ -1,10 +1,15 @@
 package com.pic.humor.social.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.sf.json.JSONArray;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -15,7 +20,7 @@ import twitter4j.auth.RequestToken;
 public class SocialServiceImpl implements SocialService {
 
 	@Override // 트위터 로그인 처리
-	public ModelAndView twitterSignin(HttpServletRequest request) {
+	public ModelAndView twSigninService(HttpServletRequest request) {
 		ModelAndView mView = new ModelAndView();
 		String consumerKey = "jzHhSZ4DIrdW9OOPmpJ2lduOG";
 		String consumerSecret = "kHWmYuoYA3gDwR5tRmfNZh2xRKpmHOXT12Nehc1n9LUJbZpviA";
@@ -44,7 +49,7 @@ public class SocialServiceImpl implements SocialService {
 	}
 
 	@Override //트위터 로그인 후 callback 처리
-	public ModelAndView twitterCallback(HttpServletRequest request) {
+	public ModelAndView twCallbackService(HttpServletRequest request) {
 		ModelAndView mView = new ModelAndView();
 		String consumerKey = "jzHhSZ4DIrdW9OOPmpJ2lduOG";
 		String consumerSecret = "kHWmYuoYA3gDwR5tRmfNZh2xRKpmHOXT12Nehc1n9LUJbZpviA";
@@ -73,6 +78,29 @@ public class SocialServiceImpl implements SocialService {
 			e.printStackTrace();
 		}					
 		return mView;
+	}
+
+	@Override
+	public boolean canUse(String paramData, HttpServletRequest request) {
+		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+	    resultMap = JSONArray.fromObject(paramData);
+	    
+	    for (Map<String, Object> map : resultMap) {
+	    	System.out.println("ajax 데이터 map 확인");
+	    	System.out.println("provider : " + map.get("provider"));
+	    	System.out.println("id : " + map.get("id"));
+	    	System.out.println("name : " + map.get("name"));
+	    	System.out.println("image : " + map.get("image"));
+	    	request.getSession().setAttribute("provider", map.get("provider"));
+	    	request.getSession().setAttribute("user_id", map.get("id"));
+	    	request.getSession().setAttribute("user_name", map.get("name"));
+	    	request.getSession().setAttribute("user_image", map.get("image"));
+	    	
+	    }
+		//사용가능한 아이디 인지 여부를 리턴받아서 
+		boolean canUse=true;
+		//리턴해준다. 
+		return canUse;
 	}
 
 }

@@ -7,16 +7,30 @@
 			<a href="${pageContext.request.contextPath }/home.do">
 				<div style="font-size: 15px" class="oldies object">HOME</div>
 			</a>
-			<a href="#">
-				<div id="modal_trigger_upload" href="#modal_upload"
-					style="font-size: 15px" class="oldies object">UPLOAD</div>
-			</a>	
+			<c:choose>
+			  	<c:when test="${empty user_id }">
+			  	<a href="#">
+					<div id="modal_trigger_login" href="#modal_login"
+						style="font-size: 15px" class="oldies object">LOGIN</div>
+				</a>			  	
+			  	</c:when>
+			  	<c:otherwise>
+		  		<a href="#">
+					<div id="modal_trigger_upload" href="#modal_upload"
+						style="font-size: 15px" class="oldies object">UPLOAD</div>
+				</a> 
 				<a href="#">
-				<div id="modal_trigger_login" href="#modal_login"
-					style="font-size: 15px" class="oldies object">LOGIN</div>
-			</a>
-			<a href="${pageContext.request.contextPath }/test.do">test.do</a>
-			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a>
+					<div id="modal_trigger_login" href="#modal_login"
+						style="font-size: 15px" class="oldies object">LOGOUT</div>
+				</a>
+				<a href="#">
+					<div id="modal_trigger_login" href="#modal_login"
+						style="font-size: 15px" class="oldies object">LOGIN</div>
+				</a>
+		  		</c:otherwise>
+	  		</c:choose>				
+			<%-- <a href="${pageContext.request.contextPath }/test.do">test.do</a>
+			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a> --%>
 		</div>
 		<div id="main_tip_search">
 			<form>

@@ -195,8 +195,8 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
-    <%-- <!-- 카톡 로그인 연동 -->
+    <!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script> --%>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script>
 </body>
 </html>

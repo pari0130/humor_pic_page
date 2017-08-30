@@ -12,8 +12,14 @@
 	<context:component-scan base-package="com.pic.humor.*" />
 	<context:component-scan base-package="com.pic.humor.social" />
 	<context:component-scan base-package="com.pic.humor.social.*" />
+	<!-- @ResponseBody 어노테이션이 동작 가능하도록 설정 -->
+	<mvc:annotation-driven /> 
 	
-	<mvc:annotation-driven />
+	<!-- bean의 이름으로 view 를 찾아갈수 있도록 설정 최우선 순위로 설정 -->
+	<!-- <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean> -->
+			
 	<!-- View Page 설정 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
