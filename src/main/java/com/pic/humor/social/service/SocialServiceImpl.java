@@ -1,10 +1,13 @@
 package com.pic.humor.social.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,7 +52,7 @@ public class SocialServiceImpl implements SocialService {
 	}
 
 	@Override //트위터 로그인 후 callback 처리
-	public ModelAndView twCallbackService(HttpServletRequest request) {
+	public ModelAndView twCallbackService(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView mView = new ModelAndView();
 		String consumerKey = "jzHhSZ4DIrdW9OOPmpJ2lduOG";
 		String consumerSecret = "kHWmYuoYA3gDwR5tRmfNZh2xRKpmHOXT12Nehc1n9LUJbZpviA";
@@ -59,6 +62,7 @@ public class SocialServiceImpl implements SocialService {
 		
 		AccessToken accessToken = null;		
 		String oauth_verifier = request.getParameter("oauth_verifier");
+		
 		//트위터 로그인 연동시 담은 requestToken 의 세션값을 가져온다.
 		RequestToken requestToken = (RequestToken )request.getSession().getAttribute("requestToken");			
 		try {
@@ -70,8 +74,23 @@ public class SocialServiceImpl implements SocialService {
 			// profile image 
 			// https://twitter.com/<screen_name>/profile_image?size=<mini|normal|bigger|original>
 			String twImg = "https://twitter.com/" + accessToken.getScreenName() + "/profile_image?size=bigger";
-			System.out.println("image : "+ twImg); //트워터에 표시되는 사용자명 
-			mView.addObject("msg", "성공");
+			System.out.println("image : "+ twImg); //트워터에 표시되는 프로필이미지 
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('성공');");
+			out.println("window.close();");
+			out.println("location.replace('/home.do');");
+			
+			
+			out.println("</script>");
+            out.flush();
+			
+			
+			
+			
+			/*mView.addObject("msg", "성공");*/
+			
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
 			System.out.println("call 실패");
@@ -97,7 +116,6 @@ public class SocialServiceImpl implements SocialService {
 	    	request.getSession().setAttribute("user_image", map.get("image"));
 	    	
 	    }
-		//사용가능한 아이디 인지 여부를 리턴받아서 
 		boolean canUse=true;
 		//리턴해준다. 
 		return canUse;

@@ -1,16 +1,9 @@
-window.twttr = (function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
-	if (d.getElementById(id))
-		return t;
-	js = d.createElement(s);
-	js.id = id;
-	js.src = "https://platform.twitter.com/widgets.js";
-	fjs.parentNode.insertBefore(js, fjs);
-
-	t._e = [];
-	t.ready = function(f) {
-		t._e.push(f);
-	};
-
-	return t;
-}(document, "script", "twitter-wjs"));
+function twitterlogin() {
+	// 현재 요청한 위치 의 pathname을 저장함 ~~~ /home.do 등
+	var path = window.location.pathname;
+	// twReturnUrl에 twitter jstl값을 넣어서 받아오기
+	var call_url = $("#twReturnUrl").val() + "&url=" + path;
+	console.log("tw url : " + call_url);
+	alert("tw url: " + call_url);
+	location.href = call_url;
+}

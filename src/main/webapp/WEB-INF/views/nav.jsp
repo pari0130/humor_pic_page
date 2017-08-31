@@ -12,7 +12,11 @@
 			  	<a href="#">
 					<div id="modal_trigger_login" href="#modal_login"
 						style="font-size: 15px" class="oldies object">LOGIN</div>
-				</a>			  	
+				</a>	
+				<a href="#">
+					<div id="modal_trigger_upload" href="#modal_upload"
+						style="font-size: 15px" class="oldies object">UPLOAD</div>
+				</a> 		  	
 			  	</c:when>
 			  	<c:otherwise>
 		  		<a href="#">
@@ -63,7 +67,7 @@
 			</div>
 		</div>
 		<div id="wrapper-bouton-icon">
-			<a href="${pageContext.request.contextPath }/wtf_list.do">
+			<a href="${pageContext.request.contextPath }/contents_detail.do">
 				<div class="menus object">WTF</div>
 			</a>
 			<a href="#">

@@ -28,7 +28,9 @@
     <script src="https://apis.google.com/js/api:client.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js"></script>
     <!-- 페북 로그인 연동 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script> 
+    <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script>
+    <!-- 트위터 로그인 연동 -->
+    <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=1"></script> 
 </head>
 
 <body>

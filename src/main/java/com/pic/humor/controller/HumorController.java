@@ -1,9 +1,11 @@
 package com.pic.humor.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +23,10 @@ public class HumorController {
 	@Autowired
 	private SocialService socialService;
 	
-	@RequestMapping("/wtf_list")
+	@RequestMapping("/contents_detail")
 	public String wtf_list(){
 		
-		return "wtf/wtf_list";
+		return "list/contents_detail";
 	}
 	
 	@RequestMapping("/test")
@@ -38,17 +40,18 @@ public class HumorController {
 		
 		return "test2";
 	}
+	
 	@RequestMapping("/twcallback.do") // 로그인 요청 후 callback 처리
-	public ModelAndView twCallback(HttpServletRequest request){
-		ModelAndView mView=socialService.twCallbackService(request);
+	public void twCallback(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ModelAndView mView=socialService.twCallbackService(request, response);
+		
 		
 		// 로그인 성공 alert 이동
-		mView.setViewName("alert");
-		return mView;
+		/*mView.setViewName("alert");*/
+		
 	}
 	
-	
-	// 로그인 요청 후 callback 처리
+	// 로그인 요청 후 callback 처리 google, facebook, kakao
 	@RequestMapping("/socialajax")
 	@ResponseBody
 	public Map<String, Object> socialAjax(@RequestBody String paramData, HttpServletRequest request){

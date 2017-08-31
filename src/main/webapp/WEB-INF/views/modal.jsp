@@ -28,11 +28,29 @@
 					<span class="icon_title">Connect with Google</span>
 					<script>startApp();</script>
 				</div>
-				<a href="${twitterAuthUrl }" class="social_box tw">
+				<div style="cursor:pointer" onclick="twitterlogin()" class="social_box tw" id="customBtn_tw">
 					<span class="icon">
 						<i class="fa fa-twitter"></i>
 					</span>
-					<span class="icon_title">Connect with Twitter</span>
+					<span class="icon_title">Connect with Twitter1</span>
+					<!-- twitterurl을 hidden으로 전달하여 뒤에 현재 페이지 url 받기 -->
+					<input type="hidden" id="twReturnUrl" value="${twitterAuthUrl }"/>
+				</div>
+				<div style="cursor:pointer" 
+				onclick="window.open('${twitterAuthUrl }', 'mywin', 'left=0,top=0,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+				class="social_box tw" id="customBtn_tw">
+					<span class="icon">
+						<i class="fa fa-twitter"></i>
+					</span>
+					<span class="icon_title">Connect with Twitter2</span>
+				</div>
+				<a href="${twitterAuthUrl }" 
+					onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+					class="social_box tw">
+					<span class="icon">
+						<i class="fa fa-twitter"></i>
+					</span>
+					<span class="icon_title">Connect with Twitter3</span>
 				</a>
 				<div style="cursor:pointer" class="social_box kk" id="customBtn_kk">
 					<span class="icon">

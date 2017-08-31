@@ -17,17 +17,18 @@
       console.log(element.id);
       auth2.attachClickHandler(element, {},
           function(googleUser) {
-    	  var profile = googleUser.getBasicProfile();
-    	  var id = profile.getId();
-    	  var name = profile.getName();
-    	  var image = profile.getImageUrl();
-    	  googleAjax(id, name, image);   	  
+	    	  // 이름 id image 정보 얻어서 callAjax 요청 정보로 보냄
+	    	  var profile = googleUser.getBasicProfile();
+	    	  var id = profile.getId();
+	    	  var name = profile.getName();
+	    	  var image = profile.getImageUrl();
+	    	  callAjax(id, name, image);   	  
           }, function(error) {
             alert(JSON.stringify(error, undefined, 2));
           }); 
     }
     
-   function googleAjax(id, name, image){
+   function callAjax(id, name, image){
 	   /* 위 구글 로그인 완료 후 ajax로 변수값 넘겨서 session에 저장하기.*/
 	   console.log("ajax 요청 시작");
 	   console.log("id: " + id);
@@ -63,6 +64,7 @@
             		location.href = url;
 				}else{
 					alert('에러');
+					location.href = "/home.do";
 				}        
             }
          
