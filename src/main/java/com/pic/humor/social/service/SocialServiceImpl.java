@@ -1,7 +1,6 @@
 package com.pic.humor.social.service;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,28 +67,21 @@ public class SocialServiceImpl implements SocialService {
 		try {
 			accessToken = twitter.getOAuthAccessToken(requestToken, oauth_verifier);
 			twitter.setOAuthAccessToken(accessToken);
-			//해당 트위터 사용자의 이름과 아이디를 가져온다.
-			System.out.println("id : "+ accessToken.getUserId());    //트위터의 사용자 아이디
-			System.out.println("name : "+ accessToken.getScreenName()); //트워터에 표시되는 사용자명 
 			// profile image 
 			// https://twitter.com/<screen_name>/profile_image?size=<mini|normal|bigger|original>
 			String twImg = "https://twitter.com/" + accessToken.getScreenName() + "/profile_image?size=bigger";
-			System.out.println("image : "+ twImg); //트워터에 표시되는 프로필이미지 
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('성공');");
-			out.println("window.close();");
-			out.println("location.replace('/home.do');");
 			
-			
-			out.println("</script>");
-            out.flush();
-			
-			
-			
-			
-			/*mView.addObject("msg", "성공");*/
+			// twitter session 저장
+			System.out.println("twitter 데이터 확인");
+	    	System.out.println("provider : " + "twitter");
+	    	System.out.println("id : " + accessToken.getUserId()); //트위터의 사용자 아이디
+	    	System.out.println("name : " + accessToken.getScreenName()); //트워터에 표시되는 사용자명
+	    	System.out.println("image : " + twImg); //트워터에 표시되는 프로필이미지 
+	    	request.getSession().setAttribute("provider", "twitter");
+	    	request.getSession().setAttribute("user_id", accessToken.getUserId());
+	    	request.getSession().setAttribute("user_name", accessToken.getScreenName());
+	    	request.getSession().setAttribute("user_image", twImg);
+	    	mView.addObject("msg", "성공");
 			
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
@@ -98,7 +90,8 @@ public class SocialServiceImpl implements SocialService {
 		}					
 		return mView;
 	}
-
+	
+	// google facebook kakao에 대한 ajax 요청 처리 후 session에 담기
 	@Override
 	public boolean canUse(String paramData, HttpServletRequest request) {
 		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
@@ -117,6 +110,16 @@ public class SocialServiceImpl implements SocialService {
 	    	
 	    }
 		boolean canUse=true;
+		//리턴해준다. 
+		return canUse;
+	}
+	
+	// twitter callback 요청에서 돌아갈 url을 session에 담아줘야 요청한 위치로 돌아감
+	@Override
+	public boolean saveTwPath(String path, HttpServletRequest request) {
+		request.getSession().setAttribute("url", path);
+		boolean canUse = true;
+		
 		//리턴해준다. 
 		return canUse;
 	}

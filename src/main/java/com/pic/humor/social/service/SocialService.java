@@ -11,4 +11,5 @@ public interface SocialService {
 	public ModelAndView twSigninService(HttpServletRequest request);
 	public ModelAndView twCallbackService(HttpServletRequest request, HttpServletResponse reponse) throws IOException;
 	public boolean canUse(String paramData, HttpServletRequest request);
+	public boolean saveTwPath(String path, HttpServletRequest request);
 }

@@ -184,7 +184,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->

@@ -34,7 +34,7 @@ function facebooklogin() {
 	    	console.log('Successful login name: ' + response.name);
 			console.log('Successful login id: ' + response.id);
 			console.log('Successful login img: ' + image);
-			callAjax(id, name, image); 
+			callAjax_fa(id, name, image); 
 		});
 		
 	}, {
@@ -49,7 +49,7 @@ function facebooklogout() {
 	});
 }
 
-function callAjax(id, name, image){
+function callAjax_fa(id, name, image){
 	   /* 위 구글 로그인 완료 후 ajax로 변수값 넘겨서 session에 저장하기.*/
 	   console.log("ajax 요청 시작");
 	   console.log("id: " + id);

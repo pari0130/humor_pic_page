@@ -22,18 +22,19 @@
 	    	  var id = profile.getId();
 	    	  var name = profile.getName();
 	    	  var image = profile.getImageUrl();
-	    	  callAjax(id, name, image);   	  
+	    	  callAjax_gg(id, name, image);   	  
           }, function(error) {
             alert(JSON.stringify(error, undefined, 2));
           }); 
     }
     
-   function callAjax(id, name, image){
+   function callAjax_gg(id, name, image){
 	   /* 위 구글 로그인 완료 후 ajax로 변수값 넘겨서 session에 저장하기.*/
 	   console.log("ajax 요청 시작");
 	   console.log("id: " + id);
 	   console.log("name: " + name);
 	   console.log("image: " + image);
+	   console.log("----------------------------------------------");
 	   
 	   // 배열을 만들고 object type 데이터를 담아서
 	   var arr = new Array();
@@ -46,10 +47,11 @@
 	   obj.image = image;
 	   arr.push(obj);
 	   
+	   
 	   // ajax 요청을 보낸뒤 true false return 받기
 	   $.ajax({
             method      : 'POST',
-            url         : '/socialajax.do',
+            url         : $("#getContextPath").val()+'/socialajax.do',
             // json 형태로 보내기 위해서 JSON.stringify(arr)
             data        : JSON.stringify(arr),
             dataType	: "json",

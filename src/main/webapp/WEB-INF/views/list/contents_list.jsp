@@ -127,7 +127,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -142,7 +142,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?var=1"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
     <script>
     /* lazyload 처리 */
     $(function() {
@@ -151,7 +151,6 @@
             effectTime: 500
         });
     });   
-    
     </script>
 </body>
 </html>

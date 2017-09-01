@@ -23,9 +23,10 @@
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
 				</a> 
-				<a href="#">
-					<div id="modal_trigger_login" href="#modal_login"
+				<a href="javascript:logout()">
+					<div id=""
 						style="font-size: 15px" class="oldies object">LOGOUT</div>
+					<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
 				</a>
 				<a href="#">
 					<div id="modal_trigger_login" href="#modal_login"
@@ -67,7 +68,7 @@
 			</div>
 		</div>
 		<div id="wrapper-bouton-icon">
-			<a href="${pageContext.request.contextPath }/contents_detail.do">
+			<a href="${pageContext.request.contextPath }/list/contents_detail.do">
 				<div class="menus object">WTF</div>
 			</a>
 			<a href="#">

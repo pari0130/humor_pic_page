@@ -1,10 +1,10 @@
 	
 $(document).ready(function() {
 		$.localScroll();
-		$(".cache").delay(100).fadeOut(500); /*hwi delay 1000*/
-		$("#wrapper-header").delay(150).animate({opacity:'1',width:'100%'},500); /*hwi delay 1500*/
-		$("#wrapper-navbar").delay(200).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
-		$("#main-container-image").delay(250).animate({opacity:'1'},500); /*hwi delay 2500*/
+		$(".cache").delay(500).fadeOut(500); /*hwi delay 1000*/
+		$("#wrapper-header").delay(750).animate({opacity:'1',width:'100%'},500); /*hwi delay 1500*/
+		$("#wrapper-navbar").delay(1000).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
+		$("#main-container-image").delay(1250).animate({opacity:'1'},500); /*hwi delay 2500*/
 		
 	});
 
@@ -307,3 +307,9 @@ $("form").on("submit", function(event) {
     });
 });
 
+function logout(){
+	var url = window.location.pathname;
+	console.log("logout url : " + url);
+	location.href = $("#getContextPath").val()+"/logout.do?url="+url;
+	
+}

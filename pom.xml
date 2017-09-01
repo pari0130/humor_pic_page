@@ -185,7 +185,8 @@
 		    <artifactId>twitter4j-core</artifactId>
 		    <version>4.0.4</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib 
+			ajax 요청 시 json 형태로 보내서 저장하기 위해 사용함-->
 		<dependency>
 		    <groupId>net.sf.json-lib</groupId>
 		    <artifactId>json-lib</artifactId>

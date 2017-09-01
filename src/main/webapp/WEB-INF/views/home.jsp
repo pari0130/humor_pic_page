@@ -27,7 +27,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>  
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=2"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=1"></script>
     <!-- 페북 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js?var=1"></script>
     <!-- 트위터 로그인 연동 -->
@@ -47,7 +47,7 @@
                 <section class="work">
                 <% for(int i=0; i < 20; i++){ %>
                     <figure class="white showthis">
-                        <a href="details.html">
+                        <a href="${pageContext.request.contextPath }/list/contents_detail.do">
                            <img  data-original="${pageContext.request.contextPath }/resources/img/psd-4.jpg" class="lazy" alt="" />
                            <dl>
                             <dt>Wordpress theme</dt>
@@ -127,7 +127,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -142,7 +142,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?var=1"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
     <script>
     /* lazyload 처리 */
     $(function() {
@@ -151,8 +151,6 @@
             effectTime: 500
         });
     });   
-    
-    
     </script>
 </body>
 </html>

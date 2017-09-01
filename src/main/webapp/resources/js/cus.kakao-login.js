@@ -11,7 +11,7 @@ $(document).ready(function(){
 				    	var id = res.id;
 				    	var name = res.properties.nickname;
 				    	var image = res.properties.profile_image;
-				    	callAjax(id, name, image);
+				    	callAjax_kk(id, name, image);
 					},
 					fail: function(error) {
 						console.log(error);
@@ -33,7 +33,7 @@ $(document).ready(function(){
 					});
 				});				
 			}
-			function callAjax(id, name, image){
+			function callAjax_kk(id, name, image){
 				   /* 위 구글 로그인 완료 후 ajax로 변수값 넘겨서 session에 저장하기.*/
 				   console.log("ajax 요청 시작");
 				   console.log("id: " + id);

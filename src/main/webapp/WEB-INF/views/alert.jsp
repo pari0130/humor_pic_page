@@ -12,8 +12,8 @@
 </head>
 <body>
 <script>
-	alert("${msg}");
-	location.href = "${pageContext.request.contextPath }/home.do";
+	/* alert("${msg}"); */
+	location.href = "${url}";
 </script>
 </body>
 </html>
