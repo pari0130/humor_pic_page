@@ -38,7 +38,7 @@
     <!-- CACHE -->
     <div class="cache"></div>
     <!-- HEADER 및 NAVBAR -->
-    <jsp:include page="/WEB-INF/views/nav.jsp" />   
+    <jsp:include page="/WEB-INF/views/nav/nav.jsp" />   
      
     <!-- PORTFOLIO -->
     <div id="wrapper-container">
@@ -173,7 +173,7 @@
         </div>
     </div>
     <!-- modal 팝업창 -->
-    <jsp:include page="/WEB-INF/views/modal.jsp" />     
+    <jsp:include page="/WEB-INF/views/nav/modal.jsp" />     
     <!-- SCRIPT -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->

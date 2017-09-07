@@ -203,7 +203,8 @@ body,html{
 
 .top-rated{color:#666;margin-left:15px;font-weight:500;}
 .recent,.oldies,.menus{color: #CCC;margin-left:80px;font-weight:500;margin-left:40px;}
-
+.menus.active{color:#666;opacity:1;} /* hwi active add */
+.recent.active{color:#666;opacity:1;} /* hwi active add */
 .top-rated:hover,.recent:hover,.oldies:hover,.menus:hover{color:#666;opacity:1;}
 
 #fleche-nav-1,#fleche-nav-2,#fleche-nav-3{
@@ -326,7 +327,7 @@ body,html{
     height:auto;
 	background-color:#F4F4F4;
 	margin-top:25px;
-	opacity:0;
+	opacity:1; /* hwi default 0 */
 }
 
 .work figure {

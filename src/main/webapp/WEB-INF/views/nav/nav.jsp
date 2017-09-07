@@ -48,7 +48,7 @@
 </div>
 <!-- NAVBAR -->
 <div id="wrapper-navbar">
-	<div class="navbar object">
+	<div class="navbar object" ng-controller="navCtrl">
 		<div id="wrapper-sorting">
 			<div id="wrapper-title-1">
 				<div class="top-rated object">Top-rated</div>
@@ -67,21 +67,21 @@
 				<div id="fleche-nav-3"></div>
 			</div>
 		</div>
-		<div id="wrapper-bouton-icon">
-			<a href="${pageContext.request.contextPath }/list/contents_detail.do">
-				<div class="menus object">WTF</div>
+		<div id="wrapper-bouton-icon" >
+			<a href="#wtf" ng-click="activated='wtf'">
+				<div class="menus object" ng-class="{'active': activated=='wtf'}">WTF</div>
 			</a>
-			<a href="#">
-				<div class="menus object">NSFW</div>
+			<a href="#nsfw" ng-click="activated='nsfw'">
+				<div class="menus object" ng-class="{'active': activated=='nsfw'}">NSFW</div>
 			</a>
-			<a href="#">
-				<div class="menus object">ANIMALS</div>
+			<a href="#animals" ng-click="activated='animals'">
+				<div class="menus object" ng-class="{'active': activated=='animals'}">ANIMALS</div>
 			</a>
-			<a href="#">
-				<div class="menus object">GIF</div>
+			<a href="#gif" ng-click="activated='gif'">
+				<div class="menus object" ng-class="{'active': activated=='gif'}">GIF</div>
 			</a>
-			<a href="#">
-				<div class="menus object">FUNNY</div>
+			<a href="#funny" ng-click="activated='funny'">
+				<div class="menus object" ng-class="{'active': activated=='funny'}">FUNNY</div>
 			</a>
 			<!-- <div id="bouton-ai"><img src="img/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
                 <div id="bouton-psd"><img src="img/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>

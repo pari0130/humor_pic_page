@@ -25,10 +25,10 @@ public class HumorController {
 	@Autowired
 	private SocialService socialService;
 	
-	@RequestMapping("/list/contents_detail")
+	@RequestMapping("/list/contents_list")
 	public String wtf_list(){
 		
-		return "list/contents_detail";
+		return "list/contents_list";
 	}
 	
 	@RequestMapping("/test")
@@ -49,7 +49,7 @@ public class HumorController {
 		
 		
 		// 로그인 성공 alert 이동
-		mView.setViewName("alert");
+		mView.setViewName("nav/alert");
 		return mView;
 	}
 	
@@ -86,9 +86,15 @@ public class HumorController {
 		mView.addObject("msg", "로그 아웃 되었습니다.");
 		mView.addObject("url", url);				
 		System.out.println("url : " + url);
-		mView.setViewName("alert");
+		mView.setViewName("nav/alert");
 		
 		return mView;
+	}
+	
+	@RequestMapping("/test.html")
+	public String wtf(){
+		
+		return "test";
 	}
 
 }
