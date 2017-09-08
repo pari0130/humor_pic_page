@@ -26,9 +26,15 @@ public class HumorController {
 	private SocialService socialService;
 	
 	@RequestMapping("/list/contents_list")
-	public String wtf_list(){
+	public String contentsList(){
 		
 		return "list/contents_list";
+	}
+	
+	@RequestMapping("/list/contents_detail")
+	public String contentsDetail(){
+		
+		return "list/contents_detail";
 	}
 	
 	@RequestMapping("/test")

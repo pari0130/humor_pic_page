@@ -307,9 +307,15 @@ $("form").on("submit", function(event) {
     });
 });
 
+// logout 기능 수행 hwi
 function logout(){
 	var url = window.location.pathname;
 	console.log("logout url : " + url);
 	location.href = $("#getContextPath").val()+"/logout.do?url="+url;
 	
 }
+
+// menu 클릭했을때 show hwi
+/*$("div.menus").click(function(){
+	$("#main-container-image").animate(500);
+});*/

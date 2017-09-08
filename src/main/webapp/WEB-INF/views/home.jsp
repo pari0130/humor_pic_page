@@ -13,6 +13,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=3' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/animate.css?ver=3' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=1" />
@@ -33,30 +34,30 @@
     <!-- 트위터 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=1"></script>
     <!-- single page 이동을 위한 angularjs -->
-    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <%-- <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/angular-route.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/angular-animate.min.js"></script> --%>
 	<script>
-	var myApp=angular.module("myApp",["ngRoute"]);
-	
+	var myApp=angular.module("myApp",["ngRoute","ngAnimate"]);
+	// https://code.tutsplus.com/tutorials/how-to-create-animations-in-angularjs-with-nganimate--cms-28593
 	// single page 라우터 설정 
 	myApp.config(function($routeProvider){
 		$routeProvider
-		.when("/", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/home", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/wtf", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/nsfw", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/animals", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/gif", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
-		.when("/funny", {templateUrl:"/list/contents_list.do", controller:"contextPath"})
+		.when("/", {templateUrl:"/list/contents_list.do?mn=wtf"})
+		.when("/home", {templateUrl:"/list/contents_list.do?mn=wtf"})
+		.when("/wtf", {templateUrl:"/list/contents_list.do?mn=wtf"})
+		.when("/nsfw", {templateUrl:"/list/contents_list.do?mn=nsfw"})
+		.when("/animals", {templateUrl:"/list/contents_list.do?mn=animals"})
+		.when("/gif", {templateUrl:"/list/contents_list.do?mn=gif"})
+		.when("/funny", {templateUrl:"/list/contents_list.do?mn=funny"})
 		.otherwise({rediredTo:"/"});
 	});
 	myApp.controller("navCtrl", function($scope){
 		$scope.activated="wtf";
 	});
-	myApp.controller("contextPath", function($scope){
-		$scope.contextPath="${pageContext.request.contextPath }";
-	});
-	
 </script>
 </head>
 <body>

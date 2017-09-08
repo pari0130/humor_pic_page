@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- PORTFOLIO -->
-<div id="wrapper-container">
+<div id="wrapper-container" class="page-animation">
     <div class="container object">
         <div id="main-container-image">
             <section class="work">
