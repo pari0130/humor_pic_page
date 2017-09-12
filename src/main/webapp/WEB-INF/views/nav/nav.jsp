@@ -9,17 +9,22 @@
 			</a>
 			<c:choose>
 			  	<c:when test="${empty user_id }">
-			  	<a href="#">
+			  	<a href="javascript:">
 					<div id="modal_trigger_login" href="#modal_login"
 						style="font-size: 15px" class="oldies object">LOGIN</div>
+					<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
 				</a>	
-				<a href="#">
+				<a href="javascript:">
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
+				</a> 
+				<a href="javascript:">
+					<div id="modal_trigger_alert" href="#modal_alert"
+						style="font-size: 15px" class="oldies object">ALERT</div>
 				</a> 		  	
 			  	</c:when>
 			  	<c:otherwise>
-		  		<a href="#">
+		  		<a href="javascript:">
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
 				</a> 
@@ -28,7 +33,7 @@
 						style="font-size: 15px" class="oldies object">LOGOUT</div>
 					<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
 				</a>
-				<a href="#">
+				<a href="javascript:">
 					<div id="modal_trigger_login" href="#modal_login"
 						style="font-size: 15px" class="oldies object">LOGIN</div>
 				</a>

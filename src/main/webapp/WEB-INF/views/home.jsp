@@ -13,10 +13,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=3' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/animate.css?ver=3' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=1" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" />
     <!-- UPLOAD > TAG -->
     <!-- <link type="text/css" rel="stylesheet" href="css/tags.css" /> -->
     <!-- TEST -->
@@ -34,9 +33,9 @@
     <!-- 트위터 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=1"></script>
     <!-- single page 이동을 위한 angularjs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
     <%-- <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/angular-route.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/angular-animate.min.js"></script> --%>

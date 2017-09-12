@@ -2,6 +2,8 @@
     $("#modal_trigger_login").leanModal({ top: 200, overlay: 0.6, closeButton: ".modal_close" });
 
     $("#modal_trigger_upload").leanModal({ top: 200, overlay: 0.6, closeButton: ".modal_close" });
+    
+    $("#modal_trigger_alert").leanModal({ top: 200, overlay: 0.6, closeButton: ".modal_close" });
 
     /*-- UPLOAD --*/
     $("#upload_widget_opener").click(function() {

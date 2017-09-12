@@ -32,26 +32,10 @@
 					<span class="icon">
 						<i class="fa fa-twitter"></i>
 					</span>
-					<span class="icon_title">Connect with Twitter1</span>
+					<span class="icon_title">Connect with Twitter</span>
 					<!-- twitterurl을 hidden으로 전달하여 뒤에 현재 페이지 url 받기 -->
 					<input type="hidden" id="twReturnUrl" value="${twitterAuthUrl }"/>
-				</div>
-				<div style="cursor:pointer" 
-				onclick="window.open('${twitterAuthUrl }', 'mywin', 'left=0,top=0,width=500,height=500,toolbar=1,resizable=0'); return false;" 
-				class="social_box tw" id="customBtn_tw">
-					<span class="icon">
-						<i class="fa fa-twitter"></i>
-					</span>
-					<span class="icon_title">Connect with Twitter2</span>
-				</div>
-				<a href="${twitterAuthUrl }" 
-					onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
-					class="social_box tw">
-					<span class="icon">
-						<i class="fa fa-twitter"></i>
-					</span>
-					<span class="icon_title">Connect with Twitter3</span>
-				</a>
+				</div>				
 				<div style="cursor:pointer" class="social_box kk" id="customBtn_kk">
 					<span class="icon">
 						<i class="fa"></i>
@@ -117,17 +101,40 @@
 					<input type="hidden" name="upload_image" id="upload_image" value="">
 					<div class="action_btns">
 						<div class="one_half">
-							<a href="#" id="upload_widget_opener" class="btn back_btn">
+							<a href="javascript:" id="upload_widget_opener" class="btn back_btn">
 								<i class="fa fa-angle-double-left"></i>Choose image
 							</a>
 						</div>
 						<div class="one_half last">
-							<a href="#" id="submit" class="btn btn_red">
+							<a href="javascript:" id="submit" class="btn btn_red">
 								Upload<i class="fa fa-angle-double-up"></i>
 							</a>
 						</div>
 					</div>
 				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- MODAL_ALERT -->
+<div id="modal_alert" class="popupContainer_alert"
+	style="display: none;">
+	<header class="popupHeader">
+		<span class="header_title">ALERT</span>
+		<span class="modal_close">
+			<i class="fa fa-times"></i>
+		</span>
+	</header>
+	<section class="popupBody">
+		<!-- Username & Password Login form -->
+		<div class="modal_popup">
+			<div class="user_alert">
+			<div class="text-desc">
+				- 자동로그인 되었습니다.<br />
+				- 사용자 허락없이 SNS에 게시하지않습니다.<br />
+				- 개인정보는 저장되지 않습니다.<br />
+				- 로그아웃시 정보는 삭제 됩니다.
+			</div>					
 			</div>
 		</div>
 	</section>

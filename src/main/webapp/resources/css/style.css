@@ -327,7 +327,7 @@ body,html{
     height:auto;
 	background-color:#F4F4F4;
 	margin-top:25px;
-	opacity:1; /* hwi default 0 */
+	/* opacity:0;  *//* hwi default 0 */
 }
 
 .work figure {
@@ -879,3 +879,20 @@ body,html{
 
 }
 
+/* angular single page 이동 시 적용될 css */
+div.page-animation {
+  -webkit-transition: 1s ease-in all;
+  transition: 1s ease-in all;
+}
+.ng-enter div.page-animation {
+  opacity: 0 ;
+} 
+.ng-enter.ng-enter-active div.page-animation {
+  opacity: 1 ;
+} 
+.ng-leave div.page-animation {
+  opacity: 1 ;
+} 
+.ng-leave.ng-leave-active div.page-animation {
+  opacity: 0 ;
+}

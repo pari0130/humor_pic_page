@@ -23,7 +23,7 @@ body {
     /* hwi default 330px */
     height: auto;
     left: 45%;
-    top: 80px;
+    top: 80px !important; /* hwi default 200 */
     background: #FFF;
 }
 
@@ -33,10 +33,19 @@ body {
     /* hwi default 330px */
     height: auto;
     left: 45%;
-    top: 80px;
+    top: 80px !important; /* hwi default 200 */
     background: #FFF;
 }
 
+.popupContainer_alert {
+    position: absolute;
+    width: 330px;
+    /* hwi default 330px */
+    height: auto;
+    left: 45%;
+    top: 80px !important; /* hwi default 200 */
+    background: #FFF;
+}
 
 /* #modal_trigger {margin:100px auto; width:100px; display:block;} */
 
@@ -236,8 +245,38 @@ a.btn_red {
 }
 
 
-/* User Register Form */
+/* User Alert Form */
+.user_alert {}
 
+.user_alert label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user_alert input[type="text"],
+.user_alert input[type="email"],
+.user_alert input[type="password"] {
+    display: block;
+    width: 95%; /* #hwi menus 기존 90% */
+    padding: 10px;
+    border: 1px solid #DDD;
+    color: #666;
+}
+
+.user_alert input[type="checkbox"] {
+    float: left;
+    margin-right: 5px;
+}
+
+.user_alert input[type="checkbox"]+label {
+    float: left;
+}
+
+.user_alert .checkbox {
+    margin-bottom: 10px;
+    clear: both;
+    overflow: hidden;
+}
 
 /* .user_register {display: none;}
 .user_register label {display: block; margin-bottom:5px;}

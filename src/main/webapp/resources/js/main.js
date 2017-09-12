@@ -315,7 +315,3 @@ function logout(){
 	
 }
 
-// menu 클릭했을때 show hwi
-/*$("div.menus").click(function(){
-	$("#main-container-image").animate(500);
-});*/
