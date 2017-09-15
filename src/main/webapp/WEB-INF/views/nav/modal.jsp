@@ -120,7 +120,7 @@
 <div id="modal_alert" class="popupContainer_alert"
 	style="display: none;">
 	<header class="popupHeader">
-		<span class="header_title">ALERT</span>
+		<span class="header_title">LOGIN SUCCESS</span>
 		<span class="modal_close">
 			<i class="fa fa-times"></i>
 		</span>
@@ -130,7 +130,6 @@
 		<div class="modal_popup">
 			<div class="user_alert">
 			<div class="text-desc">
-				- 자동로그인 되었습니다.<br />
 				- 사용자 허락없이 SNS에 게시하지않습니다.<br />
 				- 개인정보는 저장되지 않습니다.<br />
 				- 로그아웃시 정보는 삭제 됩니다.

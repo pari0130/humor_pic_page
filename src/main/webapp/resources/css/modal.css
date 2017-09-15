@@ -324,3 +324,8 @@ a.btn_red {
         width: 90%;
     }
 }
+
+/* nav의 alert hidden처리 */
+#modal_trigger_alert{
+	display : none !important;
+}

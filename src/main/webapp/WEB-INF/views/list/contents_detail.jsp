@@ -200,5 +200,15 @@
     <!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js"></script>
+    <!-- ALERT -->
+    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
+    <script>
+    // 트위터 로그인 후 로그인 alert 창 띄우기
+    if("${twAlert}" != " "){
+    	setTimeout(function(){
+        	${twAlert}
+        }, 2000);	
+    }
+    </script>
 </body>
 </html>

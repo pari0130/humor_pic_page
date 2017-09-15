@@ -12,8 +12,7 @@
 </head>
 <body>
 <script>
-	/* alert("${msg}"); */
-	location.href = "${url}";
+	location.href = "${url}"; // 기존 url로 돌아가기
 </script>
 </body>
 </html>

@@ -5,23 +5,19 @@
 	<div id="main-header" class="object">
 		<div class="logo">
 			<a href="${pageContext.request.contextPath }/home.do">
-				<div style="font-size: 15px" class="oldies object">HOME</div>
-			</a>
+				<div style="font-size: 15px" class="oldies object">HOME</div>		
+				<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
+			</a> 
 			<c:choose>
 			  	<c:when test="${empty user_id }">
 			  	<a href="javascript:">
 					<div id="modal_trigger_login" href="#modal_login"
-						style="font-size: 15px" class="oldies object">LOGIN</div>
-					<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
+						style="font-size: 15px" class="oldies object">LOGIN</div>					
 				</a>	
 				<a href="javascript:">
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
-				</a> 
-				<a href="javascript:">
-					<div id="modal_trigger_alert" href="#modal_alert"
-						style="font-size: 15px" class="oldies object">ALERT</div>
-				</a> 		  	
+				</a> 	  	
 			  	</c:when>
 			  	<c:otherwise>
 		  		<a href="javascript:">
@@ -30,8 +26,7 @@
 				</a> 
 				<a href="javascript:logout()">
 					<div id=""
-						style="font-size: 15px" class="oldies object">LOGOUT</div>
-					<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
+						style="font-size: 15px" class="oldies object">LOGOUT</div>					
 				</a>
 				<a href="javascript:">
 					<div id="modal_trigger_login" href="#modal_login"

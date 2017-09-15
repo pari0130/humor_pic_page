@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
@@ -15,19 +16,17 @@
     <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=3' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" /> 
     <!-- UPLOAD > TAG -->
-    <!-- <link type="text/css" rel="stylesheet" href="css/tags.css" /> -->
-    <!-- TEST -->
     <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
-    
+       
     <!-- 구글 로그인 연동 -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="221557223102-0gp35bn76pkch9bn8ru3k463oghpoqbq.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>  
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=1"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=3"></script>
     <!-- 페북 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js?var=1"></script>
     <!-- 트위터 로그인 연동 -->
@@ -36,12 +35,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
-    <%-- <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/angular-route.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/angular-animate.min.js"></script> --%>
 	<script>
 	var myApp=angular.module("myApp",["ngRoute","ngAnimate"]);
-	// https://code.tutsplus.com/tutorials/how-to-create-animations-in-angularjs-with-nganimate--cms-28593
 	// single page 라우터 설정 
 	myApp.config(function($routeProvider){
 		$routeProvider
@@ -77,13 +72,13 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=2"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -99,7 +94,18 @@
    	<!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
-    <script>
+    <!-- ALERT -->
+    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>	
+    <script>   	
+ 	// 트위터 로그인 후 로그인 alert 창 띄우기
+    if("${twAlert}" != " "){
+    	setTimeout(function(){
+        	${twAlert}
+        }, 2000);	
+    }
+    
+    /* ${twAlert} */   
+    
     /* lazyload 처리 */
     $(function() {
         $("img.lazy").lazyload({
@@ -107,10 +113,6 @@
             effectTime: 500
         });
     });   
-    var log = "<%=request.getRequestURL()%>";
-    console.log("===============================");
-    console.log("path:" + log);
-    console.log("===============================");
     </script>
 </body>
 </html>

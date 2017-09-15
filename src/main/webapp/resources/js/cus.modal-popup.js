@@ -44,7 +44,7 @@
             var upload_url = $("#upload_image").val(urls);
             /*console.log("upload_url : " + $("#upload_image").val())              */
         });
-    })
+    });
 
     /*모달 닫았을때는 img src 삭제*/
     $(".modal_close").click(function() {

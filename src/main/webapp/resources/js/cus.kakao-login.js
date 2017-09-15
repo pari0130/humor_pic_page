@@ -65,8 +65,25 @@ $(document).ready(function(){
 			            success     : function(data) {
 			            	if(data.canUse){
 			            		console.log("성공");
-			            		// 성공 할 경우 저장했던 url 위치로 다시 돌아 가도록 함
-			            		location.href = url;
+			            		// 성공 후 modal 창 닫기
+			            		$(".modal_close").click();
+			            		// success alert 창 띄우기. sweetalert 플러그인 사용
+			            		// 메세지제목, 내용, success 이미지
+			            		swal("Login success!!", name+" 님 환영합니다.", "success", {
+			            			  buttons: {
+			            			    catch: {
+			            			      text: "OK", // 버튼 text
+			            			      value: "catch", // 버튼 눌렀을때 value 값
+			            			    }
+			            			  },
+			            			})
+			            			.then((value) => {
+			            			  switch (value) {
+			            			    case "catch": // value값에 대한 연결 내용
+			            			      location.href = url; // 기존 url로 돌아가기
+			            			      break;
+			            			}
+			            		});
 							}else{
 								alert('에러');
 								location.href = "/home.do";

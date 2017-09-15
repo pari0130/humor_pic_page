@@ -32,9 +32,17 @@ public class HumorController {
 	}
 	
 	@RequestMapping("/list/contents_detail")
-	public String contentsDetail(){
+	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session){
+		ModelAndView mView = new ModelAndView();
+		String twUrl = (String) session.getAttribute("twitterAuthUrl");
+		System.out.println("twAuthUrl :" + twUrl);
+		// detail 페이지에서 로그아웃 했을때 invalidata 되므로 세션에 새로 twurl을 넣어주기 위해 null 체크 후 service 수행 
+		if(session.getAttribute("twitterAuthUrl") == null){
+			mView=socialService.twSigninService(request);
+		}
 		
-		return "list/contents_detail";
+		mView.setViewName("list/contents_detail");
+		return mView;
 	}
 	
 	@RequestMapping("/test")
@@ -50,12 +58,16 @@ public class HumorController {
 	}
 	
 	@RequestMapping("/twcallback.do") // 로그인 요청 후 callback 처리
-	public ModelAndView twCallback(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public ModelAndView twCallback(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mView=socialService.twCallbackService(request, response);
-		
-		
-		// 로그인 성공 alert 이동
-		mView.setViewName("nav/alert");
+		// 돌아갈 url값을 session에서 받는다.
+		String orgUrl = (String) session.getAttribute("tw_CallBackUrl");
+		// .do로 끝나므로 . 으로 구분하여 저장
+		int idx = orgUrl.indexOf(".");
+		// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
+		String url = orgUrl.substring(0, idx);	
+		System.out.println("callback url : " + url);
+		mView.setViewName(url);
 		return mView;
 	}
 	
@@ -89,10 +101,15 @@ public class HumorController {
 		session.invalidate();
 		ModelAndView mView=new ModelAndView();
 		String url = request.getParameter("url");
+		System.out.println("넘어온  url : " + url);
 		mView.addObject("msg", "로그 아웃 되었습니다.");
+		// 트위터 로그인 후 주소창에 twcallback.do가 찍히므로 logout시 되돌아갈 주소가 잘못될수 있음.
+		if(url.equals("/twcallback.do")){
+			url = "/home.do";
+		}
 		mView.addObject("url", url);				
-		System.out.println("url : " + url);
-		mView.setViewName("nav/alert");
+		System.out.println("넘기는 url : " + url);
+		mView.setViewName("nav/callback");
 		
 		return mView;
 	}
