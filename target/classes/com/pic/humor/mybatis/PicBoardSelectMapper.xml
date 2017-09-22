@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="picSelect">		
 	<sql id="picAll">
-		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count
+		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count,
 		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date
 	</sql>
 	
@@ -12,7 +12,7 @@
 		FROM 	(SELECT result1.*,ROWNUM rnum 
 				 FROM 	(	SELECT <include refid="picAll"/>  
 							FROM picboard_wtf
-						    ORDER BY num DESC)	result1
+						    ORDER BY cont_id DESC)	result1
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -21,7 +21,7 @@
 		FROM 	(SELECT result1.*,ROWNUM rnum 
 				 FROM 	(	SELECT <include refid="picAll"/>  
 							FROM picboard_nsfw
-						    ORDER BY num DESC)	result1
+						    ORDER BY cont_id DESC)	result1
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -30,7 +30,7 @@
 		FROM 	(SELECT result1.*,ROWNUM rnum 
 				 FROM 	(	SELECT <include refid="picAll"/>  
 							FROM picboard_animals
-						    ORDER BY num DESC)	result1
+						    ORDER BY cont_id DESC)	result1
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -39,7 +39,7 @@
 		FROM 	(SELECT result1.*,ROWNUM rnum 
 				 FROM 	(	SELECT <include refid="picAll"/>  
 							FROM picboard_gif
-						    ORDER BY num DESC)	result1
+						    ORDER BY cont_id DESC)	result1
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -48,7 +48,7 @@
 		FROM 	(SELECT result1.*,ROWNUM rnum 
 				 FROM 	(	SELECT <include refid="picAll"/>  
 							FROM picboard_funny
-						    ORDER BY num DESC)	result1
+						    ORDER BY cont_id DESC)	result1
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>

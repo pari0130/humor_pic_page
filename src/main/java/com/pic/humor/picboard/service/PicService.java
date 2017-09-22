@@ -9,5 +9,5 @@ import com.pic.humor.picboard.dto.PicBoardDto;
 public interface PicService {
 	public ModelAndView insertPics(HttpServletRequest request, PicBoardDto dto);
 
-	public ModelAndView getList(HttpServletRequest request, int pageNum);
+	public ModelAndView getContList(HttpServletRequest request, int pageNum);
 }

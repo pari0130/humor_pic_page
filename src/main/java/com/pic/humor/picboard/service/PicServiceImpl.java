@@ -38,7 +38,8 @@ public class PicServiceImpl implements PicService{
 	}
 
 	@Override
-	public ModelAndView getList(HttpServletRequest request, int pageNum) {
+	public ModelAndView getContList(HttpServletRequest request, int pageNum) {
+		System.out.println("contents list service 진입");
 		//보여줄 페이지의 번호
 		int Num=pageNum;
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
@@ -75,7 +76,7 @@ public class PicServiceImpl implements PicService{
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalRow", totalRow);
-		
+		System.out.println("mView에 담음");
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 		

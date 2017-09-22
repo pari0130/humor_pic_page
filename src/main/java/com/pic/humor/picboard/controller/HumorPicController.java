@@ -26,8 +26,9 @@ public class HumorPicController {
 	
 	@RequestMapping("/list/contents_list")
 	public ModelAndView contentsList(HttpServletRequest request,@RequestParam(defaultValue="1") int pageNum){			
-		ModelAndView mView=picService.getList(request, pageNum);
+		ModelAndView mView=picService.getContList(request, pageNum);
 		//view 페이지 설정하고 
+		System.out.println("contents list controller");
 		mView.setViewName("list/contents_list");
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
@@ -50,7 +51,11 @@ public class HumorPicController {
 	@RequestMapping("/upload")
 	public ModelAndView picUpload(HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardDto dto){
 		ModelAndView mView = new ModelAndView();
-
+		
+		String url = request.getParameter("url");
+		System.out.println("url 주소 : " + url);
+		System.out.println("callback url : " + url);
+		
 		System.out.println("========upload controller 구간 start======");
 		System.out.println("menu : " + request.getParameter("cont_menu"));
 		System.out.println("title : " + dto.getCont_title());
@@ -60,11 +65,20 @@ public class HumorPicController {
 		System.out.println("user_name : " + dto.getUser_name());
 		System.out.println("user_provider : " + dto.getUser_provider());
 		System.out.println("========upload controller 구간 end======");
-		String url = request.getParameter("url");
-		System.out.println("url 주소 : " + url);
-		mView=picService.insertPics(request, dto);
 		
-
+		// 사진이 여러장일 경우 대표 이미지만 저장하기 위함
+		String orgImg = dto.getCont_image();
+		int idx = orgImg.indexOf(",");
+		System.out.println("idx값 : " + idx);
+		// , 문자가 없는 1장의 사진일때는 idx값이 -1이 된다. 0이상일때만 처음 사진을 잘라서 저장한다.
+		if(idx > 0){
+			// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
+			String saveImg = orgImg.substring(0, idx);
+			System.out.println("saveImg : " + saveImg);
+			dto.setCont_image(saveImg);
+		}
+				
+		mView=picService.insertPics(request, dto);
 		
 		mView.setViewName("redirect:/home.do");
 		return mView;

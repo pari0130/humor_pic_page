@@ -40,6 +40,13 @@
 	// single page 라우터 설정 
 	myApp.config(function($routeProvider){
 		$routeProvider
+		/*
+		.when("/", {templateUrl:"/list/contents_list.do?mn=top"})
+		.when("/home", {templateUrl:"/list/contents_list.do?mn=top"})
+		.when("/top", {templateUrl:"/list/contents_list.do?mn=top"})
+		.when("/recent", {templateUrl:"/list/contents_list.do?mn=recent"})
+		.when("/old", {templateUrl:"/list/contents_list.do?mn=old"})
+		*/
 		.when("/", {templateUrl:"/list/contents_list.do?mn=wtf"})
 		.when("/home", {templateUrl:"/list/contents_list.do?mn=wtf"})
 		.when("/wtf", {templateUrl:"/list/contents_list.do?mn=wtf"})

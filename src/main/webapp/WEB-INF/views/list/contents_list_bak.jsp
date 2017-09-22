@@ -10,8 +10,8 @@
             <c:if test="${not empty list}">
 	            <c:forEach var="tmp" items="${list }">
 	                <figure class="white showthis"> <%-- ${pageContext.request.contextPath } --%>
-	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}">
-	                       <img  src="${tmp.cont_image }" class="lazy" alt="" />
+	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do">
+	                       <img  src="${pageContext.request.contextPath}/resources/img/psd-4.jpg" class="lazy" alt="" />
 	                       <dl>
 	                        <dt>Wordpress theme</dt>
 	                        <dd>Symphony is a responsive one page website template designed with sketches and coded with html5 and php. Freebie released by Lacoste Xavier.</dd>    
