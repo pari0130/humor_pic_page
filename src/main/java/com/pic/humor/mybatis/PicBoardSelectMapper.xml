@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="picSelect">		
+	<sql id="picAll">
+		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count
+		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date
+	</sql>
+	
+	<!-- 화면에 표시할 List 값 출력 -->
+	<select id="getContList_wtf" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM 	(SELECT result1.*,ROWNUM rnum 
+				 FROM 	(	SELECT <include refid="picAll"/>  
+							FROM picboard_wtf
+						    ORDER BY num DESC)	result1
+		 	    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_nsfw" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM 	(SELECT result1.*,ROWNUM rnum 
+				 FROM 	(	SELECT <include refid="picAll"/>  
+							FROM picboard_nsfw
+						    ORDER BY num DESC)	result1
+		 	    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_animals" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM 	(SELECT result1.*,ROWNUM rnum 
+				 FROM 	(	SELECT <include refid="picAll"/>  
+							FROM picboard_animals
+						    ORDER BY num DESC)	result1
+		 	    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_gif" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM 	(SELECT result1.*,ROWNUM rnum 
+				 FROM 	(	SELECT <include refid="picAll"/>  
+							FROM picboard_gif
+						    ORDER BY num DESC)	result1
+		 	    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_funny" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM 	(SELECT result1.*,ROWNUM rnum 
+				 FROM 	(	SELECT <include refid="picAll"/>  
+							FROM picboard_funny
+						    ORDER BY num DESC)	result1
+		 	    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<!-- 화면에 표시할 count 값 출력 -->
+	<select id="getListCount_wtf" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM picboard_wtf		
+	</select>
+	<select id="getListCount_nsfw" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM picboard_nsfw		
+	</select>
+	<select id="getListCount_animals" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM picboard_animals		
+	</select>
+	<select id="getListCount_gif" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM picboard_gif		
+	</select>
+	<select id="getListCount_funny" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM picboard_funny		
+	</select>
+	
+</mapper>
+
+

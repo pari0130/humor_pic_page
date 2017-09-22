@@ -1,4 +1,4 @@
-package com.pic.humor;
+package com.pic.humor.home;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -62,9 +62,9 @@
 		<!-- Username & Password Login form -->
 		<div class="modal_popup">
 			<div class="user_upload">
-				<form id="upload_form">
+				<form action="${pageContext.request.contextPath}/upload.do?url=?${pageContext.request.servletPath}" method="post" id="upload_form">
 					<label>Title</label>
-					<input type="text" name="title" id="title" />
+					<input type="text" name="cont_title" id="cont_title" />
 					<br />
 					<label id="upload_tag">Tag</label>
 					<!-- <input id="input-tag" type="text" data-role="tagsinput"/> -->
@@ -96,17 +96,21 @@
 					<div id="photo_div" style="text-align: center">
 						<p>Up to 10 images can be added.</p>
 					</div>
-					<input type="hidden" name="upload_tag" id="upload_tag" value="">
-					<input type="hidden" name="upload_menu" id="upload_menu" value="">
-					<input type="hidden" name="upload_image" id="upload_image" value="">
+					<input type="hidden" name="cont_tag" id="cont_tag" value="">
+					<input type="hidden" name="cont_menu" id="cont_menu" value="">
+					<input type="hidden" name="cont_image" id="cont_image" value="">
+					<input type="hidden" name="user_id" id="user_id" value="${user_id }"> 
+					<input type="hidden" name="user_name" id="user_name" value="${user_name }">
+					<input type="hidden" name="user_provider" id="user_provider" value="${provider }">
 					<div class="action_btns">
 						<div class="one_half">
 							<a href="javascript:" id="upload_widget_opener" class="btn back_btn">
 								<i class="fa fa-angle-double-left"></i>Choose image
 							</a>
 						</div>
-						<div class="one_half last">
-							<a href="javascript:" id="submit" class="btn btn_red">
+						<!-- onclick="document.getElementById('upload_form').submit() return false;" -->
+						<div class="one_half last">							
+							<a href="javascript:uploadForm()"  id="submit" class="btn btn_red">
 								Upload<i class="fa fa-angle-double-up"></i>
 							</a>
 						</div>

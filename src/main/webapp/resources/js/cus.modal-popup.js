@@ -41,8 +41,8 @@
                     src: thum_url
                 });
             }
-            var upload_url = $("#upload_image").val(urls);
-            /*console.log("upload_url : " + $("#upload_image").val())              */
+            var upload_url = $("#cont_image").val(urls);
+            console.log("upload_url : " + $("#cont_image").val())              
         });
     });
 
@@ -116,9 +116,10 @@
 
 
 
-    /* submit 이벤트 처리 */
-    $("#submit").click(function(event) {
-
+    /* submit 이벤트 처리  upload_form*/
+    /*$("#submit").click(function() {*/
+    /*$("#upload_form").submit(function() {*/
+    function uploadForm(){
         /*tag에 있는 값을 배열에 담아서 출력하기 + hidden에 담기*/
         var org_tags = [];
         for (var i = 0; i < $("tags").find("span").length; i++) {
@@ -127,19 +128,28 @@
             org_tags.push(tmp);
         }
         var slice_tags = org_tags.slice(0, -1);
-        var upload_tags = $("#upload_tag").val(slice_tags);
-        console.log("uplpad tags 값 : " + $("#upload_tag").val());
+        var upload_tags = $("#cont_tag").val(slice_tags);
+        console.log("uplpad tags 값 : " + $("#cont_tag").val());
 
         /*menu 값 가져오기 와서 hidden에 담기 */
         var org_menu = $(".dd-selected-text").eq(0).html();
-        var uplpad_menu = $("#upload_menu").val(org_menu);
-        console.log("upload menu 값 : " + $("#upload_menu").val());
+        var uplpad_menu = $("#cont_menu").val(org_menu);
+        console.log("upload menu 값 : " + $("#cont_menu").val());
 
         /*이미지 업로드시 담았던 값 확인*/
-        console.log("upload_image 값 : " + $("#upload_image").val())
-
+        console.log("cont_image 값 : " + $("#cont_image").val());
+        console.log("cont_title 값 : " + $("#cont_title").val());
+        console.log("user_id 값 : " + $("#user_id").val());
+        console.log("user_name 값 : " + $("#user_name").val());
+        console.log("user_provider 값 : " + $("#user_provider").val());
+        
+        alert("tag : " + $("#cont_tag").val());
+        alert("id : " + $("#user_id").val());
+        
+        document.getElementById('upload_form').submit();
+        /*return false;*/
         /*if(true){
-          $("#upload_form").submit();
-          document.getElementById("yourFormId").submit();
+        	$("#upload_form").submit();
+        	document.getElementById("yourFormId").submit();
         }*/
-    });
+    };

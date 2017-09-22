@@ -18,7 +18,7 @@
                 </a>
                     <div id="wrapper-part-info">
                         <%-- <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div> --%>
-                        <div id="part-info">${tw_CallBackUrl }</div>
+                        <div id="part-info">${user_id }</div>
                     </div>
                 </figure>  
              <%-- <%} %> --%>    

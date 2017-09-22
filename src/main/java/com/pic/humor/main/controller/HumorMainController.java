@@ -1,4 +1,4 @@
-package com.pic.humor.controller;
+package com.pic.humor.main.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,41 +20,15 @@ import com.pic.humor.social.service.SocialService;
 
 
 @Controller
-public class HumorController {
+public class HumorMainController {
 	
 	@Autowired
 	private SocialService socialService;
-	
-	@RequestMapping("/list/contents_list")
-	public String contentsList(){
-		
-		return "list/contents_list";
-	}
-	
-	@RequestMapping("/list/contents_detail")
-	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session){
-		ModelAndView mView = new ModelAndView();
-		String twUrl = (String) session.getAttribute("twitterAuthUrl");
-		System.out.println("twAuthUrl :" + twUrl);
-		// detail 페이지에서 로그아웃 했을때 invalidata 되므로 세션에 새로 twurl을 넣어주기 위해 null 체크 후 service 수행 
-		if(session.getAttribute("twitterAuthUrl") == null){
-			mView=socialService.twSigninService(request);
-		}
-		
-		mView.setViewName("list/contents_detail");
-		return mView;
-	}
 	
 	@RequestMapping("/test")
 	public String test(){
 		
 		return "test";
-	}
-	
-	@RequestMapping("/test2")
-	public String test2(){
-		
-		return "test2";
 	}
 	
 	@RequestMapping("/twcallback.do") // 로그인 요청 후 callback 처리
@@ -112,12 +86,6 @@ public class HumorController {
 		mView.setViewName("nav/callback");
 		
 		return mView;
-	}
-	
-	@RequestMapping("/test.html")
-	public String wtf(){
-		
-		return "test";
 	}
 
 }

@@ -88,7 +88,7 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=1"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
@@ -98,9 +98,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>	
     <script>   	
  	// 트위터 로그인 후 로그인 alert 창 띄우기
-    if("${twAlert}" != " "){
+    if("${alertMsg}" != " "){
     	setTimeout(function(){
-        	${twAlert}
+        	${alertMsg}
         }, 2000);	
     }
     
