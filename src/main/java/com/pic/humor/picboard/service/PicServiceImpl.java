@@ -40,6 +40,9 @@ public class PicServiceImpl implements PicService{
 	@Override
 	public ModelAndView getContList(HttpServletRequest request, int pageNum) {
 		System.out.println("contents list service 진입");
+		// detail page 진입시 cont_id + menu 값
+		String menu = request.getParameter("mn");
+		System.out.println("list menu : " + menu);
 		//보여줄 페이지의 번호
 		int Num=pageNum;
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
@@ -76,8 +79,35 @@ public class PicServiceImpl implements PicService{
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalRow", totalRow);
+		// detail page 진입시 cont_id + menu 값
+		mView.addObject("menu", menu);
 		System.out.println("mView에 담음");
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 		
-	}}
+	}
+
+	@Override
+	public ModelAndView detail(HttpServletRequest request, int cont_id) {
+		PicBoardDto dto=picDao.getData(request, cont_id);
+		//덛글 목록을 얻어온다.
+		/*List<PicBoardDto> commentList=commentDao.getList(num);*/
+		//ModelAndView 객체를 생성해서 Model 을 담고
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("dto", dto);
+		/*mView.addObject("commentList", commentList);*/
+		//리턴해준다.
+		return mView;
+	}
+
+	@Override
+	public void increaseViewCount(HttpServletRequest request,int cont_id) {
+		picDao.increaseViewCount(request, cont_id);
+		
+	}
+}
+
+
+
+
+

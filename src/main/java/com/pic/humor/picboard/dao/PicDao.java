@@ -10,4 +10,6 @@ public interface PicDao {
 	public void insertPics(HttpServletRequest request, PicBoardDto dto);
 	public int getListCount(HttpServletRequest request);
 	public List<PicBoardDto> getContList(HttpServletRequest request, PicBoardDto dto);
+	public PicBoardDto getData(HttpServletRequest request, int cont_id);
+	public void increaseViewCount(HttpServletRequest request, int num);
 }

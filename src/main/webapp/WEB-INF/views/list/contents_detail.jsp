@@ -46,17 +46,17 @@
             <div id="main-container-image">
                 <div class="title-item">
                     <div class="title-icon"></div>
-                    <div class="title-text">Ipad Pro Mockup </div>
-                    <div class="title-text-2">Sept 25, 2015 by Onuur</div>
+                    <div class="title-text">${dto.cont_title } </div>
+                    <div class="title-text-2">${dto.cont_date }</div>
                 </div>
                 <div class="work">
                     <figure class="white">
                         <img src="${pageContext.request.contextPath }/resources/img/psd-4.jpg" alt="" />
                         <div id="wrapper-part-info">
                             <div class="part-info-image-single">
-                                <img src="${pageContext.request.contextPath }/resources/img/mockup-1.jpg" alt="" width="628" height="437" />
-                                <img src="${pageContext.request.contextPath }/resources/img/mockup-2.jpg" alt="" width="628" height="437" />
-                                <img src="${pageContext.request.contextPath }/resources/img/mockup-3.jpg" alt="" width="628" height="437" />
+                                <img src="${dto.cont_image }" alt="" width="628" height="437" />
+                                <%-- <img src="${pageContext.request.contextPath }/resources/img/mockup-2.jpg" alt="" width="628" height="437" />
+                                <img src="${pageContext.request.contextPath }/resources/img/mockup-3.jpg" alt="" width="628" height="437" /> --%>
                             </div>
                         </div>
                     </figure>

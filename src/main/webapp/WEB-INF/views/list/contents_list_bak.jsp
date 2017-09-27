@@ -9,7 +9,7 @@
             <%-- <% for(int i=0; i < 20; i++){ %> --%>
             <c:if test="${not empty list}">
 	            <c:forEach var="tmp" items="${list }">
-	                <figure class="white showthis"> <%-- ${pageContext.request.contextPath } --%>
+	                <figure class="img-panel"> <%-- ${pageContext.request.contextPath } --%>
 	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do">
 	                       <img  src="${pageContext.request.contextPath}/resources/img/psd-4.jpg" class="lazy" alt="" />
 	                       <dl>

@@ -10,4 +10,6 @@ public interface PicService {
 	public ModelAndView insertPics(HttpServletRequest request, PicBoardDto dto);
 
 	public ModelAndView getContList(HttpServletRequest request, int pageNum);
+	public ModelAndView detail(HttpServletRequest request, int cont_id);
+	public void increaseViewCount(HttpServletRequest request, int cont_id);
 }

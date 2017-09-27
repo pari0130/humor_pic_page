@@ -9,14 +9,22 @@
             <%-- <% for(int i=0; i < 20; i++){ %> --%>
             <c:if test="${not empty list}">
 	            <c:forEach var="tmp" items="${list }">
-	                <figure class="white showthis"> <%-- ${pageContext.request.contextPath } --%>
-	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}">
+	                <figure class="img-panel"> <%-- ${pageContext.request.contextPath } --%> 
+	                <!-- data-imgLiquid-fill="true"
+	                data-imgLiquid-horizontalAlign="center"
+       				data-imgLiquid-verticalAlign="center"   -->    				
+	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${menu}">
+	                    
+	                    <!-- data-imgLiquid-fill="true"
+		                data-imgLiquid-horizontalAlign="center"
+	       				data-imgLiquid-verticalAlign="center"> -->
 	                       <img  src="${tmp.cont_image }" class="lazy" alt="" />
+	                    
 	                       <dl>
 	                        <dt>Wordpress theme</dt>
 	                        <dd>Symphony is a responsive one page website template designed with sketches and coded with html5 and php. Freebie released by Lacoste Xavier.</dd>    
 	                    </dl>
-	                </a>
+	                </a>	                
 	                    <div id="wrapper-part-info">
 	                        <%-- <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div> --%>
 	                        <div id="part-info">${tmp.cont_title }</div>
@@ -40,7 +48,7 @@
     </div>
     <div id="wrapper-thank">
         <div class="thank">
-            <div class="thank-text">Pic<span style="letter-spacing:-5px;">h</span>umor</div>
+            <div class="thank-text">Pic-<span style="letter-spacing:-5px;">h</span>umor</div>
         </div>
     </div>
     <div id="main-container-footer">

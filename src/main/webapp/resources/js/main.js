@@ -6,6 +6,7 @@ $(document).ready(function() {
 		$("#wrapper-navbar").delay(1500).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
 		$("#main-container-image").delay(1250).animate({opacity:'1'},500); /*hwi delay 2500*/
 		/*$("#getAlert").val();*/
+		
 	});
 
 /*TRANSITION PAGE*/

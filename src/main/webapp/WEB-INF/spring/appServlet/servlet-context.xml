@@ -21,15 +21,16 @@
 		<property name="username" value="${username}"/>
 		<property name="password" value="${password}"/>
 	</bean>
-	<!-- SqlSessionFactory 객체 -->
-	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<!-- SqlSessionFactory 객체 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation"
 			value="classpath:com/pic/humor/mybatis/Configuration.xml"/>
 	</bean>
+	
 	<!-- Dao 에 주입해줄 SqlSession 인터페이스를 구현한 
 	SqlSessionTemplate 객체 -->
-	<bean class="org.mybatis.spring.SqlSessionTemplate"><!-- scope="prototype"> -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sessionFactory"/>
 	</bean>	
 	
@@ -43,10 +44,12 @@
 	<mvc:annotation-driven /> 
 	
 	
+	<context:component-scan base-package="com.pic.humor" />
 	<context:component-scan base-package="com.pic.humor.home" />
 	<context:component-scan base-package="com.pic.humor.main.controller" />
 	<context:component-scan base-package="com.pic.humor.social.service" />
-	<context:component-scan base-package="com.pic.humor.picboard.*" />  
+	<context:component-scan base-package="com.pic.humor.picboard.*" />
+	<context:component-scan base-package="com.pic.humor.picboard.dto" /> 
 	
 	
 	

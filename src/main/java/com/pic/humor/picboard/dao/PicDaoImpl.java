@@ -106,4 +106,67 @@ public class PicDaoImpl implements PicDao{
 		return null;
 	}
 
+	@Override
+	public PicBoardDto getData(HttpServletRequest request, int cont_id) {
+		
+		System.out.println("getData dao 진입완료  DB 전");
+		String menu = request.getParameter("mn");
+		System.out.println("요청 menu : " + menu);
+		// TODO Auto-generated method stub
+		if(menu.equals("wtf")){
+			System.out.println("getData DB 완료");
+			return session.selectOne("picSelect.getData_wtf", cont_id);
+			
+		}else if(menu.equals("nsfw")){
+			System.out.println("getData DB 완료");
+			return session.selectOne("picSelect.getData_nsfw", cont_id);
+			
+		}else if(menu.equals("animals")){
+			System.out.println("getData DB 완료");
+			return session.selectOne("picSelect.getData_animals", cont_id);
+			
+		}else if(menu.equals("gif")){
+			System.out.println("getData DB 완료");
+			return session.selectOne("picSelect.getData_gif", cont_id);
+			
+		}else if(menu.equals("funny")){
+			System.out.println("getData DB 완료");
+			return session.selectOne("picSelect.getData_funny", cont_id);
+
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void increaseViewCount(HttpServletRequest request, int cont_id) {
+		
+		System.out.println("ViewCount dao 진입완료  DB 전");
+		String menu = request.getParameter("mn");
+		System.out.println("요청 menu : " + menu);
+		// TODO Auto-generated method stub
+		if(menu.equals("wtf")){
+			System.out.println("ViewCount DB 완료");
+			session.update("picUpdate.increaseviewcount_wtf", cont_id);
+			
+		}else if(menu.equals("nsfw")){
+			System.out.println("getData DB 완료");
+			session.update("picUpdate.increaseViewCount_nsfw", cont_id);
+			
+		}else if(menu.equals("animals")){
+			System.out.println("ViewCount DB 완료");
+			session.update("picUpdate.increaseViewCount_animals", cont_id);
+			
+		}else if(menu.equals("gif")){
+			System.out.println("ViewCount DB 완료");
+			session.update("picUpdate.increaseViewCount_gif", cont_id);
+			
+		}else if(menu.equals("funny")){
+			System.out.println("ViewCount DB 완료");
+			session.update("picUpdate.increaseViewCount_funny", cont_id);
+
+		}
+		
+	}
+
 }

@@ -351,13 +351,13 @@ body,html{
 	
 }
 
-.work figure.white dl{
+.work figure.img-panel dl{
     background: #FFF;
 }
 
 
 .work figure a img {
-    height: 90%;
+    height: 300px;
     width: 90%;
 	margin-left:5%;
 	margin-top:5%;
@@ -430,10 +430,12 @@ body,html{
 }
 
 #wrapper-part-info{
+	margin : 3%; /* hwi */
 	position:relative;
-	width:100%;
+	width:94%; /* hwi 100% */
 	height:44px;
 	background-color:#FFFFFF;
+	overflow: hidden; /* hwi */
 }
 
 #part-info{

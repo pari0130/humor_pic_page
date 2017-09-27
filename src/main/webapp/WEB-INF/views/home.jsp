@@ -13,13 +13,15 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=3' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=1' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" /> 
     <!-- UPLOAD > TAG -->
     <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
-       
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/imgLiquid-min.js"></script>
+    
     <!-- 구글 로그인 연동 -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="221557223102-0gp35bn76pkch9bn8ru3k463oghpoqbq.apps.googleusercontent.com">
@@ -59,6 +61,16 @@
 	myApp.controller("navCtrl", function($scope){
 		$scope.activated="wtf";
 	});
+	
+    /* .img-panel */
+   $(function(){
+    	$(".img-panel").imgLiquid({
+    		fill : true,
+    		horizontalAlign : "center",
+    		verticalAlign : "center"
+    	});
+    });
+   
 </script>
 </head>
 <body>
@@ -78,7 +90,7 @@
     <!-- SCRIPT -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=2"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
@@ -102,7 +114,8 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
     <!-- ALERT -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>	
+    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
+    	
     <script>   	
  	// 트위터 로그인 후 로그인 alert 창 띄우기
     if("${alertMsg}" != " "){
@@ -114,12 +127,19 @@
     /* ${twAlert} */   
     
     /* lazyload 처리 */
-    $(function() {
+   $(function() {
         $("img.lazy").lazyload({
             effect: "fadeIn",
             effectTime: 500
         });
     });   
+	
+   /* .img-panel */
+	/* $(".img-panel.img-liq").imgLiquid({
+		fill : true,
+		horizontalAlign : "center",
+		verticalAlign : "center"
+	}); */
     </script>
 </body>
 </html>

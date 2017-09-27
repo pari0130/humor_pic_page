@@ -35,15 +35,11 @@ public class HumorPicController {
 	}
 	
 	@RequestMapping("/list/contents_detail")
-	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session){
-		ModelAndView mView = new ModelAndView();
-		String twUrl = (String) session.getAttribute("twitterAuthUrl");
-		System.out.println("detail_twAuthUrl :" + twUrl);
-		// detail 페이지에서 로그아웃 했을때 invalidata 되므로 세션에 새로 twurl을 넣어주기 위해 null 체크 후 service 수행 
-		if(session.getAttribute("twitterAuthUrl") == null){
-			mView=socialService.twSigninService(request);
-		}
-		
+	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session, @RequestParam int cont_id){
+		ModelAndView mView = picService.detail(request, cont_id);
+
+		//조회수 증가 시키기
+		picService.increaseViewCount(request, cont_id);
 		mView.setViewName("list/contents_detail");
 		return mView;
 	}

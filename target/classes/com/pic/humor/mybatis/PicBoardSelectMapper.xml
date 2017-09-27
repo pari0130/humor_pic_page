@@ -75,6 +75,33 @@
 		FROM picboard_funny		
 	</select>
 	
+	<!-- 글정보 얻어오기 -->
+	<select id="getData_wtf" parameterType="int" resultType="picBoardDto">
+		SELECT <include refid="picAll"/>
+		FROM picboard_wtf
+		WHERE cont_id=#{cont_id}	
+	</select>
+	<select id="getData_nsfw" parameterType="int" resultType="picBoardDto">
+		SELECT <include refid="picAll"/>
+		FROM picboard_nsfw
+		WHERE cont_id=#{cont_id}	
+	</select>
+	<select id="getData_animals" parameterType="int" resultType="picBoardDto">
+		SELECT <include refid="picAll"/>
+		FROM picboard_animals
+		WHERE cont_id=#{cont_id}	
+	</select>
+	<select id="getData_gif" parameterType="int" resultType="picBoardDto">
+		SELECT <include refid="picAll"/>
+		FROM picboard_gif
+		WHERE cont_id=#{cont_id}	
+	</select>
+	<select id="getData_funny" parameterType="int" resultType="picBoardDto">
+		SELECT <include refid="picAll"/>
+		FROM picboard_funny
+		WHERE cont_id=#{cont_id}	
+	</select>
+	
 </mapper>
 
 
