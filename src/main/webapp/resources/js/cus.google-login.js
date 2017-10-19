@@ -34,13 +34,25 @@
 	   console.log("id: " + id);
 	   console.log("name: " + name);
 	   console.log("image: " + image);
+	   console.log("url: " + window.location.pathname);
 	   console.log("----------------------------------------------");
 	   
 	   // 배열을 만들고 object type 데이터를 담아서
 	   var arr = new Array();
 	   var obj = new Object();
+	   /*var url = window.location.pathname; */
+	   var url;
 	   // 현재 요청한 위치 의 pathname을 저장함 ~~~ /home.do 등
-	   var url = window.location.pathname;
+	   /*if(getQuerystring('cont_id') != '' && getQuerystring('cont_id') != null){*/
+	   if(window.location.pathname != "/home.do" && window.location.pathname != "/"){	   
+		   /*cont_id = getQuerystring('cont_id');
+		   mn = getQuerystring('mn');
+		   url = window.location.pathname+"?cont_id="+cont_id+"&mn="+mn;*/
+		   url = window.location.pathname+"?cont_id="+getQuerystring('cont_id')+"&mn="+getQuerystring('mn');
+	   }else{
+		   url = window.location.pathname;   
+	   }	   
+
 	   obj.provider = "google";
 	   obj.id = id;
 	   obj.name = name;
@@ -61,7 +73,8 @@
             },
             success     : function(data) {
             	if(data.canUse){
-            		console.log("성공");   
+            		console.log("google 성공");   
+            		console.log("수정url : " + url);            		
             		// 성공 후 modal 창 닫기
             		$(".modal_close").click();
             		// success alert 창 띄우기. sweetalert 플러그인 사용
@@ -80,7 +93,8 @@
             			      location.href = url; // 기존 url로 돌아가기
             			      break;
             			}
-            		});            		
+            		});      
+            		// 팝업확인창 밖을 클릭했을때도 url 이동되게 if문으로 집어 넣어야함.
 				}else{
 					alert('error 0001');
 					location.href = "/home.do";
@@ -91,4 +105,8 @@
         });
     }
     
+   
+
+
+   
     

@@ -3,7 +3,15 @@
 <mapper namespace="picSelect">		
 	<sql id="picAll">
 		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count,
-		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date
+		TO_CHAR(cont_date, 'DY MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') AS cont_date, menu_name
+		<!-- TO_CHAR(create_date, 'mon DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH')
+		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date -->
+	</sql>
+	<sql id="picCmtAll">
+		cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group,
+		TO_CHAR(cont_date, 'DY MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') AS cont_date, menu_name
+		<!-- TO_CHAR(create_date, 'mon DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH')
+		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date -->
 	</sql>
 	
 	<!-- 화면에 표시할 List 값 출력 -->
@@ -100,6 +108,38 @@
 		SELECT <include refid="picAll"/>
 		FROM picboard_funny
 		WHERE cont_id=#{cont_id}	
+	</select>
+	
+	<!-- 덧글 목록 가저오기 -->
+	<select id="getCmtList_wtf" parameterType="int" resultType="picBoardCmtDto">
+		SELECT <include refid="picCmtAll"/> 		
+		FROM picboard_wtf_cmt
+		WHERE cmt_cont_group=#{cont_id}
+		ORDER BY cmt_in_group ASC, cmt_id ASC			
+	</select>
+	<select id="getCmtList_nsfw" parameterType="int" resultType="picBoardCmtDto">
+		SELECT <include refid="picCmtAll"/> 		
+		FROM picboard_nsfw_cmt
+		WHERE cmt_cont_group=#{cont_id}
+		ORDER BY cmt_in_group ASC, cmt_id ASC			
+	</select>
+	<select id="getCmtList_animals" parameterType="int" resultType="picBoardCmtDto">
+		SELECT <include refid="picCmtAll"/> 		
+		FROM picboard_animals_cmt
+		WHERE cmt_cont_group=#{cont_id}
+		ORDER BY cmt_in_group ASC, cmt_id ASC			
+	</select>
+	<select id="getCmtList_gif" parameterType="int" resultType="picBoardCmtDto">
+		SELECT <include refid="picCmtAll"/> 		
+		FROM picboard_gif_cmt
+		WHERE cmt_cont_group=#{cont_id}
+		ORDER BY cmt_in_group ASC, cmt_id ASC			
+	</select>
+	<select id="getCmtList_funny" parameterType="int" resultType="picBoardCmtDto">
+		SELECT <include refid="picCmtAll"/> 		
+		FROM picboard_funny_cmt
+		WHERE cmt_cont_group=#{cont_id}
+		ORDER BY cmt_in_group ASC, cmt_id ASC			
 	</select>
 	
 </mapper>

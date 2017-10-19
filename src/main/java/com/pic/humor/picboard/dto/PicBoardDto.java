@@ -10,6 +10,7 @@ public class PicBoardDto {
 	private String cont_image;
 	private int cont_view_count;
 	private String cont_date;
+	private String menu_name;
 	
 	private int startRowNum; //시작 row 번호
 	private int endRowNum; //끝 row 번호
@@ -17,7 +18,7 @@ public class PicBoardDto {
 	public PicBoardDto(){}
 
 	public PicBoardDto(int cont_id, String user_id, String user_name, String user_provider, String cont_title,
-			String cont_tag, String cont_image, int cont_view_count, String cont_date, int startRowNum, int endRowNum) {
+			String cont_tag, String cont_image, int cont_view_count, String cont_date, String menu_name, int startRowNum, int endRowNum) {
 		super();
 		this.cont_id = cont_id;
 		this.user_id = user_id;
@@ -28,6 +29,7 @@ public class PicBoardDto {
 		this.cont_image = cont_image;
 		this.cont_view_count = cont_view_count;
 		this.cont_date = cont_date;
+		this.menu_name = menu_name;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 	}
@@ -118,6 +120,14 @@ public class PicBoardDto {
 
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
+	}
+
+	public String getMenu_name() {
+		return menu_name;
+	}
+
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
 	}
 
 	

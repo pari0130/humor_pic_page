@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pic.humor.picboard.dao.PicDao;
+import com.pic.humor.picboard.dto.PicBoardCmtDto;
 import com.pic.humor.picboard.dto.PicBoardDto;
 
 @Service
@@ -91,19 +92,38 @@ public class PicServiceImpl implements PicService{
 	public ModelAndView detail(HttpServletRequest request, int cont_id) {
 		PicBoardDto dto=picDao.getData(request, cont_id);
 		//덛글 목록을 얻어온다.
-		/*List<PicBoardDto> commentList=commentDao.getList(num);*/
+		List<PicBoardDto> commentList=picDao.getCmtList(request, cont_id);
 		//ModelAndView 객체를 생성해서 Model 을 담고
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("dto", dto);
-		/*mView.addObject("commentList", commentList);*/
+		mView.addObject("commentList", commentList);
 		//리턴해준다.
 		return mView;
 	}
 
 	@Override
 	public void increaseViewCount(HttpServletRequest request,int cont_id) {
+		System.out.println("service dao 요청 앞부분");
 		picDao.increaseViewCount(request, cont_id);
+		System.out.println("service dao 요청 뒷부분");
 		
+	}
+	
+	//새덧글을 입력하는 비즈니스 로직을 처리할 서비스 메소드 
+	@Override
+	public void commentInsert(HttpServletRequest request, PicBoardCmtDto dto) {
+		//1. 저장할 덧글 번호를 미리 읽어온다.
+		int seq=picDao.getSequence(request);
+		
+		dto.setCmt_id(seq);//글번호로 사용한다. 
+		//2. 원글의 덧글인지 덧글의 덧글인지 판정해서 다른 처리를 해준다.
+		int cmt_in_group=dto.getCmt_in_group();
+		if(cmt_in_group == 0){// 0 이면 원글의 덧글 
+			//원글의 덧글이면 그룹번호를 저장할 덧글 번호로 지정한다. 
+			dto.setCmt_in_group(seq);
+		}	
+		//3. Dao 를 이용해서 DB 에 저장		
+		picDao.commentInsert(request, dto);
 	}
 }
 

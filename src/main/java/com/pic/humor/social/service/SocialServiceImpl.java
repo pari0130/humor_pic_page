@@ -83,8 +83,10 @@ public class SocialServiceImpl implements SocialService {
 	    	request.getSession().setAttribute("user_image", twImg);
 	    	/*twitter 로그인 후 home 으로 돌아갔을때 환영팝업이 뜨도록 msg 설정*/
 	    	String alertMsg = "swal('Login success!!', " +  "'" + accessToken.getScreenName()+ " 님 환영합니다.', 'success');";
-	    	System.out.println("alert Msg : " + alertMsg);	    	
-	    	mView.addObject("alertMsg", alertMsg);
+	    	System.out.println("alert Msg : " + alertMsg);
+	    	// callback page 이동 후 요청 url로 이동할때 msg를 띄우기 위함
+	    	request.getSession().setAttribute("twAlertMsg", alertMsg);
+	    	/*mView.addObject("alertMsg", alertMsg);*/
 			
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block

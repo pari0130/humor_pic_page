@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/detail.css' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/detail.css?ver=3' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css" />
@@ -26,11 +26,11 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>  
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=2"></script>
     <!-- 페북 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script>
     <!-- 트위터 로그인 연동 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=1"></script> 
+    <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=2"></script> 
 </head>
 
 <body>
@@ -45,7 +45,7 @@
         <div class="container object">
             <div id="main-container-image">
                 <div class="title-item">
-                    <div class="title-icon"></div>
+                    <!-- <div class="title-icon"></div> -->
                     <div class="title-text">${dto.cont_title } </div>
                     <div class="title-text-2">${dto.cont_date }</div>
                 </div>
@@ -63,23 +63,23 @@
                     <div class="wrapper-text-description">
                         <div class="wrapper-view">
                             <div class="icon-view"><img src="${pageContext.request.contextPath }/resources/img/icon-eye.svg" alt="" width="24" height="16" /></div>
-                            <div class="text-view">2,451 views</div>
+                            <div class="text-view">${dto.cont_view_count } views</div>
                         </div>
-                        <div class="wrapper-file">
+                        <%-- <div class="wrapper-file">
                             <div class="icon-file"><img src="${pageContext.request.contextPath }/resources/img/icon-psdfile.svg" alt="" width="21" height="21" /></div>
-                            <div class="text-file">Photoshop</div>
-                        </div>
+                            <div class="text-file">${dto.menu_name }</div>
+                        </div> --%>
                         <div class="wrapper-weight">
                             <div class="icon-weight"><img src="${pageContext.request.contextPath }/resources/img/icon-weight.svg" alt="" width="20" height="23" /></div>
-                            <div class="text-weight">23 Mo</div>
+                            <div class="text-weight">${dto.menu_name }</div>
                         </div>
                         <div class="wrapper-desc">
                             <div class="icon-desc"><img src="${pageContext.request.contextPath }/resources/img/icon-desc.svg" alt="" width="24" height="24" /></div>
-                            <div class="text-desc">TAG TAG TAG TAG TAG TAG TAG TAG TAG TAG TAG  </div>
+                            <div class="text-desc"><a href="#"><b>${dto.cont_tag }</b></a></div>
                         </div>
-                        <div class="wrapper-download">
+                       <div class="wrapper-download">
                             <div class="icon-download"><img src="${pageContext.request.contextPath }/resources/img/icon-download.svg" alt="" width="19" height="26" /></div>
-                            <div class="text-download"><a href="#"><b>Download</b></a></div>
+                            <div class="text-download"><b>share</b></div>
                         </div>
                         <div class="wrapper-morefrom">
                             <div class="text-morefrom">More from .psd</div>
@@ -99,31 +99,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="post-reply">
-                        <div class="image-reply-post"></div>
-                        <div class="name-reply-post">Igor vlademir</div>
+                    <%-- <div class="post-reply">
+                        <div class="image-reply-post"  style="background-image: URL(${user_image})"></div> <!-- profile image --> 
+                        <div class="name-reply-post">Igor vlademir</div> <!-- profile name -->
                         <div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
-                    </div>
+                    </div> --%>
+                    <c:forEach var="tmp" items="${commentList }">
                     <div class="post-reply-2">
-                        <div class="image-reply-post-2"></div>
-                        <div class="name-reply-post-2">Nathan Shaw</div>
-                        <div class="text-reply-post-2">Well done ! I like the way you did it. Awesome ! </div>
+                        <div class="image-reply-post" style="background-image: URL(${tmp.user_image})"></div>
+                        <div class="name-reply-post">${tmp.user_name }</div>
+                        <div class="text-reply-post">${tmp.cmt_contents } </div>
                     </div>
+                    </c:forEach>
                     <div class="post-send">
                         <div id="main-post-send">
                             <div id="title-post-send">Add your comment</div>
-                            <form id="contact" method="post" action="/onclickprod/formsubmit_op.asp">
+                            <form id="comment" method="post" action="${pageContext.request.contextPath }/list/insertcomment.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}">
                                 <fieldset>
                                     <p>
-                                        <textarea id="message" name="message" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea>
+                                        <textarea id="cmt_comments" name="cmt_contents" maxlength="500" placeholder="Comments" tabindex="5" cols="30" rows="4"></textarea>
                                     </p>
                                 </fieldset>
                                 <div style="text-align:center;">
-                                    <input type="submit" name="envoi" value="Envoyer" />
+                                    <input type="submit" name="envoi" value="INSERT" />
+                                    <!-- 사용자 정보 hidden 처리 후 넘김 -->
+                                    <input type="hidden" name="cmt_cont_group" value="${dto.cont_id }" />									
+									<%-- <input type="hidden" name="cmt_in_group" value="${tmp.cmt_in_group }" /> --%>
+                                    <input type="hidden" name="user_id" id="user_id" value="${user_id }"> 
+									<input type="hidden" name="user_name" id="user_name" value="${user_name }">
+									<input type="hidden" name="user_provider" id="user_provider" value="${provider }">
+									<input type="hidden" name="user_image" id="user_image" value="${user_image }">
                                 </div>
-                                <div style="text-align:center;">
+                                <!-- <div style="text-align:center;">
                                     <input type="submit" name="envoi" value="CHECK" />
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>
@@ -184,7 +193,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=4"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -203,12 +212,36 @@
     <!-- ALERT -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
     <script>
-    // 트위터 로그인 후 로그인 alert 창 띄우기
-    if("${twAlert}" != " "){
-    	setTimeout(function(){
-        	${twAlert}
+ 	// 트위터 로그인 후 로그인 alert 창 띄우기 /* ${alertMsg} */
+    if("${twAlertMsg}" != " "){
+    	setTimeout(function(){        	
+        	${twAlertMsg}        	
         }, 2000);	
+    	// alert 띄운후 session에 저장된 twAlertMsg 를 제거함
+    	<%session.removeAttribute("twAlertMsg");%>
     }
+        
+    /* 기본 댓글 */
+	$("#comment").submit(function(){
+		var url = window.location.pathname;
+		var content=$(this).find("textarea").val();		
+		
+		/* alert("photo_value2: "+document.getElementById("photo_value2").value) */
+		if (${empty user_id}){
+			swal("Login error!", "Please confirm your login!", "warning");			
+			return false;
+		} else if(content==''){
+			swal("Empty comments!", "Please confirm the comments!", "warning");
+			return false;
+		} else {
+			return true;
+		}
+	});
+    
+	console.log("값 : " + window.location.pathname + "?cont_id="+ getQuerystring('cont_id') +"&mn="+ getQuerystring('mn'));
+	console.log("cont_id="+"${dto.cont_id}");
+	console.log("menu="+"${dto.menu_name}");
+	console.log("url : " + location.href);
     </script>
 </body>
 </html>

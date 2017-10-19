@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.pic.humor.picboard.dto.PicBoardDto" alias="picBoardDto"/>		
+		<typeAlias type="com.pic.humor.picboard.dto.PicBoardCmtDto" alias="picBoardCmtDto"/>
 	</typeAliases>
 	
 	<environments default="development">

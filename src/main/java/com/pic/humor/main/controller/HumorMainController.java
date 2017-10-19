@@ -35,13 +35,23 @@ public class HumorMainController {
 	public ModelAndView twCallback(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		ModelAndView mView=socialService.twCallbackService(request, response);
 		// 돌아갈 url값을 session에서 받는다.
-		String orgUrl = (String) session.getAttribute("tw_CallBackUrl");
+		String url = (String) session.getAttribute("tw_CallBackUrl");
+		System.out.println("orgUrl : " + url);
 		// .do로 끝나므로 . 으로 구분하여 저장
-		int idx = orgUrl.indexOf(".");
+		/*int idx = orgUrl.indexOf(".");*/
 		// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
-		String url = orgUrl.substring(0, idx);	
+		
+		/*String url; 
+		if(orgUrl.equals("/home.do")){			
+			url = orgUrl.substring(0, idx);
+			url = orgUrl;
+		}else{
+			url = orgUrl;
+		}*/
+		
 		System.out.println("callback url : " + url);
-		mView.setViewName(url);
+		mView.addObject("url", url);
+		mView.setViewName("nav/callback");
 		return mView;
 	}
 	
@@ -71,8 +81,14 @@ public class HumorMainController {
 		
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session, HttpServletRequest request){
+		
 		//로그 아웃 처리
-		session.invalidate();
+		/*session.invalidate();*/
+		session.removeAttribute("provider");
+		session.removeAttribute("user_id");
+		session.removeAttribute("user_name");
+		session.removeAttribute("user_image");
+				
 		ModelAndView mView=new ModelAndView();
 		String url = request.getParameter("url");
 		System.out.println("넘어온  url : " + url);
@@ -80,11 +96,17 @@ public class HumorMainController {
 		// 트위터 로그인 후 주소창에 twcallback.do가 찍히므로 logout시 되돌아갈 주소가 잘못될수 있음.
 		if(url.equals("/twcallback.do")){
 			url = "/home.do";
+		}else if(url.equals("/")){
+			url = "/home.do";			
+		}else{
+			url = request.getParameter("url");
 		}
 		mView.addObject("url", url);				
 		System.out.println("넘기는 url : " + url);
 		mView.setViewName("nav/callback");
-		
+		// invalidate 했으므로 modal에 값이 없음 추가 해주기 
+		// twitter login에 대한 url 받아서 home에 넘겨주기
+		/*mView=socialService.twSigninService(request);*/
 		return mView;
 	}
 

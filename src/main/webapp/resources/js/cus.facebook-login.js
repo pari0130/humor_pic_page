@@ -59,8 +59,17 @@ function callAjax_fa(id, name, image){
 	   // 배열을 만들고 object type 데이터를 담아서
 	   var arr = new Array();
 	   var obj = new Object();
+	   var url;
 	   // 현재 요청한 위치 의 pathname을 저장함 ~~~ /home.do 등
-	   var url = window.location.pathname;
+	   /*if(getQuerystring('cont_id') != '' && getQuerystring('cont_id') != null){*/
+	   if(window.location.pathname != "/home.do" && window.location.pathname != "/"){	   
+		   /*cont_id = getQuerystring('cont_id');
+		   mn = getQuerystring('mn');
+		   url = window.location.pathname+"?cont_id="+cont_id+"&mn="+mn;*/
+		   url = window.location.pathname+"?cont_id="+getQuerystring('cont_id')+"&mn="+getQuerystring('mn');
+	   }else{
+		   url = window.location.pathname;   
+	   }
 	   obj.provider = "facebook";
 	   obj.id = id;
 	   obj.name = name;

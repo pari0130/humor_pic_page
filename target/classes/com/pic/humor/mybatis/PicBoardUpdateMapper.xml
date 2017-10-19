@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="picUpdate">	
-	
 	<!-- 조회수  1 증가 시키기 -->
-	<update id="increaseviewcount_wtf" parameterType="int">
+	<update id="increaseViewCount_wtf" parameterType="int">
 		UPDATE picboard_wtf 
 		SET cont_view_count=cont_view_count+1 
 		WHERE cont_id=#{cont_id}
 	</update>
-	<update id="increaseviewcount_nsfw" parameterType="int">
+	<update id="increaseViewCount_nsfw" parameterType="int">
 		UPDATE picboard_nsfw
 		SET cont_view_count=cont_view_count+1 
 		WHERE cont_id=#{cont_id}
 	</update>
-	<update id="increaseviewcount_animals" parameterType="int">
+	<update id="increaseViewCount_animals" parameterType="int">
 		UPDATE picboard_animals
 		SET cont_view_count=cont_view_count+1 
 		WHERE cont_id=#{cont_id}
 	</update>
-	<update id="increaseviewcount_gif" parameterType="int">
+	<update id="increaseViewCount_gif" parameterType="int">
 		UPDATE picboard_gif
 		SET cont_view_count=cont_view_count+1 
 		WHERE cont_id=#{cont_id}
 	</update>
-	<update id="increaseviewcount_funny" parameterType="int">
+	<update id="increaseViewCount_funny" parameterType="int">
 		UPDATE picboard_funny
 		SET cont_view_count=cont_view_count+1 
 		WHERE cont_id=#{cont_id}
@@ -31,35 +30,96 @@
 	
 	<!-- 자주 사용하는 sql 문을 미리 정의 해 놓기 -->	
 	<insert id="insert_wtf" parameterType="picBoardDto">
-		INSERT INTO picboard_wtf 
-		VALUES(picboard_wtf_seq.NEXTVAL, 
-		#{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		INSERT INTO picboard_wtf
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date)
+		VALUES
+		(picboard_wtf_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
 	</insert>
 	<!-- insert -->
 	<insert id="insert_nsfw" parameterType="picBoardDto">
-		INSERT INTO picboard_nsfw 
-		VALUES(picboard_nsfw_seq.NEXTVAL, 
-		#{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		INSERT INTO picboard_nsfw
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date)
+		VALUES
+		(picboard_nsfw_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_animals" parameterType="picBoardDto">
-		INSERT INTO picboard_animals 
-		VALUES(picboard_animals_seq.NEXTVAL, 
-		#{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		INSERT INTO picboard_animals
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		VALUES
+		(picboard_animals_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_gif" parameterType="picBoardDto">
-		INSERT INTO picboard_gif 
-		VALUES(picboard_gif_seq.NEXTVAL, 
-		#{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		INSERT INTO picboard_gif
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		VALUES
+		(picboard_gif_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_funny" parameterType="picBoardDto">
-		INSERT INTO picboard_funny 
-		VALUES(picboard_funny_seq.NEXTVAL, 
-		#{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		INSERT INTO picboard_funny
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		VALUES
+		(picboard_funny_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
 	</insert>
 		
+	<!-- 덧글 ========================================================-->
+	<!-- 덧글의 번호를 리턴해주기 위해 -->
+	<select id="getSequence_wtf" resultType="int">
+		SELECT picboard_wtf_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<select id="getSequence_nsfw" resultType="int">
+		SELECT picboard_nsfw_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<select id="getSequence_animals" resultType="int">
+		SELECT picboard_animals_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<select id="getSequence_gif" resultType="int">
+		SELECT picboard_gif_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<select id="getSequence_funny" resultType="int">
+		SELECT picboard_funny_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	
+	<!-- 덧글 입력 -->
+	<insert id="commentInsert_wtf" parameterType="picBoardDto">
+		INSERT INTO picboard_wtf_cmt
+		(cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group, cont_date)
+		VALUES
+		(#{cmt_id}, #{user_id}, #{user_name}, #{user_provider}, #{user_image}, #{cmt_contents}, #{cmt_cont_group}, #{cmt_in_group}, SYSDATE)
+	</insert>
+	<insert id="commentInsert_nsfw" parameterType="picBoardDto">
+		INSERT INTO picboard_nsfw_cmt
+		(cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group, cont_date)
+		VALUES
+		(#{cmt_id}, #{user_id}, #{user_name}, #{user_provider}, #{user_image}, #{cmt_contents}, #{cmt_cont_group}, #{cmt_in_group}, SYSDATE)
+	</insert>
+	<insert id="commentInsert_animals" parameterType="picBoardDto">
+		INSERT INTO picboard_animals_cmt
+		(cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group, cont_date)
+		VALUES
+		(#{cmt_id}, #{user_id}, #{user_name}, #{user_provider}, #{user_image}, #{cmt_contents}, #{cmt_cont_group}, #{cmt_in_group}, SYSDATE)
+	</insert>
+	<insert id="commentInsert_gif" parameterType="picBoardDto">
+		INSERT INTO picboard_gif_cmt
+		(cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group, cont_date)
+		VALUES
+		(#{cmt_id}, #{user_id}, #{user_name}, #{user_provider}, #{user_image}, #{cmt_contents}, #{cmt_cont_group}, #{cmt_in_group}, SYSDATE)
+	</insert>
+	<insert id="commentInsert_funny" parameterType="picBoardDto">
+		INSERT INTO picboard_funny_cmt
+		(cmt_id, user_id, user_name, user_provider, user_image, cmt_contents, cmt_cont_group, cmt_in_group, cont_date)
+		VALUES
+		(#{cmt_id}, #{user_id}, #{user_name}, #{user_provider}, #{user_image}, #{cmt_contents}, #{cmt_cont_group}, #{cmt_in_group}, SYSDATE)
+	</insert>
+	
+	
 </mapper>
 
 

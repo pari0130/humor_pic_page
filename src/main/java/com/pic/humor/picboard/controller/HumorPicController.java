@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pic.humor.picboard.dto.PicBoardCmtDto;
 import com.pic.humor.picboard.dto.PicBoardDto;
 import com.pic.humor.picboard.service.PicService;
 import com.pic.humor.social.service.SocialService;
@@ -22,8 +23,7 @@ public class HumorPicController {
 	
 	@Autowired
 	private SocialService socialService;
-	
-	
+			
 	@RequestMapping("/list/contents_list")
 	public ModelAndView contentsList(HttpServletRequest request,@RequestParam(defaultValue="1") int pageNum){			
 		ModelAndView mView=picService.getContList(request, pageNum);
@@ -36,10 +36,13 @@ public class HumorPicController {
 	
 	@RequestMapping("/list/contents_detail")
 	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session, @RequestParam int cont_id){
+		System.out.println("detail : " + cont_id);
+		
 		ModelAndView mView = picService.detail(request, cont_id);
-
+		
 		//조회수 증가 시키기
 		picService.increaseViewCount(request, cont_id);
+		System.out.println("조회수 증가 뒷부분");
 		mView.setViewName("list/contents_detail");
 		return mView;
 	}
@@ -79,4 +82,24 @@ public class HumorPicController {
 		mView.setViewName("redirect:/home.do");
 		return mView;
 	}
+	
+	//덧글 입력 요청 처리
+	@RequestMapping("/list/insertcomment")
+	public String commentInsert(HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardCmtDto dto){
+		// @ModelAttribute 어노테이션을 이용해서 덧글 정보를 얻어온다.
+		
+		System.out.println("contents : " + dto.getCmt_contents());
+		//서비스 객체를 이용해서 덧글이 저장될수 있도록 한다. 
+		picService.commentInsert(request, dto);
+		
+		//원글의 글번호를 읽어와서		
+		String cont_id = request.getParameter("cont_id");
+		String mn = request.getParameter("mn");
+				
+		
+		//리다일렉트 응답할때 사용한다. 
+		return "redirect:/list/contents_detail.do?cont_id="+cont_id+"&mn="+mn;
+	}
+	
+	
 }

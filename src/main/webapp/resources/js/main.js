@@ -1,9 +1,9 @@
 	
 $(document).ready(function() {
 		$.localScroll();
-		$(".cache").delay(1000).fadeOut(500); /*hwi delay 1000*/
-		$("#wrapper-header").delay(1000).animate({opacity:'1',width:'100%'},500); /*hwi delay 1500*/
-		$("#wrapper-navbar").delay(1500).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
+		$(".cache").delay(500).fadeOut(500); /*hwi delay 1000*/
+		$("#wrapper-header").delay(750).animate({opacity:'1',width:'100%'},500); /*hwi delay 1500*/
+		$("#wrapper-navbar").delay(1000).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
 		$("#main-container-image").delay(1250).animate({opacity:'1'},500); /*hwi delay 2500*/
 		/*$("#getAlert").val();*/
 		
@@ -302,20 +302,43 @@ $(document).on('touchend mouseout', '#logo', function(event){
 
 /*FORMULAIRE NEWSLETTER*/
     
-$("form").on("submit", function(event) {
+/*$("form").on("submit", function(event) {
   event.preventDefault();
   $.post("/burstfly/form-burstfly-modified.asp",$("form").serialize(), function(data) {//alert(data);
     });
-});
+});*/
 
 // logout 기능 수행 hwi
 function logout(){
-	var url = window.location.pathname;
-	console.log("logout url : " + url);
-	location.href = $("#getContextPath").val()+"/logout.do?url="+url;
+	var url;
+   // 현재 요청한 위치 의 pathname을 저장함 ~~~ /home.do 등
+	   /*if(getQuerystring('cont_id') != '' && getQuerystring('cont_id') != null){*/
+   if(window.location.pathname != "/home.do"){	   
+	   /*getQueryString 함수를 이용해서 url주소 parameter 값을 받아온다.*/
+	   url = window.location.pathname+"?cont_id="+getQuerystring('cont_id')+"&mn="+getQuerystring('mn');
+	   alert("url : " + url);
+	   alert("encoding url : " + encodeURIComponent(url));	 
+   }else{
+	   url = window.location.pathname;   
+   }	
+    /*받아온값을 인코딩 시켜주지 않으면 ?뒤에 &하나까지 값만 받아오고 2개는 받아지지 않으므로 인코딩 해줌*/
+	location.href = $("#getContextPath").val()+"/logout.do?url="+encodeURIComponent(url);
 }
 
 // alert 띄우기
 /*function showAlert(){
 	$("#modal_trigger_alert").click();
 };*/
+
+// detail page 에서 login시 cont_id, mn 값을 
+function getQuerystring(paramName){ 
+	   var _tempUrl = window.location.search.substring(1); // url에서 처음부터 '?'까지 삭제
+	   var _tempArray = _tempUrl.split('&'); // '&'을 기준으로 분리하기
+	   for(var i = 0; _tempArray.length; i++) { 
+		   var _keyValuePair = _tempArray[i].split('='); // '=' 을 기준으로 분리하기
+		   if(_keyValuePair[0] == paramName){ // _keyValuePair[0] : 파라미터 명
+			   // _keyValuePair[1] : 파라미터 값
+			   return _keyValuePair[1]; 
+		   } 
+	   }
+} 

@@ -28,7 +28,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>  
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=3"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.google-login.js?var=4"></script>
     <!-- 페북 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js?var=1"></script>
     <!-- 트위터 로그인 연동 -->
@@ -91,7 +91,7 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=2"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
@@ -117,11 +117,13 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
     	
     <script>   	
- 	// 트위터 로그인 후 로그인 alert 창 띄우기
-    if("${alertMsg}" != " "){
-    	setTimeout(function(){
-        	${alertMsg}
+ 	// 트위터 로그인 후 로그인 alert 창 띄우기 /* ${alertMsg} */
+    if("${twAlertMsg}" != " "){
+    	setTimeout(function(){        	
+        	${twAlertMsg}        	
         }, 2000);	
+    	// alert 띄운후 session에 저장된 twAlertMsg 를 제거함
+    	<%session.removeAttribute("twAlertMsg");%>
     }
     
     /* ${twAlert} */   
@@ -140,6 +142,7 @@
 		horizontalAlign : "center",
 		verticalAlign : "center"
 	}); */
+	
     </script>
 </body>
 </html>

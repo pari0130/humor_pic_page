@@ -6,31 +6,37 @@
 		<div class="logo">
 			<a href="${pageContext.request.contextPath }/home.do">
 				<div style="font-size: 15px" class="oldies object">HOME</div>		
-				<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>
+				<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>											
 			</a> 
 			<c:choose>
 			  	<c:when test="${empty user_id }">
 			  	<a href="javascript:">
 					<div id="modal_trigger_login" href="#modal_login"
 						style="font-size: 15px" class="oldies object">LOGIN</div>					
-				</a>	
-				<a href="javascript:">
+				</a>	 	  	
+			  	</c:when>
+			  	<c:when test="${empty dto.cont_id }">
+			  	<a href="javascript:">
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
-				</a> 	  	
+				</a> 
+				<a href="${pageContext.request.contextPath }/logout.do?url=${pageContext.request.contextPath }/">
+					<div id=""
+						style="font-size: 15px" class="oldies object">LOGOUT</div>					
+				</a>			  	
 			  	</c:when>
 			  	<c:otherwise>
 		  		<a href="javascript:">
 					<div id="modal_trigger_upload" href="#modal_upload"
 						style="font-size: 15px" class="oldies object">UPLOAD</div>
 				</a> 
+				<%-- <a href="${pageContext.request.contextPath }/logout.do?url=${pageContext.request.contextPath }/list/contents_detail.do&cont_id=${dto.cont_id}&mn=${dto.menu_name}">
+					<div id=""
+						style="font-size: 15px" class="oldies object">LOGOUT</div>					
+				</a> --%>
 				<a href="javascript:logout()">
 					<div id=""
 						style="font-size: 15px" class="oldies object">LOGOUT</div>					
-				</a>
-				<a href="javascript:">
-					<div id="modal_trigger_login" href="#modal_login"
-						style="font-size: 15px" class="oldies object">LOGIN</div>
 				</a>
 		  		</c:otherwise>
 	  		</c:choose>				
