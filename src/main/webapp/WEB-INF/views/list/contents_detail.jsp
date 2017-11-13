@@ -30,7 +30,10 @@
     <!-- 페북 로그인 연동 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.facebook-login.js"></script>
     <!-- 트위터 로그인 연동 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=2"></script> 
+    <script src="${pageContext.request.contextPath }/resources/js/cus.twitter-login.js?var=2"></script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/imgLiquid-min.js"></script> 
 </head>
 
 <body>
@@ -51,10 +54,34 @@
                 </div>
                 <div class="work">
                     <figure class="white">
-                        <img src="${pageContext.request.contextPath }/resources/img/psd-4.jpg" alt="" />
+                       <%-- <img src="${pageContext.request.contextPath }/resources/img/psd-4.jpg" alt="" /> --%> 
                         <div id="wrapper-part-info">
-                            <div class="part-info-image-single">
+                            <div class="part-info-image-single img-panel">
                                 <img src="${dto.cont_image }" alt="" width="628" height="437" />
+                                <!-- <script>
+				       				console.log("slice img 값 : " + "${dto.cont_image}");      				
+				       				
+				       				var org_url = "${dto.cont_image}";
+				       				var slice1 = org_url.slice(0, 48);
+				       				var slice2 = org_url.slice(48);
+				       				console.log("slice1 : " + slice1);	     		
+				       				console.log("slice2 : " + slice2);
+				       				var fill_img = slice1 + "w_628,h_437,c_fill/" + slice2;
+				       				/* console.log("slice 합 : " + slice1 + "w_243,h_300,c_fill/" + slice2); */		
+				       				/* $(".img-panel").prepend('<img class="lazy"' + 'id="' + id + '" ' +  'src="" alt="" />'); */
+				       				var src = $(".img-panel img").attr("src");
+				       				
+				       				/* if (src == org_url){
+				       					$(this).attr({
+				       						src : fill_img
+				       					});
+				       				}; */
+				       				console.log("src : " + src);
+				       				$(".img-panel").find("img").attr({
+				       					src: fill_img		       				
+				       				});
+	       						</script>  -->
+                                <%-- <img src="${dto.cont_image }" alt="" width="70%" height="70%" /> --%>
                                 <%-- <img src="${pageContext.request.contextPath }/resources/img/mockup-2.jpg" alt="" width="628" height="437" />
                                 <img src="${pageContext.request.contextPath }/resources/img/mockup-3.jpg" alt="" width="628" height="437" /> --%>
                             </div>
@@ -104,26 +131,31 @@
                         <div class="name-reply-post">Igor vlademir</div> <!-- profile name -->
                         <div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
                     </div> --%>
-                    <c:forEach var="tmp" items="${commentList }">
-                    <div class="post-reply-2">
-                        <div class="image-reply-post" style="background-image: URL(${tmp.user_image})"></div>
-                        <div class="name-reply-post">${tmp.user_name }</div>
-                        <div class="text-reply-post">${tmp.cmt_contents } </div>
+                    <div class="post-reply-main">
+	                    <c:forEach var="tmp" items="${commentList }">
+	                    <div class="post-reply-2">
+	                        <%-- <div class="image-reply-post" style="background-image: URL(${tmp.user_image})"> --%>
+	                        <div class="image-reply-post">
+	                       	 <img src="${tmp.user_image}" alt="" />	                        
+	                        </div>
+	                        <div class="name-reply-post">${tmp.user_name }</div>
+	                        <div class="text-reply-post">${tmp.cmt_contents } </div>
+	                    </div>
+	                    </c:forEach>
                     </div>
-                    </c:forEach>
                     <div class="post-send">
                         <div id="main-post-send">
                             <div id="title-post-send">Add your comment</div>
-                            <form id="comment" method="post" action="${pageContext.request.contextPath }/list/insertcomment.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}">
+                            <form id="comment"> <%-- method="post" action="${pageContext.request.contextPath }/list/insertcomment.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}" --%>
                                 <fieldset>
                                     <p>
                                         <textarea id="cmt_comments" name="cmt_contents" maxlength="500" placeholder="Comments" tabindex="5" cols="30" rows="4"></textarea>
                                     </p>
                                 </fieldset>
                                 <div style="text-align:center;">
-                                    <input type="submit" name="envoi" value="INSERT" />
+                                    <input type="button" name="envoi" id="submit" value="INSERT" />
                                     <!-- 사용자 정보 hidden 처리 후 넘김 -->
-                                    <input type="hidden" name="cmt_cont_group" value="${dto.cont_id }" />									
+                                    <input type="hidden" name="cmt_cont_group" id="cmt_cont_group" value="${dto.cont_id }" />									
 									<%-- <input type="hidden" name="cmt_in_group" value="${tmp.cmt_in_group }" /> --%>
                                     <input type="hidden" name="user_id" id="user_id" value="${user_id }"> 
 									<input type="hidden" name="user_name" id="user_name" value="${user_name }">
@@ -186,14 +218,14 @@
     <!-- SCRIPT -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=4"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -222,11 +254,11 @@
     }
         
     /* 기본 댓글 */
-	$("#comment").submit(function(){
+	/*$("#comment").submit(function(){
 		var url = window.location.pathname;
 		var content=$(this).find("textarea").val();		
 		
-		/* alert("photo_value2: "+document.getElementById("photo_value2").value) */
+		 alert("photo_value2: "+document.getElementById("photo_value2").value) 
 		if (${empty user_id}){
 			swal("Login error!", "Please confirm your login!", "warning");			
 			return false;
@@ -236,12 +268,120 @@
 		} else {
 			return true;
 		}
-	});
+	});*/
     
+	// 댓글 ajax 구현
+    $("#submit").click(function(){
+    	var url = window.location.pathname;
+		/* var content=$(this).find("textarea").val(); */		
+		var content=$("#cmt_comments").val();
+		
+		/* alert("photo_value2: "+document.getElementById("photo_value2").value) */
+		if (${empty user_id}){
+			swal("Login error!", "Please confirm your login!", "warning");			
+			return false;
+		} else if(content==''){
+			swal("Empty comments!", "Please confirm the comments!", "warning");
+			return false;
+		} else {
+			/* 위 구글 로그인 완료 후 ajax로 변수값 넘겨서 session에 저장하기.*/
+			  /*  console.log("ajax 요청 시작");
+			   console.log("id: " + id);
+			   console.log("name: " + name);
+			   console.log("image: " + image); */
+			   
+			   // 배열을 만들고 object type 데이터를 담아서
+			   var arr = new Array();
+			   var obj = new Object();
+			   
+			   /* alert("contents = " + $("#cmt_comments").val()); */
+			   
+			   obj.cmt_cont_group = $("#cmt_cont_group").val();
+			   obj.cmt_comments = $("#cmt_comments").val();
+			   obj.user_id = $("#user_id").val();
+			   obj.user_name = $("#user_name").val();
+			   obj.user_provider = $("#user_provider").val();
+			   obj.user_image = $("#user_image").val();
+			   arr.push(obj);
+			   
+			   // ajax 요청을 보낸뒤 true false return 받기	
+			   // SyntaxError Unexpected and of JSON input
+			   $.ajax({
+		            method      : 'POST',
+		            url         : '/list/insertcomment.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}',
+		            // json 형태로 보내기 위해서 JSON.stringify(arr)
+		            data        : JSON.stringify(arr),
+		            /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
+		            dataType	: "json", */
+		            contentType	: "application/json; charset=UTF-8",
+		            error       : function(request, status, error) {
+		                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+		            },
+		            success     : function() {		            	
+	            		console.log("성공");
+	            		// 성공 후 
+	            		$("#cmt_comments").val(""); 
+	            		getCmtList();
+		        }
+		    });
+			
+			/* return true; */
+		}
+    });
+	
+	// 댓글 리스트 가저오기 ajax
+	function getCmtList(){
+		   
+		$.ajax({
+            method      : 'get',
+            url         : '/list/getcmtlist.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}',
+            // json 형태로 보내기 위해서 JSON.stringify(arr)
+            /* data        : JSON.stringify(arr), */
+            /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
+            dataType	: "json", */
+            /* contentType	: "application/json; charset=UTF-8", */
+            error       : function(request, status, error) {
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+            },
+            success     : function(result) {		            	
+        		console.log("성공");
+        		// 성공 후 
+        		console.log(result);
+        		// for문으로 ajax 댓글 추가 하기
+        		for (var i = 0; i < result.length; i++){
+        			$(".post-reply-main")
+        			.append('<div class="post-reply-2">'
+        					+ '<div class="image-reply-post">'
+        					+ '<img src="' + result[i].user_image + '" width="65px" height="65px" alt=""></div>'
+        					+ '<div class="name-reply-post">' + result[i].user_name + '</div>'
+        					+ '<div class="text-reply-post">' + result[i].cmt_contents + '</div>'
+        					+ '</div>');
+        		}
+        }
+    });
+	}
+	
+	
 	console.log("값 : " + window.location.pathname + "?cont_id="+ getQuerystring('cont_id') +"&mn="+ getQuerystring('mn'));
 	console.log("cont_id="+"${dto.cont_id}");
 	console.log("menu="+"${dto.menu_name}");
 	console.log("url : " + location.href);
+	
+	/* $(document).ready(function() {	  
+	 $(".img-panel").imgLiquid({
+		fill : true,
+		horizontalAlign : "center",
+		verticalAlign : "center"
+		}); 
+	}); 
+	*/
+	$(".img-panel").imgLiquid();
+	$(".image-reply-post").imgLiquid();
+	/* $(".img-panel").imgLiquid({
+		fill : true,
+		horizontalAlign : "50%",
+		verticalAlign : "50%"
+	}); */
     </script>
 </body>
 </html>

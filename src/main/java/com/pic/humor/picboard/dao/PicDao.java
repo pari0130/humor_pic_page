@@ -15,5 +15,6 @@ public interface PicDao {
 	public void increaseViewCount(HttpServletRequest request, int num);
 	public int getSequence(HttpServletRequest request);
 	public void commentInsert(HttpServletRequest request, PicBoardCmtDto dto);
-	public List<PicBoardDto> getCmtList(HttpServletRequest request, int cont_id);
+	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id);
+	public List<PicBoardCmtDto> getCmtList_last(HttpServletRequest request, int cont_id);
 }

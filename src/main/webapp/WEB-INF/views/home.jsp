@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=1' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=2' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" /> 
@@ -62,16 +62,14 @@
 		$scope.activated="wtf";
 	});
 	
-    /* .img-panel */
-   $(function(){
-    	$(".img-panel").imgLiquid({
-    		fill : true,
-    		horizontalAlign : "center",
-    		verticalAlign : "center"
-    	});
-    });
-   
-</script>
+	/*  $(document).ready(function() {	  
+			 $(".imgLiquid").imgLiquid({
+				fill : true,
+				horizontalAlign : "center",
+				verticalAlign : "center"
+			}); 
+	   }); */
+	</script>	
 </head>
 <body>
 	<a name="ancre"></a>
@@ -107,7 +105,7 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=1"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=3"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
@@ -135,14 +133,14 @@
             effectTime: 500
         });
     });   
-	
-   /* .img-panel */
-	/* $(".img-panel.img-liq").imgLiquid({
-		fill : true,
-		horizontalAlign : "center",
-		verticalAlign : "center"
-	}); */
-	
+    
+   $(document).ready(function() {	  
+		 $(".img-panel").imgLiquid({
+			fill : true,
+			horizontalAlign : "center",
+			verticalAlign : "center"
+			}); 
+		}); 
     </script>
 </body>
 </html>

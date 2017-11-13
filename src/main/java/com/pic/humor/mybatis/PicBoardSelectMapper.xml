@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="picSelect">		
 	<sql id="picAll">
-		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count,
+		cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count,
 		TO_CHAR(cont_date, 'DY MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') AS cont_date, menu_name
 		<!-- TO_CHAR(create_date, 'mon DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH')
 		TO_CHAR(cont_date, 'YY.MM.DD HH24:MI') AS cont_date -->
@@ -140,6 +140,54 @@
 		FROM picboard_funny_cmt
 		WHERE cmt_cont_group=#{cont_id}
 		ORDER BY cmt_in_group ASC, cmt_id ASC			
+	</select>
+	
+	<!-- 덧글 목록 가저오기 최근추가한 한개 -->
+	<select id="getCmtList_last_wtf" parameterType="int" resultType="picBoardCmtDto">
+		SELECT *		
+		FROM 
+			(	SELECT <include refid="picCmtAll"/> 
+				FROM picboard_wtf_cmt 
+				WHERE cmt_cont_group=#{cont_id}
+				ORDER BY ROWNUM DESC)		
+		WHERE ROWNUM = 1
+					
+	</select>
+	<select id="getCmtList_last_nsfw" parameterType="int" resultType="picBoardCmtDto">
+		SELECT *		
+		FROM 
+			(	SELECT <include refid="picCmtAll"/> 
+				FROM picboard_nsfw_cmt 
+				WHERE cmt_cont_group=#{cont_id}
+				ORDER BY ROWNUM DESC)		
+		WHERE ROWNUM = 1			
+	</select>
+	<select id="getCmtList_last_animals" parameterType="int" resultType="picBoardCmtDto">
+		SELECT *		
+		FROM 
+			(	SELECT <include refid="picCmtAll"/> 
+				FROM picboard_animals_cmt 
+				WHERE cmt_cont_group=#{cont_id}
+				ORDER BY ROWNUM DESC)		
+		WHERE ROWNUM = 1			
+	</select>
+	<select id="getCmtList_last_gif" parameterType="int" resultType="picBoardCmtDto">
+		SELECT *		
+		FROM 
+			(	SELECT <include refid="picCmtAll"/> 
+				FROM picboard_gif_cmt 
+				WHERE cmt_cont_group=#{cont_id}
+				ORDER BY ROWNUM DESC)		
+		WHERE ROWNUM = 1			
+	</select>
+	<select id="getCmtList_last_funny" parameterType="int" resultType="picBoardCmtDto">
+		SELECT *		
+		FROM 
+			(	SELECT <include refid="picCmtAll"/> 
+				FROM picboard_funny_cmt 
+				WHERE cmt_cont_group=#{cont_id}
+				ORDER BY ROWNUM DESC)		
+		WHERE ROWNUM = 1		
 	</select>
 	
 </mapper>

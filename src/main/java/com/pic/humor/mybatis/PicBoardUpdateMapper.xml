@@ -31,37 +31,37 @@
 	<!-- 자주 사용하는 sql 문을 미리 정의 해 놓기 -->	
 	<insert id="insert_wtf" parameterType="picBoardDto">
 		INSERT INTO picboard_wtf
-		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date)
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date)
 		VALUES
-		(picboard_wtf_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		(picboard_wtf_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_image_fill}, #{cont_view_count}, SYSDATE)
 	</insert>
 	<!-- insert -->
 	<insert id="insert_nsfw" parameterType="picBoardDto">
 		INSERT INTO picboard_nsfw
-		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date)
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date)
 		VALUES
-		(picboard_nsfw_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		(picboard_nsfw_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_image_fill}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_animals" parameterType="picBoardDto">
 		INSERT INTO picboard_animals
-		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date) 
 		VALUES
-		(picboard_animals_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		(picboard_animals_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_image_fill}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_gif" parameterType="picBoardDto">
 		INSERT INTO picboard_gif
-		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date) 
 		VALUES
-		(picboard_gif_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		(picboard_gif_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_image_fill}, #{cont_view_count}, SYSDATE)
 	</insert>
 	
 	<insert id="insert_funny" parameterType="picBoardDto">
 		INSERT INTO picboard_funny
-		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_view_count, cont_date) 
+		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date) 
 		VALUES
-		(picboard_funny_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_view_count}, SYSDATE)
+		(picboard_funny_seq.NEXTVAL, #{user_id}, #{user_name}, #{user_provider}, #{cont_title}, #{cont_tag}, #{cont_image}, #{cont_image_fill}, #{cont_view_count}, SYSDATE)
 	</insert>
 		
 	<!-- 덧글 ========================================================-->

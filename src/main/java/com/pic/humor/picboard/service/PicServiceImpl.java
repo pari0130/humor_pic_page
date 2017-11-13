@@ -92,8 +92,9 @@ public class PicServiceImpl implements PicService{
 	public ModelAndView detail(HttpServletRequest request, int cont_id) {
 		PicBoardDto dto=picDao.getData(request, cont_id);
 		//덛글 목록을 얻어온다.
-		List<PicBoardDto> commentList=picDao.getCmtList(request, cont_id);
+		List<PicBoardCmtDto> commentList=picDao.getCmtList(request, cont_id);
 		//ModelAndView 객체를 생성해서 Model 을 담고
+		System.out.println("cmtList : " + commentList);
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("dto", dto);
 		mView.addObject("commentList", commentList);
@@ -125,6 +126,14 @@ public class PicServiceImpl implements PicService{
 		//3. Dao 를 이용해서 DB 에 저장		
 		picDao.commentInsert(request, dto);
 	}
+	
+	@Override
+	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id) {
+		List<PicBoardCmtDto> commentList=picDao.getCmtList_last(request, cont_id);
+		
+		return commentList;
+	}
+	
 }
 
 

@@ -1,5 +1,7 @@
 package com.pic.humor.picboard.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -13,5 +15,5 @@ public interface PicService {
 	public ModelAndView detail(HttpServletRequest request, int cont_id);
 	public void increaseViewCount(HttpServletRequest request, int cont_id);
 	public void commentInsert(HttpServletRequest request, PicBoardCmtDto dto);
-	
+	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id);	
 }

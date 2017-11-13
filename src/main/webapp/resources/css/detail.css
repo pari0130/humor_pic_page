@@ -334,9 +334,12 @@ body,html{
 }
 
 .part-info-image-single{
+	/* width:628px;
+	height:437px; */
 	float:left;
 	margin-bottom:17.5px;
 }
+
 #wrapper-part-info .part-info-image img{height:20%;width:20%;}
 
 .wrapper-text-description{
@@ -580,6 +583,28 @@ textarea {
 }
 
 input[type=submit] {
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 16px;
+	font-weight:600;
+	color:#FFF;
+	cursor: pointer;
+	width: 150px;
+	height: 40px;
+	padding: 5px 10px;
+	border-radius:4px;
+	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out; /** Chrome & Safari **/
+	-moz-transition: all 0.5s ease-in-out; /** Firefox **/
+	-o-transition: all 0.5s ease-in-out; /** Opera **/
+	background-color:#74BDEC;
+	float:left;
+	border:none;
+}
+
+/* hwi button type 추가 */
+input[type=button] {
 	font-family: Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -936,6 +961,12 @@ textarea.placeholder {
 	#main-container-menu {
 		display:none;
 	}
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:628px;
+		height:628px;
+	}
 }
 
 /* Others wide screen */
@@ -951,6 +982,12 @@ textarea.placeholder {
 	textarea { /* hwi */
 		width:calc(137%);
 	}	
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:628px;
+		height:628px;
+	}
 }
 
 /* Small viewports — Old monitors, netbooks, tablets (landscape), etc. */
@@ -999,6 +1036,13 @@ textarea.placeholder {
 	textarea { /* hwi */
 		width: calc(146%);
 	}
+	
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:628px;		
+		height:628px;
+	}
 }
 
 /* Smaller viewports — more tablets, old monitors */
@@ -1017,7 +1061,13 @@ textarea.placeholder {
 	textarea { /* hwi */
 		width: calc(154% + 15px);
 	}
-
+	
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:628px;
+		height:628px;
+	}
 }
 
 /* Even smaller viewports — more tablets, etc. */
@@ -1061,6 +1111,12 @@ textarea.placeholder {
 	}
 	textarea { /* hwi */
 		width: calc(140%);
+	}
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:628px;
+		height:628px;
 	}
 }
 
@@ -1106,6 +1162,12 @@ textarea.placeholder {
 	/* #wrapper-title-2{
 		display: none;
 	} */
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:400px;
+		height:400px;
+	}
 
 }
 
@@ -1181,6 +1243,12 @@ textarea.placeholder {
 
 	textarea { /* hwi */
 		width: calc(100% + 15px);
+	}
+	.part-info-image-single{ /* hwi */
+		margin-left:5%;
+		margin-tip:5%;
+		width:240px;
+		height:240px;
 	}
 }
 /* Mobile phones (iphone4/5)*/

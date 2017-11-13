@@ -42,7 +42,19 @@
                 });
             }
             var upload_url = $("#cont_image").val(urls);
-            console.log("upload_url : " + $("#cont_image").val())              
+            console.log("upload_url : " + $("#cont_image").val()) 
+
+			var cont_image = $("#cont_image").val();
+			var slice1 = cont_image.slice(0, 48);
+			var slice2 = cont_image.slice(48);
+			console.log("slice1 : " + slice1);	     		
+			console.log("slice2 : " + slice2);
+			var fill_img = slice1 + "w_243,h_300,c_fill/" + slice2;
+			console.log("slice 합 : " + slice1 + "w_243,h_300,c_fill/" + slice2);	
+			
+			var cont_image_fill = $("#cont_image_fill").val(fill_img);
+			
+			console.log("cont_image_fill : " + $("#cont_image_fill").val());			
         });
     });
 

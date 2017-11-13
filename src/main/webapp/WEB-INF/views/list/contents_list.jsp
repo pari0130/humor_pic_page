@@ -7,6 +7,9 @@
         <div id="main-container-image">
             <section class="work">
             <%-- <% for(int i=0; i < 20; i++){ %> --%>
+            <script>
+            	var org_id = 0;
+            </script>
             <c:if test="${not empty list}">
 	            <c:forEach var="tmp" items="${list }">
 	                <figure class="img-panel"> <%-- ${pageContext.request.contextPath } --%> 
@@ -18,12 +21,37 @@
 	                    <!-- data-imgLiquid-fill="true"
 		                data-imgLiquid-horizontalAlign="center"
 	       				data-imgLiquid-verticalAlign="center"> -->
-	                       <img  src="${tmp.cont_image }" class="lazy" alt="" />
-	                    
-	                       <dl>
+	       				<img src="${tmp.cont_image_fill }" class="lazy" alt="" />
+	       				<%-- <div class=img-panel>
+	       					<img src="${tmp.cont_image_fill }" class="lazy" alt="" />
+	       				</div> --%>	 
+	       				<!-- <script>
+		       				console.log("slice img 값 : " + "${tmp.cont_image}");		       				
+		       				var id = org_id ++;
+		       				var org_url = "${tmp.cont_image}";
+		       				var slice1 = org_url.slice(0, 48);
+		       				var slice2 = org_url.slice(48);
+		       				console.log("slice1 : " + slice1);	     		
+		       				console.log("slice2 : " + slice2);
+		       				var fill_img = slice1 + "w_243,h_300,c_fill/" + slice2;
+		       				console.log("slice 합 : " + slice1 + "w_243,h_300,c_fill/" + slice2);		
+		       				/* $(".img-panel").prepend('<img class="lazy"' + 'id="' + id + '" ' +  'src="" alt="" />'); */
+		       				var src = $(".img-panel img").attr("src");
+		       				
+		       				if (src == org_url){
+		       					$(this).attr({
+		       						src : fill_img
+		       					});
+		       				};
+		       				console.log("src : " + src);
+		       				/* $(".img-panel").find("img").attr({
+		       					src: fill_img		       				
+		       				}); */
+	       				</script> -->                  
+	                      <!--  <dl>
 	                        <dt>Wordpress theme</dt>
 	                        <dd>Symphony is a responsive one page website template designed with sketches and coded with html5 and php. Freebie released by Lacoste Xavier.</dd>    
-	                    </dl>
+	                    </dl> -->
 	                </a>	                
 	                    <div id="wrapper-part-info">
 	                        <%-- <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div> --%>

@@ -99,6 +99,7 @@
 					<input type="hidden" name="cont_tag" id="cont_tag" value="">
 					<input type="hidden" name="cont_menu" id="cont_menu" value="">
 					<input type="hidden" name="cont_image" id="cont_image" value="">
+					<input type="hidden" name="cont_image_fill" id="cont_image_fill" value="">
 					<input type="hidden" name="user_id" id="user_id" value="${user_id }"> 
 					<input type="hidden" name="user_name" id="user_name" value="${user_name }">
 					<input type="hidden" name="user_provider" id="user_provider" value="${provider }">

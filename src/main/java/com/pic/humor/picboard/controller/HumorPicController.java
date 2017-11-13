@@ -1,19 +1,27 @@
 package com.pic.humor.picboard.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pic.humor.picboard.dto.PicBoardCmtDto;
 import com.pic.humor.picboard.dto.PicBoardDto;
 import com.pic.humor.picboard.service.PicService;
 import com.pic.humor.social.service.SocialService;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class HumorPicController {
@@ -60,6 +68,7 @@ public class HumorPicController {
 		System.out.println("title : " + dto.getCont_title());
 		System.out.println("tag : " + dto.getCont_tag());
 		System.out.println("image : " + dto.getCont_image());
+		System.out.println("image_fill : " + dto.getCont_image_fill());
 		System.out.println("user_id : " + dto.getUser_id());
 		System.out.println("user_name : " + dto.getUser_name());
 		System.out.println("user_provider : " + dto.getUser_provider());
@@ -83,6 +92,7 @@ public class HumorPicController {
 		return mView;
 	}
 	
+	/*
 	//덧글 입력 요청 처리
 	@RequestMapping("/list/insertcomment")
 	public String commentInsert(HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardCmtDto dto){
@@ -92,6 +102,9 @@ public class HumorPicController {
 		//서비스 객체를 이용해서 덧글이 저장될수 있도록 한다. 
 		picService.commentInsert(request, dto);
 		
+		System.out.println("댓글 cont_id = " + request.getParameter("cont_id"));
+		System.out.println("댓글 mn = " + request.getParameter("mn"));
+		
 		//원글의 글번호를 읽어와서		
 		String cont_id = request.getParameter("cont_id");
 		String mn = request.getParameter("mn");
@@ -99,7 +112,49 @@ public class HumorPicController {
 		
 		//리다일렉트 응답할때 사용한다. 
 		return "redirect:/list/contents_detail.do?cont_id="+cont_id+"&mn="+mn;
+	}*/
+	
+	@RequestMapping("/list/insertcomment")
+	@ResponseBody
+	public void commentInsert(@RequestBody String paramData, HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardCmtDto dto){
+		
+		
+		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+	    resultMap = JSONArray.fromObject(paramData);
+	    
+	    for (Map<String, Object> map : resultMap) {
+	    	
+	    	System.out.println("댓글 ajax 데이터 map 확인");
+	    	System.out.println("provider : " + map.get("user_provider"));
+	    	System.out.println("id : " + map.get("user_id"));
+	    	System.out.println("name : " + map.get("user_name"));
+	    	System.out.println("image : " + map.get("user_image"));
+	    	System.out.println("cmt : " + map.get("cmt_comments"));
+	    	System.out.println("cmt_group : " + map.get("cmt_cont_group"));	    
+	    	
+	    	dto.setUser_id((String) map.get("user_id"));//글번호로 사용한다.
+	    	dto.setUser_name((String) map.get("user_name"));//글번호로 사용한다. 
+	    	dto.setUser_provider((String) map.get("user_provider"));//글번호로 사용한다. 
+	    	dto.setUser_image((String) map.get("user_image"));//글번호로 사용한다.
+	    	dto.setCmt_contents((String) map.get("cmt_comments"));//글번호로 사용한다.
+	    	dto.setCmt_cont_group(Integer.parseInt((String) map.get("cmt_cont_group")));//글번호로 사용한다.
+	    }
+	    
+	    System.out.println("댓글 contents : " + dto.getCmt_contents());
+		//서비스 객체를 이용해서 덧글이 저장될수 있도록 한다. 
+		System.out.println("댓글  cont_id = " + request.getParameter("cont_id"));
+		System.out.println("댓글  mn = " + request.getParameter("mn"));
+		 
+	    picService.commentInsert(request, dto);
 	}
 	
 	
+	// 로그인 요청 후 callback 처리 google, facebook, kakao
+	@RequestMapping("/list/getcmtlist.do")
+	@ResponseBody
+	public List<PicBoardCmtDto> getCmtlist(HttpServletRequest request, @RequestParam int cont_id){
+  		List<PicBoardCmtDto> commentList = picService.getCmtList(request, cont_id);
+		
+  		return commentList;
+	}
 }

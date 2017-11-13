@@ -8,6 +8,7 @@ public class PicBoardDto {
 	private String cont_title;
 	private String cont_tag;
 	private String cont_image;
+	private String cont_image_fill;
 	private int cont_view_count;
 	private String cont_date;
 	private String menu_name;
@@ -18,7 +19,8 @@ public class PicBoardDto {
 	public PicBoardDto(){}
 
 	public PicBoardDto(int cont_id, String user_id, String user_name, String user_provider, String cont_title,
-			String cont_tag, String cont_image, int cont_view_count, String cont_date, String menu_name, int startRowNum, int endRowNum) {
+			String cont_tag, String cont_image, String cont_image_fill, int cont_view_count, String cont_date,
+			String menu_name, int startRowNum, int endRowNum) {
 		super();
 		this.cont_id = cont_id;
 		this.user_id = user_id;
@@ -27,6 +29,7 @@ public class PicBoardDto {
 		this.cont_title = cont_title;
 		this.cont_tag = cont_tag;
 		this.cont_image = cont_image;
+		this.cont_image_fill = cont_image_fill;
 		this.cont_view_count = cont_view_count;
 		this.cont_date = cont_date;
 		this.menu_name = menu_name;
@@ -90,6 +93,14 @@ public class PicBoardDto {
 		this.cont_image = cont_image;
 	}
 
+	public String getCont_image_fill() {
+		return cont_image_fill;
+	}
+
+	public void setCont_image_fill(String cont_image_fill) {
+		this.cont_image_fill = cont_image_fill;
+	}
+
 	public int getCont_view_count() {
 		return cont_view_count;
 	}
@@ -104,6 +115,14 @@ public class PicBoardDto {
 
 	public void setCont_date(String cont_date) {
 		this.cont_date = cont_date;
+	}
+
+	public String getMenu_name() {
+		return menu_name;
+	}
+
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
 	}
 
 	public int getStartRowNum() {
@@ -122,13 +141,7 @@ public class PicBoardDto {
 		this.endRowNum = endRowNum;
 	}
 
-	public String getMenu_name() {
-		return menu_name;
-	}
-
-	public void setMenu_name(String menu_name) {
-		this.menu_name = menu_name;
-	}
+	
 
 	
 	

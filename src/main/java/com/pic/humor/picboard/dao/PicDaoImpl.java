@@ -239,7 +239,7 @@ public class PicDaoImpl implements PicDao{
 	}
 
 	@Override
-	public List<PicBoardDto> getCmtList(HttpServletRequest request, int cont_id) {
+	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id) {
 		System.out.println("commentGetList dao 진입완료  DB 전");
 		String menu = request.getParameter("mn");
 		System.out.println("commentGetList 요청 menu : " + menu);		
@@ -263,6 +263,36 @@ public class PicDaoImpl implements PicDao{
 		}else if(menu.equals("funny")){
 			System.out.println("commentGetList DB 완료");
 			return session.selectList("picSelect.getCmtList_funny", cont_id);
+
+		}
+		return null;
+	}
+	
+	@Override
+	public List<PicBoardCmtDto> getCmtList_last(HttpServletRequest request, int cont_id) {
+		System.out.println("commentGetList dao 진입완료  DB 전");
+		String menu = request.getParameter("mn");
+		System.out.println("commentGetList 요청 menu : " + menu);		
+		// TODO Auto-generated method stub
+		if(menu.equals("wtf")){
+			System.out.println("commentGetList DB 완료");
+			return session.selectList("picSelect.getCmtList_last_wtf", cont_id);
+			
+		}else if(menu.equals("nsfw")){
+			System.out.println("commentGetList DB 완료");
+			return session.selectList("picSelect.getCmtList_last_nsfw", cont_id);
+			
+		}else if(menu.equals("animals")){
+			System.out.println("commentGetList DB 완료");
+			return session.selectList("picSelect.getCmtList_last_animals", cont_id);
+			
+		}else if(menu.equals("gif")){
+			System.out.println("commentGetList DB 완료");
+			return session.selectList("picSelect.getCmtList_last_gif", cont_id);
+			
+		}else if(menu.equals("funny")){
+			System.out.println("commentGetList DB 완료");
+			return session.selectList("picSelect.getCmtList_last_funny", cont_id);
 
 		}
 		return null;
