@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
+<!-- <html ng-app="myApp"> -->
 <html ng-app="myApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -70,6 +71,9 @@
 			}); 
 	   }); */
 	</script>	
+	<!-- <style>
+		figure.img-panel { display:none; }
+	</style>  -->
 </head>
 <body>
 	<a name="ancre"></a>
@@ -89,7 +93,7 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=4"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
@@ -105,7 +109,7 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=3"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=3 "></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
@@ -135,12 +139,60 @@
     });   
     
    $(document).ready(function() {	  
-		 $(".img-panel").imgLiquid({
-			fill : true,
-			horizontalAlign : "center",
-			verticalAlign : "center"
-			}); 
+	 $(".img-panel").imgLiquid({
+		fill : true,
+		horizontalAlign : "center",
+		verticalAlign : "center"
 		}); 
+	}); 
+   
+   var pageNum = 1;
+   function loadMore(){
+	   pageNum = pageNum + 1;
+	   var menu = $("#getMenuName").val();
+	   
+	   console.log("pageNum : " + pageNum);
+	   console.log("page menu : " + menu);
+	   
+	   
+	   $.ajax({
+           method      : 'get',
+           url         : '/list/contents_jsonList.do?mn=' + menu + '&pageNum=' + pageNum,
+           // json 형태로 보내기 위해서 JSON.stringify(arr)
+           /* data        : JSON.stringify(arr), */
+           /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
+           dataType	: "json", */
+           /* contentType	: "application/json; charset=UTF-8", */
+           error       : function(request, status, error) {
+               alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+           },
+           success     : function(result) {		            	
+       		console.log("list 받아오기 성공");
+       		// 성공 후 
+       		var endrow = result.endRowNum;
+       		var totalrow = result.totalRow;
+       		var list = result.list;
+       		console.log(result);
+       		console.log("endrow :" + endrow);
+       		console.log("total :" + totalrow);  
+       		$(result.list).each(function(){
+       			console.log("image : " + this.cont_image_fill);
+       			console.log("title : " + this.cont_title);
+       		});
+       		
+       		// for문으로 ajax 댓글 추가 하기
+       		/* for (var i = 0; i < result.length; i++){
+       			$(".post-reply-main")
+       			.append('<div class="post-reply-2">'
+       					+ '<div class="image-reply-post">'
+       					+ '<img src="' + result[i].user_image + '" width="65px" height="65px" alt=""></div>'
+       					+ '<div class="name-reply-post">' + result[i].user_name + '</div>'
+       					+ '<div class="text-reply-post">' + result[i].cmt_contents + '</div>'
+       					+ '</div>');
+       		} */
+       }
+   });
+   };
     </script>
 </body>
 </html>

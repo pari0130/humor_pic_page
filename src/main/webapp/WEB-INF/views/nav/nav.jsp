@@ -6,7 +6,7 @@
 		<div class="logo">
 			<a href="${pageContext.request.contextPath }/home.do">
 				<div style="font-size: 15px" class="oldies object">HOME</div>		
-				<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>											
+				<input type="hidden" id="getContextPath" value="${pageContext.request.contextPath }"/>															
 			</a> 
 			<c:choose>
 			  	<c:when test="${empty user_id }">
@@ -57,8 +57,10 @@
 	<div class="navbar object" ng-controller="navCtrl">
 		<div id="wrapper-sorting">
 			<div id="wrapper-title-1">
+				<a href="#">
 				<div class="top-rated object">Top-rated</div>
-				<div id="fleche-nav-1"></div>
+				</a>
+				<div id="fleche-nav-1"></div>				
 			</div>
 			<div id="wrapper-title-2">
 				<a href="#">
@@ -109,27 +111,27 @@
 		</div>
 		<div id="main-premium-ressource">
 			<div class="premium-ressource">
-				<a href="#">WTF</a>
+				<a href="#wtf" ng-click="activated='wtf'">WTF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
 			<div class="premium-ressource">
-				<a href="#">NSFW</a>
+				<a href="#nsfw" ng-click="activated='nsfw'">NSFW</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
 			<div class="premium-ressource">
-				<a href="#">ANIMALS</a>
+				<a href="#animals" ng-click="activated='animals'">ANIMALS</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
 			<div class="premium-ressource">
-				<a href="#">GIF</a>
+				<a href="#gif" ng-click="activated='gif'">GIF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
 			<div class="premium-ressource">
-				<a href="#">FUNNY</a>
+				<a href="#funny" ng-click="activated='funny'">FUNNY</a>
 			</div>
 		</div>
 	</div>

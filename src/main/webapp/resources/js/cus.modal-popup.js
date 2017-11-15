@@ -155,8 +155,8 @@
         console.log("user_name 값 : " + $("#user_name").val());
         console.log("user_provider 값 : " + $("#user_provider").val());
         
-        alert("tag : " + $("#cont_tag").val());
-        alert("id : " + $("#user_id").val());
+        /*alert("tag : " + $("#cont_tag").val());
+        alert("id : " + $("#user_id").val());*/
         
         document.getElementById('upload_form').submit();
         /*return false;*/

@@ -51,8 +51,7 @@
 	<context:component-scan base-package="com.pic.humor.picboard.*" />
 	<context:component-scan base-package="com.pic.humor.picboard.dto" /> 
 	
-	
-	
+
 	<!-- bean의 이름으로 view 를 찾아갈수 있도록 설정 최우선 순위로 설정 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0" />
@@ -65,4 +64,8 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>  
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">  
+	    <property name="order" value="1"></property>
+	</bean>  
 </beans>

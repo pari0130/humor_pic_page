@@ -31,13 +31,24 @@ public class HumorPicController {
 	
 	@Autowired
 	private SocialService socialService;
-			
+	
 	@RequestMapping("/list/contents_list")
 	public ModelAndView contentsList(HttpServletRequest request,@RequestParam(defaultValue="1") int pageNum){			
 		ModelAndView mView=picService.getContList(request, pageNum);
 		//view 페이지 설정하고 
 		System.out.println("contents list controller");
 		mView.setViewName("list/contents_list");
+		//ModelAndView 객체를 리턴해준다. 
+		return mView;
+	}
+	
+	@RequestMapping("/list/contents_jsonList")
+	public ModelAndView contentsJsonList(HttpServletRequest request,int pageNum){			
+		ModelAndView mView=picService.getContJsonList(request, pageNum);
+		//view 페이지 설정하고 
+		System.out.println("contents json list controller");
+		System.out.println("pagenum : " + pageNum);
+		mView.setViewName("jsonView");
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 	}
@@ -149,7 +160,6 @@ public class HumorPicController {
 	}
 	
 	
-	// 로그인 요청 후 callback 처리 google, facebook, kakao
 	@RequestMapping("/list/getcmtlist.do")
 	@ResponseBody
 	public List<PicBoardCmtDto> getCmtlist(HttpServletRequest request, @RequestParam int cont_id){

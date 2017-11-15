@@ -54,6 +54,7 @@ public class PicDaoImpl implements PicDao{
 		// TODO Auto-generated method stub
 		if(menu.equals("wtf")){
 			System.out.println("getCount DB 완료");
+			System.out.println("getCount : " + session.selectOne("picSelect.getListCount_wtf"));
 			return session.selectOne("picSelect.getListCount_wtf");
 			
 		}else if(menu.equals("nsfw")){

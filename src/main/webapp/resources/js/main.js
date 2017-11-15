@@ -5,7 +5,7 @@ $(document).ready(function() {
 		$("#wrapper-header").delay(750).animate({opacity:'1',width:'100%'},500); /*hwi delay 1500*/
 		$("#wrapper-navbar").delay(1000).animate({opacity:'1',height:'60px'},500); /*hwi delay 2000*/
 		$("#main-container-image").delay(1250).animate({opacity:'1'},500); /*hwi delay 2500*/
-		/*$("#getAlert").val();*/
+		/*$("#getAlert").val();*/		
 		
 	});
 
@@ -342,4 +342,5 @@ function getQuerystring(paramName){
 		   } 
 	   }
 } 
+
 
