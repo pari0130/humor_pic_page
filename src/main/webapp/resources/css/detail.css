@@ -175,6 +175,10 @@ body,html{
 
 .top-rated{color:#CCC;margin-left:15px;font-weight:500;} /* hwi color:#666 */
 .recent,.oldies,.menus{color: #CCC;margin-left:80px;font-weight:500;margin-left:40px;} /* #hwi menus */
+.menus.active{color:#666;opacity:1;} /* hwi active add */
+.top-rated.active{color:#666;opacity:1;} /* hwi active add */
+.recent.active{color:#666;opacity:1;} /* hwi active add */
+.oldies.active{color:#666;opacity:1;} /* hwi active add */
 
 .top-rated:hover,.recent:hover,.oldies:hover,.menus:hover{color:#666;opacity:1;}
 

@@ -68,4 +68,6 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">  
 	    <property name="order" value="1"></property>
 	</bean>  
+	
+	
 </beans>

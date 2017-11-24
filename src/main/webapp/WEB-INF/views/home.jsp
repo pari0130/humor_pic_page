@@ -14,12 +14,15 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=2' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=7' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" /> 
     <!-- UPLOAD > TAG -->
     <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
+    <!-- LOADING PROGRESS -->
+    <link href="${pageContext.request.contextPath }/resources/css/gspinner.min.css?ver=1" rel="stylesheet">
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/imgLiquid-min.js"></script>
     
@@ -43,15 +46,13 @@
 	// single page 라우터 설정 
 	myApp.config(function($routeProvider){
 		$routeProvider
-		/*
 		.when("/", {templateUrl:"/list/contents_list.do?mn=top"})
 		.when("/home", {templateUrl:"/list/contents_list.do?mn=top"})
 		.when("/top", {templateUrl:"/list/contents_list.do?mn=top"})
 		.when("/recent", {templateUrl:"/list/contents_list.do?mn=recent"})
 		.when("/old", {templateUrl:"/list/contents_list.do?mn=old"})
-		*/
-		.when("/", {templateUrl:"/list/contents_list.do?mn=wtf"})
-		.when("/home", {templateUrl:"/list/contents_list.do?mn=wtf"})
+		/* .when("/", {templateUrl:"/list/contents_list.do?mn=wtf"})
+		.when("/home", {templateUrl:"/list/contents_list.do?mn=wtf"}) */
 		.when("/wtf", {templateUrl:"/list/contents_list.do?mn=wtf"})
 		.when("/nsfw", {templateUrl:"/list/contents_list.do?mn=nsfw"})
 		.when("/animals", {templateUrl:"/list/contents_list.do?mn=animals"})
@@ -60,7 +61,7 @@
 		.otherwise({rediredTo:"/"});
 	});
 	myApp.controller("navCtrl", function($scope){
-		$scope.activated="wtf";
+		$scope.activated="top";
 	});
 	
 	/*  $(document).ready(function() {	  
@@ -93,7 +94,7 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=4"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=3"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
@@ -117,6 +118,8 @@
     <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
     <!-- ALERT -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
+    <!-- LOADING PROGRESS -->
+    <script src="${pageContext.request.contextPath }/resources/js/g-spinner.min.js?ver=1"></script>
     	
     <script>   	
  	// 트위터 로그인 후 로그인 alert 창 띄우기 /* ${alertMsg} */
@@ -130,7 +133,7 @@
     
     /* ${twAlert} */   
     
-    /* lazyload 처리 */
+   /* lazyload 처리 */
    $(function() {
         $("img.lazy").lazyload({
             effect: "fadeIn",
@@ -138,6 +141,7 @@
         });
     });   
     
+   // image 비율 조정
    $(document).ready(function() {	  
 	 $(".img-panel").imgLiquid({
 		fill : true,
@@ -146,53 +150,28 @@
 		}); 
 	}); 
    
-   var pageNum = 1;
-   function loadMore(){
-	   pageNum = pageNum + 1;
-	   var menu = $("#getMenuName").val();
-	   
-	   console.log("pageNum : " + pageNum);
-	   console.log("page menu : " + menu);
-	   
-	   
-	   $.ajax({
-           method      : 'get',
-           url         : '/list/contents_jsonList.do?mn=' + menu + '&pageNum=' + pageNum,
-           // json 형태로 보내기 위해서 JSON.stringify(arr)
-           /* data        : JSON.stringify(arr), */
-           /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
-           dataType	: "json", */
-           /* contentType	: "application/json; charset=UTF-8", */
-           error       : function(request, status, error) {
-               alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-           },
-           success     : function(result) {		            	
-       		console.log("list 받아오기 성공");
-       		// 성공 후 
-       		var endrow = result.endRowNum;
-       		var totalrow = result.totalRow;
-       		var list = result.list;
-       		console.log(result);
-       		console.log("endrow :" + endrow);
-       		console.log("total :" + totalrow);  
-       		$(result.list).each(function(){
-       			console.log("image : " + this.cont_image_fill);
-       			console.log("title : " + this.cont_title);
-       		});
-       		
-       		// for문으로 ajax 댓글 추가 하기
-       		/* for (var i = 0; i < result.length; i++){
-       			$(".post-reply-main")
-       			.append('<div class="post-reply-2">'
-       					+ '<div class="image-reply-post">'
-       					+ '<img src="' + result[i].user_image + '" width="65px" height="65px" alt=""></div>'
-       					+ '<div class="name-reply-post">' + result[i].user_name + '</div>'
-       					+ '<div class="text-reply-post">' + result[i].cmt_contents + '</div>'
-       					+ '</div>');
-       		} */
-       }
-   });
-   };
+   // LoadMore 처리 부분
+ /*   var pageNum = "${pageNum}"; 
+   var startPgNum = "${startPageNum}";
+   console.log("pageNum : " + pageNum);
+   console.log("startPgNum : " + startPgNum); */
+   // 메뉴를 클릭했을때 pageNum 을 1로 초기화 한다.
+   // 현재 진입한 메뉴가 active 상태에서는 1로 초기화 하지않는다.
+   // pagenum이 1이나 1이상이고 진입한 메뉴가 active 일때는  초기화 하지 않는다.
+   // 클릭했을때 siblings()를 이용해서 다른 형제 요소에 inactive를 넣고 active 상태일때만 동작
+   /*$(".menus").click(function(){
+	  if($(this).hasClass("active") === true ){
+		  return;  
+	  }else{
+		  pageNum = 1;
+	  } 
+	  var menu = $("#getMenuName").val();
+	  if($("#menus_wtf").hasClass("active") === true){
+		  
+	  } 
+   }); */
+   
+  
     </script>
 </body>
 </html>

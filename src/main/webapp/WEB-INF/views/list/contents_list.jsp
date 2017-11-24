@@ -8,10 +8,12 @@
             <section class="work">
             <%-- <% for(int i=0; i < 20; i++){ %> --%>
             <input type="hidden" id="getMenuName" value="${menu }"/>
+            <input type="hidden" id="getPageNum" value=""/>
+            
             <c:if test="${not empty list}">
 	            <c:forEach var="tmp" items="${list }">
 	                <figure class="img-panel"> <%-- ${pageContext.request.contextPath } --%> 				
-	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${menu}">
+	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${tmp.menu_name}">
 	       					<img src="${tmp.cont_image_fill }" class="lazy" alt="" />	       					       					
 	       				</a>	                
 	                    <div id="wrapper-part-info">
@@ -25,41 +27,19 @@
             </section>
         </div>
     </div>
-    <div id="wrapper-oldnew">
-        <div class="oldnew">
-            <!--
-             <div class="wrapper-oldnew-prev">
-                <div id="oldnew-prev"></div>
+    <div id="wrapper-oldnew"> <!-- <div id="wrapper-oldnew"> -->
+        <div class="oldnew">            
+             <div class="wrapper-loadmore">
+              <a href="javascript:loadMore();">
+                <div id="loadmore"></div>          
+                </a>
             </div> 
-            <div class="wrapper-oldnew-next">
+            <div id="loader"></div>
+           <!--  <div class="wrapper-oldnew-next">
        		 <a href="javascript:loadMore();">
                 <div id="oldnew-next"></div>
              </a>
-            </div> 
-            -->
-            <c:choose>
-				<c:when test="${endRowNum lt totalRow }">
-				<div class="wrapper-oldnew-next">
-	       		 <a href="javascript:loadMore();">
-	                <div id="oldnew-next"></div>
-	             </a>
-	            </div>
-					<%-- <li>
-						<a href="imgboardlist.do?pageNum=${endPageNum+1 }">&raquo;</a>
-					</li> --%>
-				</c:when>
-				<c:otherwise>
-				<div class="wrapper-oldnew-next">
-	       		 <a href="javascript:loadMore();" style="display:none"> <!-- style="display:none" -->
-	                <div id="oldnew-next"></div>
-	             </a>
-	            </div>
-					<!-- <li class="disabled">
-						<a class="muted" href="javascript:">&raquo;</a>
-					</li> -->
-				</c:otherwise>
-			</c:choose>
-           
+            </div> -->       
         </div>
     </div>
     <div id="wrapper-thank">
@@ -104,3 +84,95 @@
         </div>
     </div>
 </div>
+
+<script>
+// 카테고리 메뉴에서 이동할때 마다 pageNum을 1로 받아와서 초기화를 시켜야 loadMore 시킬때 변수가 초기화된다.
+var pageNum = "${pageNum}";
+pageNum = Number(pageNum);
+console.log("pageNum : " + pageNum);
+
+function loadMore(){
+	   console.log("loadMore pageNum : " + pageNum);
+	   pageNum = pageNum + 1;
+	   var menu = $("#getMenuName").val();	   	   
+	   console.log("pageNum : " + pageNum);
+	   console.log("page menu : " + menu);
+	   
+	   $.ajax({
+        method      : 'get',
+        url         : '/list/contents_jsonList.do?mn=' + menu + '&pageNum=' + pageNum,
+        // json 형태로 보내기 위해서 JSON.stringify(arr)
+        /* data        : JSON.stringify(arr), */
+        /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
+        dataType	: "json", */
+        contentType	: "application/json; charset=UTF-8",
+        error       : function(request, status, error) {
+            alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+        },
+        success     : function(result) {		            	
+    		console.log("list 받아오기 성공");
+    		// 성공 후 
+    		var endrow = result.endRowNum;
+    		var totalrow = result.totalRow;
+    		var list = result.list;
+    		console.log(result);
+    		console.log("endrow :" + endrow);
+    		console.log("totalrow :" + totalrow);  
+    		// 비교를 위해 넘겨받은 endrow, totalrow를 number type으로 변환한다.
+    		endrow = Number(endrow);
+    		totalrow = Number(totalrow);
+    		$(result.list).each(function(){
+    			console.log("image : " + this.cont_image_fill);
+    			console.log("title : " + this.cont_title);    			
+    			// image section 추가 하는 append
+    			// $("#main-container-image").delay(1250).animate({opacity:'1'},500);
+    			var item = '<figure class="img-panel ' + pageNum + '">'
+ 					+ '<a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=' + this.cont_id + '&mn=' + this.menu_name +'">'
+ 					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" />'
+ 					+ '</a>'
+ 					+ '<div id="wrapper-part-info">'
+ 					+ '<div id="part-info">' + this.cont_title + '</div>'
+ 					+ '</div>'
+ 					+ '</figure>';
+ 				console.log("item : " + item);
+ 				$(item).appendTo("section.work").hide();
+ 				/* $("figure." + pageNum).hide().fadeIn(1000); */
+ 				/* $("section.work").append(item); */ 				
+ 				/* item.animate({opacity:'1'},500); */
+    			/* $("section.work")
+	 			.append('<figure class="img-panel">'
+	 					+ '<a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=' + this.cont_id + '&mn=' + this.menu_name +'">'
+	 					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" />'
+	 					+ '</a>'
+	 					+ '<div id="wrapper-part-info">'
+	 					+ '<div id="part-info">' + this.cont_title + '</div>'
+	 					+ '</div>'
+	 					+ '</figure>').fadeIn(2000); */
+	 					/* .animate({opacity:'1'},500); */       			   			
+    		}); // each문 종료
+    		
+    		$("#loadmore").hide();	
+    		// 로더함수 생성
+    		var $loader = $("#loader");
+    		// 로더실행
+    		$loader.gSpinner({
+    			scale: .3
+    		});
+    		
+    		// 2초 후 로딩 숨김, 더보기 표시
+    		setTimeout(function(){
+    			$loader.gSpinner("hide");
+    			$("figure." + pageNum).show();
+    			// endrow랑 totalrow랑 비교해서 행의 전체 row보다 커질경우 더보기 버튼을 숨긴다.
+        		if(endrow >= totalrow){        			
+        			$("#wrapper-loadmore").css("display", "none");        			
+        		}else{
+        			$("#loadmore").show();	
+        		};
+    		},1500);
+
+    } // success 종료
+}); // ajax 종료
+};
+
+</script>

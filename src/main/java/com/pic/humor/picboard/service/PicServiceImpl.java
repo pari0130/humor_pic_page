@@ -16,7 +16,7 @@ import com.pic.humor.picboard.dto.PicBoardDto;
 public class PicServiceImpl implements PicService{
 	
 	//한페이지에서 나타낼 로우의 갯수
-	private static final int PAGE_ROW_COUNT=5;
+	private static final int PAGE_ROW_COUNT=3;
 	//하단 디스플레이 페이지 갯수
 	private static final int PAGE_DISPLAY_COUNT=1;
 	
@@ -74,17 +74,22 @@ public class PicServiceImpl implements PicService{
 		//ModelAndView 객체를 생성해서 
 		ModelAndView mView=new ModelAndView();
 		//request 영역에 담는 대신 ModelAndView 객체에 담고 
+		System.out.println("pageNum : " + Num);
+		System.out.println("start pageNum : " + startPageNum);
 		mView.addObject("list", list);
 		mView.addObject("pageNum", Num);
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("startRowNum", startRowNum);
 		mView.addObject("endRowNum", endRowNum);
-		mView.addObject("totalRow", totalRow);
+		mView.addObject("totalRow", totalRow); 
 		// detail page 진입시 cont_id + menu 값
 		mView.addObject("menu", menu);
 		System.out.println("mView에 담음");
-		//ModelAndView 객체를 리턴해준다. 
+		// session에 menu를 넣어서 top recent 활용에 사용
+		System.out.println("session에 menu 담음");
+		request.getSession().setAttribute("sessionMenu", menu);
+		//ModelAndView 객체를 리턴해준다.
 		return mView;
 		
 	}
@@ -128,7 +133,7 @@ public class PicServiceImpl implements PicService{
 		ModelAndView mView=new ModelAndView();
 		//request 영역에 담는 대신 ModelAndView 객체에 담고 
 		mView.addObject("list", list);
-		mView.addObject("pageNum", Num);
+		/*mView.addObject("pageNum", Num);*/
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("startRowNum", startRowNum);

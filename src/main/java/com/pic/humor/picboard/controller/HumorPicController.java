@@ -35,6 +35,7 @@ public class HumorPicController {
 	@RequestMapping("/list/contents_list")
 	public ModelAndView contentsList(HttpServletRequest request,@RequestParam(defaultValue="1") int pageNum){			
 		ModelAndView mView=picService.getContList(request, pageNum);
+		System.out.println("con list pageNum " + pageNum);
 		//view 페이지 설정하고 
 		System.out.println("contents list controller");
 		mView.setViewName("list/contents_list");
@@ -42,6 +43,7 @@ public class HumorPicController {
 		return mView;
 	}
 	
+	// 더보기에 사용할 json list 요청
 	@RequestMapping("/list/contents_jsonList")
 	public ModelAndView contentsJsonList(HttpServletRequest request,int pageNum){			
 		ModelAndView mView=picService.getContJsonList(request, pageNum);
@@ -49,6 +51,8 @@ public class HumorPicController {
 		System.out.println("contents json list controller");
 		System.out.println("pagenum : " + pageNum);
 		mView.setViewName("jsonView");
+		String menu = (String) request.getSession().getAttribute("sessionMenu");
+		System.out.println("session menu : " + menu);
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 	}

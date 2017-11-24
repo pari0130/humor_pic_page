@@ -122,6 +122,37 @@ MENUSIDECLOSE.addEventListener('click', function() {
 			   $("#main-container-menu").stop().animate({'left':'-100%'},300);	
 }); 
 
+/* BOUTON MENU ARROW-1 */
+
+$(document).on('touchstart mouseover', '#wrapper-title-1', function(event){
+
+        event.stopPropagation();
+        event.preventDefault();
+        if(event.handled !== true) {
+			
+			   $("#fleche-nav-1").stop().animate({rotate: '90deg',opacity:'1'},300);	
+
+            event.handled = true;
+        } else {
+            return false;
+        }
+});
+
+$(document).on('touchend mouseout', '#wrapper-title-1', function(event){
+	
+        event.stopPropagation();
+        event.preventDefault();
+        if(event.handled !== true) {
+			
+			   $("#fleche-nav-1").stop().animate({rotate: '0deg',opacity:'0.5'},300);	
+
+            event.handled = true;
+        } else {
+            return false;
+        }
+});
+
+
 /* BOUTON MENU ARROW-2 */
 
 $(document).on('touchstart mouseover', '#wrapper-title-2', function(event){
@@ -244,13 +275,13 @@ $(document).on('touchend mouseout', '#oldnew-next', function(event){
 
 /* BOUTON PREV */
 
-$(document).on('touchstart mouseover', '#oldnew-prev', function(event){
+$(document).on('touchstart mouseover', '#loadmore', function(event){ // #oldnew-prev hwi
 
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
 			
-			   $("#oldnew-prev").stop().animate({scale:'1.2',opacity:'0.5'},300);	
+			   $("#loadmore").stop().animate({scale:'1.2',opacity:'0.5'},300);	
 
             event.handled = true;
         } else {
@@ -258,13 +289,13 @@ $(document).on('touchstart mouseover', '#oldnew-prev', function(event){
         }
 });
 
-$(document).on('touchend mouseout', '#oldnew-prev', function(event){
+$(document).on('touchend mouseout', '#loadmore', function(event){ // #oldnew-prev hwi
 	
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
 			
-			   $("#oldnew-prev").stop().animate({scale:'1',opacity:'1'},300);	
+			   $("#loadmore").stop().animate({scale:'1',opacity:'1'},300);	
 
             event.handled = true;
         } else {

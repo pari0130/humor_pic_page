@@ -73,6 +73,18 @@ public class PicDaoImpl implements PicDao{
 			System.out.println("getCount DB 완료");
 			return session.selectOne("picSelect.getListCount_funny");
 			
+		}else if(menu.equals("top")){
+			System.out.println("getCount DB 완료");
+			return session.selectOne("picSelect.getListCount_all");
+			
+		}else if(menu.equals("recent")){
+			System.out.println("getCount DB 완료");
+			return session.selectOne("picSelect.getListCount_all");
+			
+		}else if(menu.equals("old")){
+			System.out.println("getCount DB 완료");
+			return session.selectOne("picSelect.getListCount_all");
+			
 		}
 		return 0;
 	}
@@ -103,6 +115,18 @@ public class PicDaoImpl implements PicDao{
 		}else if(menu.equals("funny")){
 			System.out.println("getContents DB 완료");
 			return session.selectList("picSelect.getContList_funny", dto);
+
+		}else if(menu.equals("top")){
+			System.out.println("getContents DB 완료");
+			return session.selectList("picSelect.getContList_top", dto);
+
+		}else if(menu.equals("recent")){
+			System.out.println("getContents DB 완료");
+			return session.selectList("picSelect.getContList_recent", dto);
+
+		}else if(menu.equals("old")){
+			System.out.println("getContents DB 완료");
+			return session.selectList("picSelect.getContList_old", dto);
 
 		}
 		return null;

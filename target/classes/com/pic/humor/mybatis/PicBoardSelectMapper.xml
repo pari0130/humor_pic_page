@@ -60,6 +60,57 @@
 		 	    )
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	<select id="getContList_top" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT <include refid="picAll"/> 
+		FROM  (	SELECT result1.*, ROWNUM rnum
+				    FROM  (  SELECT  *
+				             FROM   (   SELECT * FROM picboard_wtf    
+				                        UNION ALL     
+				                        SELECT * FROM picboard_nsfw      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_animals      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_gif      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_funny)
+				             ORDER BY cont_view_count DESC) result1
+				)
+      WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_recent" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT <include refid="picAll"/> 
+		FROM  (	SELECT result1.*, ROWNUM rnum
+				    FROM  (  SELECT  *
+				             FROM   (   SELECT * FROM picboard_wtf    
+				                        UNION ALL     
+				                        SELECT * FROM picboard_nsfw      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_animals      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_gif      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_funny)
+				             ORDER BY cont_date DESC) result1
+				)
+      WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_old" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT <include refid="picAll"/> 
+		FROM  (	SELECT result1.*, ROWNUM rnum
+				    FROM  (  SELECT  *
+				             FROM   (   SELECT * FROM picboard_wtf    
+				                        UNION ALL     
+				                        SELECT * FROM picboard_nsfw      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_animals      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_gif      
+				                        UNION ALL     
+				                        SELECT * FROM picboard_funny)
+				             ORDER BY cont_date ASC) result1
+				)
+      WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
 	
 	<!-- 화면에 표시할 count 값 출력 -->
 	<select id="getListCount_wtf" parameterType="int" resultType="int">
@@ -81,6 +132,21 @@
 	<select id="getListCount_funny" parameterType="int" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM picboard_funny		
+	</select>
+	<select id="getListCount_all" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM 
+		(
+		  SELECT * FROM picboard_wtf wtf
+		  UNION ALL
+		  SELECT * FROM picboard_nsfw nsfw
+		  UNION ALL
+		  SELECT * FROM picboard_animals animals
+		  UNION ALL
+		  SELECT * FROM picboard_gif gif
+		  UNION ALL
+		  SELECT * FROM picboard_funny funny
+		)		
 	</select>
 	
 	<!-- 글정보 얻어오기 -->
