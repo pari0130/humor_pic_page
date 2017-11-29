@@ -105,6 +105,13 @@
                     check_length = check_length + 1; /*hwi*/
                     return false;
                 }
+                if( e.key == "Tab" ){
+                    e.preventDefault(); // solves Chrome bug - http://stackoverflow.com/a/20398191/104380
+                    if( this.addTag(s) )
+                      e.target.innerHTML = '';
+                    check_length = check_length + 1; /*hwi*/
+                    return false;
+                }
                 /*console.log("check_length:" + check_length)*/
                
             },

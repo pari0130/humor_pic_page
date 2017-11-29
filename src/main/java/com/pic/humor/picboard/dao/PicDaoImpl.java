@@ -332,4 +332,13 @@ public class PicDaoImpl implements PicDao{
 		return null;
 	}
 
+	@Override
+	public List<PicBoardDto> getRandomCont(HttpServletRequest request, PicBoardDto dto) {
+		
+		System.out.println("getRandomCont dao 진입완료  DB 전");
+		// TODO Auto-generated method stub
+		System.out.println("getRandomCont DB 완료");
+		return session.selectList("picSelect.getRandomCont", dto);
+	}
+
 }

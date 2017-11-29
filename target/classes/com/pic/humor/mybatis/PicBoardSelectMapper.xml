@@ -121,17 +121,17 @@
 		SELECT <include refid="picAll"/> 
 		FROM  (	SELECT result1.*, ROWNUM rnum
 			    FROM  (  SELECT  *
-			             FROM   (   SELECT * FROM picboard_wtf WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'   
+			             FROM   (   SELECT * FROM picboard_wtf WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'   
 			                        UNION ALL     
-			                        SELECT * FROM picboard_nsfw WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        SELECT * FROM picboard_nsfw WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'    
 			                        UNION ALL     
-			                        SELECT * FROM picboard_animals WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        SELECT * FROM picboard_animals WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'       
 			                        UNION ALL     
-			                        SELECT * FROM picboard_gif WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        SELECT * FROM picboard_gif WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'       
 			                        UNION ALL     
-			                        SELECT * FROM picboard_funny WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'
+			                        SELECT * FROM picboard_funny WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%' 
 			                     )
-			             ORDER BY cont_date ASC
+			             ORDER BY cont_date DESC
 			          ) result1
 				)
       WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
@@ -294,6 +294,25 @@
 				WHERE cmt_cont_group=#{cont_id}
 				ORDER BY ROWNUM DESC)		
 		WHERE ROWNUM = 1		
+	</select>
+	
+	<!-- detail page more list 값 출력 -->
+	<select id="getRandomCont" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT *
+		FROM ( SELECT <include refid="picAll"/> 
+		       FROM  (  SELECT * FROM picboard_wtf WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%' 
+		                UNION ALL     
+		                SELECT * FROM picboard_nsfw WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%' 
+		                UNION ALL     
+		                SELECT * FROM picboard_animals WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'   
+		                UNION ALL     
+		                SELECT * FROM picboard_gif WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%'     
+		                UNION ALL     
+		                SELECT * FROM picboard_funny WHERE cont_title LIKE '%'||#{keyword_title}||'%' OR cont_tag LIKE '%'||#{keyword_tag}||'%' 
+		              )
+		        ORDER BY DBMS_RANDOM.RANDOM 
+		      )
+		WHERE rownum <![CDATA[ < ]]> 5
 	</select>
 	
 </mapper>

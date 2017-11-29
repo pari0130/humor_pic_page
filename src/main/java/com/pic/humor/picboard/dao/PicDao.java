@@ -17,4 +17,5 @@ public interface PicDao {
 	public void commentInsert(HttpServletRequest request, PicBoardCmtDto dto);
 	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id);
 	public List<PicBoardCmtDto> getCmtList_last(HttpServletRequest request, int cont_id);
+	public List<PicBoardDto> getRandomCont(HttpServletRequest request, PicBoardDto dto);
 }

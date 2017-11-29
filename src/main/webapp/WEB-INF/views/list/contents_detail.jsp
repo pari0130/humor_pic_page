@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/detail.css?ver=3' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/detail.css?ver=5' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css" />
@@ -240,28 +240,37 @@
                         <div class="wrapper-desc">
                             <div class="icon-desc"><img src="${pageContext.request.contextPath }/resources/img/icon-desc.svg" alt="" width="24" height="24" /></div>
                             <div class="text-desc">
-                           	 <!-- tag 자리 -->
+	                        	<!-- tag 자리 -->
+
                             </div>
                         </div>
+                        
                        <%-- <div class="wrapper-download">
                             <div class="icon-download"><img src="${pageContext.request.contextPath }/resources/img/icon-download.svg" alt="" width="19" height="26" /></div>
                             <div class="text-download"><b>share</b></div>
-                        </div> --%>
+                        </div>  --%>
                         <div class="wrapper-morefrom">
-                            <div class="text-morefrom">More from .psd</div>
+                            <div class="text-morefrom">More contents.</div>
                             <div class="image-morefrom">
-                                <a href="#">
+                            <c:if test="${not empty randomList}">
+					            <c:forEach var="tmp" items="${randomList }">					      
+					              <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${tmp.menu_name}">
+                                    <div class="image-morefrom-cont"><img src="${tmp.cont_image_fill }" alt="" width="430" height="330" /></div>
+                               	 </a>
+					             </c:forEach>
+				             </c:if>    
+                                <%-- <a href="#">
                                     <div class="image-morefrom-1"><img src="${pageContext.request.contextPath }/resources/img/psd-1.jpg" alt="" width="430" height="330" /></div>
+                                </a> 
+                                <a href="#">
+                                    <div class="image-morefrom-cont"><img src="http://res.cloudinary.com/pari0130/image/upload/w_243,h_300,c_fill/v1511761383/NSFW/trdyrpl0khjwnpjjdeci.jpg" alt="" width="430" height="330" /></div>
                                 </a>
                                 <a href="#">
-                                    <div class="image-morefrom-2"><img src="${pageContext.request.contextPath }/resources/img/psd-2.jpg" alt="" width="430" height="330" /></div>
+                                    <div class="image-morefrom-cont"><img src="http://res.cloudinary.com/pari0130/image/upload/w_243,h_300,c_fill/v1510900117/NSFW/zuyfklrjvkr7lduiggf3.jpg" alt="" width="430" height="330" /></div>
                                 </a>
                                 <a href="#">
-                                    <div class="image-morefrom-3"><img src="${pageContext.request.contextPath }/resources/img/psd-3.jpg" alt="" width="430" height="330" /></div>
-                                </a>
-                                <a href="#">
-                                    <div class="image-morefrom-4"><img src="${pageContext.request.contextPath }/resources/img/psd-6.jpg" alt="" width="430" height="330" /></div>
-                                </a>
+                                    <div class="image-morefrom-cont"><img src="http://res.cloudinary.com/pari0130/image/upload/w_243,h_300,c_fill/v1510900093/NSFW/vkdk5qcqjgfukgaafvyk.jpg" alt="" width="430" height="330" /></div>
+                                </a>  --%>                      
                             </div>
                         </div>
                     </div>
@@ -552,15 +561,27 @@
 	
 	// tag 잘라서 넣기
 	var org_tag = "${dto.cont_tag }";
+	console.log("dto cont_tag " + org_tag);
+	
 	if(org_tag.indexOf(",") == -1){
 		// ,가 포함되지 않은 하나짜리 일 경우 여기 실행하고
-		// <a href="javascript:ajaxSearch()"><b>${dto.cont_tag }</b></a>
-		$("div.text-desc").append('<a href="javascript:ajaxSearch('+ org_tag +')"><b>#' + org_tag + '</b></a>');
+		$("div.text-desc").append('<tag class="cont_tag" id="tag0"></tag>');
+		$("tag.cont_tag").append('<span><a href="javascript:ajaxSearch('+ org_tag +')">#' + org_tag + '</a></span>');
+				/* + '<div class="cont_tag">'
+				+ '<span><a href="javascript:ajaxSearch('+ org_tag +')">' + + org_tag + '</a></span>'
+				+ '</div>'); */
 	}else{
 		// ,가 포함되어 있는 경우 잘라야 한다.
 		var tagArray = org_tag.split(',');
+		
 		for (var i = 0; i < tagArray.length; i++){
-			$("div.text-desc").append('<a href="javascript:ajaxSearch(' + tagArray[i] + ')"><b>#' + tagArray[i] + '</b></a> &nbsp;');
+			$("div.text-desc").append('<tag class="cont_tag" id="tag' + i + '"></tag>');
+			$("tag.cont_tag#tag"+i).append('<span><a href="javascript:ajaxSearch('+  tagArray[i] +')">#' + tagArray[i] + '</a></span>');
+			/*  $("div.text-desc").append(					
+					+ '<tag class="cont_tag">'
+					+ '<a href="javascript:ajaxSearch('+ tagArray[i] +')">'
+					+ '<span>' + tagArray[i] + '</span></a>'
+					+ '</tag>'); */
 		};
 	};
 	

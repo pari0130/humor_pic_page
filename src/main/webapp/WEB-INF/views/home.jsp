@@ -110,7 +110,7 @@
     <!-- UPLOAD > MENU -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.ddslick.min.js"></script>
     <!-- UPLOAD > TAG -->
-    <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js?ver=2"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
     <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=2 "></script>
     <!-- jquery.lazyload -->

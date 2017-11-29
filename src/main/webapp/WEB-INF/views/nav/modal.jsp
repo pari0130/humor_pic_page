@@ -64,11 +64,11 @@
 			<div class="user_upload">
 				<form action="${pageContext.request.contextPath}/upload.do?url=?${pageContext.request.servletPath}" method="post" id="upload_form">
 					<label>Title</label>
-					<input type="text" name="cont_title" id="cont_title" />
+					<input type="text" name="cont_title" id="cont_title"/>
 					<br />
 					<label id="upload_tag">Tag</label>
 					<!-- <input id="input-tag" type="text" data-role="tagsinput"/> -->
-					<input name="tags" placeholder="write some tags">
+					<input name="tags" placeholder="write some tags(ex : tag1, tag2)">
 					<br />
 					<!-- MODAL_UPLOAD > MENUS -->
 					<label>Select the upload menu</label>

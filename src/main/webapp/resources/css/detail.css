@@ -3,6 +3,39 @@
 /* FONT BDD */
 /*-------------------------*/
 
+/* hwi detail tag css 추가 */
+tag.cont_tag {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px 0 5px 5px;
+  position: relative;
+  cursor:pointer;
+  white-space: nowrap;
+  transition: .13s ease-out;
+  animation: .3s tags--bump 1 ease-out;
+}
+
+tag.cont_tag#tag0 {
+  margin: 5px 0 5px 0;
+}
+
+tag.cont_tag span {
+  display: inline-block;
+  padding: 0.3em 0.5em;
+  border-radius: 3px;
+  color: #686868;
+  background: #E5E5E5;
+  transition: .13s ease-out;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+tag.cont_tag:hover { /* hwi span 기존값 */
+  box-shadow: 0 0 0 2px #7AC3FF inset;
+  transition: 50ms;
+}
+
 @font-face {
 	font-family: 'socialicoregular';
 	src: url('../font/socialico-webfont.eot');
@@ -408,8 +441,8 @@ body,html{
 	width:calc(100% - 49px);
 	line-height:130%;
 	height:auto;
-	margin-bottom:25px;
-	margin-top:10px;
+	/* margin-bottom:10px;
+	margin-top:10px; */
 }
 
 .text-desc a{
@@ -458,7 +491,7 @@ body,html{
 	margin-bottom:35px;
 }
 
-.image-morefrom-1,.image-morefrom-2,.image-morefrom-3,.image-morefrom-4{
+/* .image-morefrom-1,.image-morefrom-2,.image-morefrom-3,.image-morefrom-4{
 	float:left;
 	width:47.5%;
 	height:auto;
@@ -484,7 +517,37 @@ body,html{
 	padding-top:7.5%;
 }
 .image-morefrom-1:hover,.image-morefrom-2:hover,.image-morefrom-3:hover,.image-morefrom-4:hover{opacity:0.5;}
+ */
+ 
+/* moreinfo hwi 수정 */
+ .image-morefrom-cont{
+	float:left;
+	width:47.5%;
+	height:auto;
+	-webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	background-color:#FFF;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	cursor:pointer;
+}
 
+.image-morefrom-cont{margin-right:2%;margin-bottom:12.5px;}
+
+.image-morefrom-cont img{
+	width:85%;
+	height:auto;
+	margin-left:7.5%;
+	padding-bottom:7.5%;
+	padding-top:7.5%;
+}
+
+.image-morefrom-cont:hover{opacity:0.5;}
+ 
+ 
 .post-reply,.post-reply-2{
 	float:left;
 	width:60%;

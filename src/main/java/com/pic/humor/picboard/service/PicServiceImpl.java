@@ -72,14 +72,15 @@ public class PicServiceImpl implements PicService{
 		// 검색 키워드가 있을 경우 처리
 		String keyword = (String) request.getSession().getAttribute("sessionKeyword");
 		if(keyword != null){
-			dto.setCont_title(keyword);
-			dto.setCont_tag(keyword);
-			System.out.println("list service의 dto getTitle : " + dto.getCont_title());
-			System.out.println("list service의 dto gettag : " + dto.getCont_tag());
+			dto.setKeyword_title(keyword);
+			dto.setKeyword_tag(keyword);
+			System.out.println("list service의 dto getTitle : " + dto.getKeyword_title());
+			System.out.println("list service의 dto gettag : " + dto.getKeyword_tag());
 		};
 		
 		//Dao 를 이용해서 글목록을 얻어온다.
 		List<PicBoardDto> list=picDao.getContList(request, dto);
+		System.out.println("cont list " + list);
 		//ModelAndView 객체를 생성해서 
 		ModelAndView mView=new ModelAndView();
 		//request 영역에 담는 대신 ModelAndView 객체에 담고 
@@ -139,14 +140,15 @@ public class PicServiceImpl implements PicService{
 		// 검색 키워드가 있을 경우 처리
 		String keyword = (String) request.getSession().getAttribute("sessionKeyword");
 		if(keyword != null){
-			dto.setCont_title(keyword);
-			dto.setCont_tag(keyword);
-			System.out.println("list service의 dto getTitle : " + dto.getCont_title());
-			System.out.println("list service의 dto gettag : " + dto.getCont_tag());
+			dto.setKeyword_title(keyword);
+			dto.setKeyword_tag(keyword);
+			System.out.println("list service의 dto getTitle : " + dto.getKeyword_title());
+			System.out.println("list service의 dto gettag : " + dto.getKeyword_tag());
 		};
 				
 		//Dao 를 이용해서 글목록을 얻어온다.
 		List<PicBoardDto> list=picDao.getContList(request, dto);
+		
 		//ModelAndView 객체를 생성해서 
 		ModelAndView mView=new ModelAndView();
 		//request 영역에 담는 대신 ModelAndView 객체에 담고 
@@ -168,6 +170,7 @@ public class PicServiceImpl implements PicService{
 	@Override
 	public ModelAndView detail(HttpServletRequest request, int cont_id) {
 		PicBoardDto dto=picDao.getData(request, cont_id);
+
 		//덛글 목록을 얻어온다.
 		List<PicBoardCmtDto> commentList=picDao.getCmtList(request, cont_id);
 		//ModelAndView 객체를 생성해서 Model 을 담고
@@ -175,6 +178,33 @@ public class PicServiceImpl implements PicService{
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("dto", dto);
 		mView.addObject("commentList", commentList);
+		
+		// detail page의 추천 data 처리
+		// org_tag는 getData 해서 가저온 tag 목록이고 하위로 tag값 뽑기
+		String org_tag = (String) dto.getCont_tag();
+		System.out.println("org_tag : " + org_tag);
+		int idx = org_tag.indexOf(",");
+		System.out.println("idx값 : " + idx);
+		// , 문자가 없는 1장의 사진일때는 idx값이 -1이 된다. 0이상일때만 처음 사진을 잘라서 저장한다.
+		if(idx > 0){
+			// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
+			String key_tag = org_tag.substring(0, idx);
+			System.out.println("key_tag : " + key_tag);
+			dto.setKeyword_title(key_tag);
+			dto.setKeyword_tag(key_tag);
+			System.out.println("detail service의 dto getTitle : " + dto.getKeyword_title());
+			System.out.println("detail service의 dto gettag : " + dto.getKeyword_tag());
+		}else{
+			dto.setKeyword_title(org_tag);
+			dto.setKeyword_tag(org_tag);
+			System.out.println("detail service의 dto getTitle : " + dto.getKeyword_title());
+			System.out.println("detail service의 dto gettag : " + dto.getKeyword_tag());
+		}
+		
+		
+		List<PicBoardDto> randomList=picDao.getRandomCont(request, dto);
+		mView.addObject("randomList", randomList);
+		
 		//리턴해준다.
 		return mView;
 	}

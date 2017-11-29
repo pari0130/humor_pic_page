@@ -16,11 +16,15 @@ public class PicBoardDto {
 	private int startRowNum; //시작 row 번호
 	private int endRowNum; //끝 row 번호
 	
+	// 검색에 사용할 keyword title, tag
+	private String keyword_title;
+	private String keyword_tag;
+	
 	public PicBoardDto(){}
 
 	public PicBoardDto(int cont_id, String user_id, String user_name, String user_provider, String cont_title,
 			String cont_tag, String cont_image, String cont_image_fill, int cont_view_count, String cont_date,
-			String menu_name, int startRowNum, int endRowNum) {
+			String menu_name, int startRowNum, int endRowNum, String keyword_title, String keyword_tag) {
 		super();
 		this.cont_id = cont_id;
 		this.user_id = user_id;
@@ -35,6 +39,8 @@ public class PicBoardDto {
 		this.menu_name = menu_name;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.keyword_title = keyword_title;
+		this.keyword_tag = keyword_tag;
 	}
 
 	public int getCont_id() {
@@ -139,6 +145,22 @@ public class PicBoardDto {
 
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
+	}
+
+	public String getKeyword_tag() {
+		return keyword_tag;
+	}
+
+	public void setKeyword_tag(String keyword_tag) {
+		this.keyword_tag = keyword_tag;
+	}
+
+	public String getKeyword_title() {
+		return keyword_title;
+	}
+
+	public void setKeyword_title(String keyword_title) {
+		this.keyword_title = keyword_title;
 	}
 
 	
