@@ -89,8 +89,10 @@ public class HumorPicController {
 		System.out.println("user_provider : " + dto.getUser_provider());
 		System.out.println("========upload controller 구간 end======");
 		
+		/*
 		// 사진이 여러장일 경우 대표 이미지만 저장하기 위함
 		String orgImg = dto.getCont_image();
+		System.out.println("orgImg : " + orgImg);
 		int idx = orgImg.indexOf(",");
 		System.out.println("idx값 : " + idx);
 		// , 문자가 없는 1장의 사진일때는 idx값이 -1이 된다. 0이상일때만 처음 사진을 잘라서 저장한다.
@@ -100,7 +102,8 @@ public class HumorPicController {
 			System.out.println("saveImg : " + saveImg);
 			dto.setCont_image(saveImg);
 		}
-				
+		*/	
+		
 		mView=picService.insertPics(request, dto);
 		
 		mView.setViewName("redirect:/home.do");
@@ -171,4 +174,15 @@ public class HumorPicController {
 		
   		return commentList;
 	}
+	
+	// 검색 키워드 session에 저장
+	@RequestMapping("/list/ajaxSearch.do")
+	@ResponseBody
+	public void ajaxSearch(@RequestBody String keyword, HttpServletRequest request){			
+		/*@RequestParam String*/
+		System.out.println("전달받은 검색값 : " + keyword);		
+		request.getSession().setAttribute("sessionKeyword", keyword);
+		System.out.println("세션 저장값 : " + request.getSession().getAttribute("sessionKeyword"));
+	}
+	
 }

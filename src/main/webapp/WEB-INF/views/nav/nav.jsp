@@ -41,15 +41,37 @@
 		  		</c:otherwise>
 	  		</c:choose>				
 			<%-- <a href="${pageContext.request.contextPath }/test.do">test.do</a>
-			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a> --%>
+			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a> 
+			onsubmit="return ajaxSearch(event)"--%>
 		</div>
 		<div id="main_tip_search">
-			<form>
+			<form action="${pageContext.request.contextPath }/home.do#/search" method="post" id="search_form">			
+			<!-- <form onsubmit="return false" id="search_form"> -->
 				<input type="text" name="search" id="tip_search_input" list="search"
 					autocomplete=off required>
+					<!-- ajax로 session에 담고 action 요청에는 ngroute 요청이 되도록 설정한다.
+					ngroute에서 search.jsp 요청에 대해 list로 viewname 되도록 하면..? -->
+				<!-- <a href="#/search" style="display:none" id="hidden_search"></a> -->
 			</form>
 		</div>
 		<div id="stripes"></div>
+		<!-- <div class="container">
+		    <textarea id="textarea"></textarea>
+		    <input type="submit" id="submit" value="검색">
+		</div> -->
+
+<!-- 		<script>
+		$('#submit').click(function(){
+		    // 검색 버튼을 눌렀을때의 기능 구현
+		});
+		
+		$('#textarea').keypress(function(event){
+		     if ( event.which == 13 ) {
+		         $('#submit').click();
+		         return false;
+		     }
+		});
+		</script> -->
 	</div>
 </div>
 <!-- NAVBAR -->
@@ -58,38 +80,38 @@
 		<div id="wrapper-sorting">
 			<div id="wrapper-title-1">
 				<a href="#/top" ng-click="activated='top'">
-				<div class="top-rated object" id="menus_top" ng-class="{'active': activated=='top'}">Top-rated</div>				
+				<div class="top-rated object" id="top" ng-class="{'active': activated=='top'}">Top-rated</div>				
 				</a>
 				<div id="fleche-nav-1"></div>				
 			</div>
 			<div id="wrapper-title-2">
 				<a href="#/recent" ng-click="activated='recent'">
-					<div class="recent object" id="menus_recent" ng-class="{'active': activated=='recent'}">Recent</div>
+					<div class="recent object" id="recent" ng-class="{'active': activated=='recent'}">Recent</div>
 				</a>
 				<div id="fleche-nav-2"></div>
 			</div>
 			<div id="wrapper-title-3">
 				<a href="#/old" ng-click="activated='old'">
-					<div class="oldies object" id="menus_old" ng-class="{'active': activated=='old'}">Oldies</div>
+					<div class="oldies object" id="old" ng-class="{'active': activated=='old'}">Oldies</div>
 				</a>
 				<div id="fleche-nav-3"></div>
 			</div>
 		</div>
 		<div id="wrapper-bouton-icon" >
 			<a href="#/wtf" ng-click="activated='wtf'">
-				<div class="menus object" id="menus_wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
+				<div class="menus object" id="wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
 			</a>
 			<a href="#/nsfw" ng-click="activated='nsfw'">
-				<div class="menus object" id="menus_nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
+				<div class="menus object" id="nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
 			</a>
 			<a href="#/animals" ng-click="activated='animals'">
-				<div class="menus object" id="menus_animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
+				<div class="menus object" id="animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
 			</a>
 			<a href="#/gif" ng-click="activated='gif'">
-				<div class="menus object" id="menus_gif" ng-class="{'active': activated=='gif'}">GIF</div>
+				<div class="menus object" id="gif" ng-class="{'active': activated=='gif'}">GIF</div>
 			</a>
 			<a href="#/funny" ng-click="activated='funny'">
-				<div class="menus object" id="menus_funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
+				<div class="menus object" id="funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
 			</a>
 			<!-- <div id="bouton-ai"><img src="img/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
                 <div id="bouton-psd"><img src="img/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
@@ -110,27 +132,27 @@
 			<div class="small-logo"></div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='wtf'}">
+			<div class="premium-ressource" ng-class="{'active': activated=='wtf'}" id="wtf">
 				<a href="#wtf" ng-click="activated='wtf'">WTF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='nsfw'}">
+			<div class="premium-ressource" ng-class="{'active': activated=='nsfw'}" id="nsfw">
 				<a href="#nsfw" ng-click="activated='nsfw'">NSFW</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='animals'}">
+			<div class="premium-ressource" ng-class="{'active': activated=='animals'}" id="animals">
 				<a href="#animals" ng-click="activated='animals'">ANIMALS</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='gif'}">
+			<div class="premium-ressource" ng-class="{'active': activated=='gif'}" id="gif">
 				<a href="#gif" ng-click="activated='gif'">GIF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='funny'}">
+			<div class="premium-ressource" ng-class="{'active': activated=='funny'}" id="funny">
 				<a href="#funny" ng-click="activated='funny'">FUNNY</a>
 			</div>
 		</div>

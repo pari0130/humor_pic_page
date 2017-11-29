@@ -6,6 +6,7 @@
     $("#modal_trigger_alert").leanModal({ top: 200, overlay: 0.6, closeButton: ".modal_close" });
 
     /*-- UPLOAD --*/
+    var modal_urls = [];
     $("#upload_widget_opener").click(function() {
         var folder = $(".dd-selected-text").eq(0).html();
         cloudinary.openUploadWidget({
@@ -28,11 +29,11 @@
             }
 
             /*배열 만들어서 반복문 돌며 hidden value에 담기*/
-            var urls = [];
+            /*var urls = [];*/
             for (var i = 0; i < result.length; i++) {
                 /*url hidden value에 담기*/
                 tmp = result[i].url;
-                urls.push(tmp);
+                modal_urls.push(tmp);
 
                 /*썸네일 이미지 생성*/
                 var thum_url = result[i].thumbnail_url;
@@ -40,11 +41,13 @@
                 $(".photo_p").find("img").last().attr({
                     src: thum_url
                 });
-            }
-            var upload_url = $("#cont_image").val(urls);
+            };
+            console.log("urls " + modal_urls);
+            var upload_url = $("#cont_image").val(modal_urls);
             console.log("upload_url : " + $("#cont_image").val()) 
-
-			var cont_image = $("#cont_image").val();
+            
+            console.log("modal_urls 배열 " + modal_urls[0]);
+			var cont_image = modal_urls[0];
 			var slice1 = cont_image.slice(0, 48);
 			var slice2 = cont_image.slice(48);
 			console.log("slice1 : " + slice1);	     		

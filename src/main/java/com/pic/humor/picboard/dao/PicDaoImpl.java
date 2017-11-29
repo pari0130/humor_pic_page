@@ -85,6 +85,11 @@ public class PicDaoImpl implements PicDao{
 			System.out.println("getCount DB 완료");
 			return session.selectOne("picSelect.getListCount_all");
 			
+		}else if(menu.equals("search")){
+			System.out.println("getCount DB 완료");
+			String keyword = (String) request.getSession().getAttribute("sessionKeyword");
+			return session.selectOne("picSelect.getListCount_search", keyword);
+			
 		}
 		return 0;
 	}
@@ -127,6 +132,10 @@ public class PicDaoImpl implements PicDao{
 		}else if(menu.equals("old")){
 			System.out.println("getContents DB 완료");
 			return session.selectList("picSelect.getContList_old", dto);
+
+		}else if(menu.equals("search")){
+			System.out.println("getContents DB 완료");
+			return session.selectList("picSelect.getContList_search", dto);
 
 		}
 		return null;

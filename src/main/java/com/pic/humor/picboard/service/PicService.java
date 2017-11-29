@@ -16,5 +16,6 @@ public interface PicService {
 	public ModelAndView detail(HttpServletRequest request, int cont_id);
 	public void increaseViewCount(HttpServletRequest request, int cont_id);
 	public void commentInsert(HttpServletRequest request, PicBoardCmtDto dto);
-	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id);	
+	public List<PicBoardCmtDto> getCmtList(HttpServletRequest request, int cont_id);
+	
 }

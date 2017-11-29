@@ -99,39 +99,39 @@
 	<div class="navbar object" ng-controller="navCtrl">
 		<div id="wrapper-sorting">
 			<div id="wrapper-title-1">
-				<a href="/home.do#/top" ng-click="activated='top'">
-				<div class="top-rated object" id="menus_top" ng-class="{'active': activated=='top'}">Top-rated</div>				
+				<a href="${pageContext.request.contextPath }/home.do#/top" ng-click="activated='top'">
+				<div class="top-rated object" id="top" ng-class="{'active': activated=='top'}">Top-rated</div>				
 				</a>
 				<div id="fleche-nav-1"></div>				
 			</div>
 			<div id="wrapper-title-2">
-				<a href="/home.do#/recent" ng-click="activated='recent'">
-					<div class="recent object" id="menus_recent" ng-class="{'active': activated=='recent'}">Recent</div>
+				<a href="${pageContext.request.contextPath }/home.do#/recent" ng-click="activated='recent'">
+					<div class="recent object" id="recent" ng-class="{'active': activated=='recent'}">Recent</div>
 				</a>
 				<div id="fleche-nav-2"></div>
 			</div>
 			<div id="wrapper-title-3">
-				<a href="/home.do#/old" ng-click="activated='old'">
-					<div class="oldies object" id="menus_old" ng-class="{'active': activated=='old'}">Oldies</div>
+				<a href="${pageContext.request.contextPath }/home.do#/old" ng-click="activated='old'">
+					<div class="oldies object" id="old" ng-class="{'active': activated=='old'}">Oldies</div>
 				</a>
 				<div id="fleche-nav-3"></div>
 			</div>
 		</div>
 		<div id="wrapper-bouton-icon" >
-			<a href="/home.do#/wtf" ng-click="activated='wtf'">
-				<div class="menus object" id="menus_wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
+			<a href="${pageContext.request.contextPath }/home.do#/wtf" ng-click="activated='wtf'">
+				<div class="menus object" id="wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
 			</a>
-			<a href="/home.do#/nsfw" ng-click="activated='nsfw'">
-				<div class="menus object" id="menus_nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
+			<a href="${pageContext.request.contextPath }/home.do#/nsfw" ng-click="activated='nsfw'">
+				<div class="menus object" id="nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
 			</a>
-			<a href="/home.do#/animals" ng-click="activated='animals'">
-				<div class="menus object" id="menus_animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
+			<a href="${pageContext.request.contextPath }/home.do#/animals" ng-click="activated='animals'">
+				<div class="menus object" id="animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
 			</a>
-			<a href="/home.do#/gif" ng-click="activated='gif'">
-				<div class="menus object" id="menus_gif" ng-class="{'active': activated=='gif'}">GIF</div>
+			<a href="${pageContext.request.contextPath }/home.do#/gif" ng-click="activated='gif'">
+				<div class="menus object" id="gif" ng-class="{'active': activated=='gif'}">GIF</div>
 			</a>
-			<a href="/home.do#/funny" ng-click="activated='funny'">
-				<div class="menus object" id="menus_funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
+			<a href="${pageContext.request.contextPath }/home.do#/funny" ng-click="activated='funny'">
+				<div class="menus object" id="funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
 			</a>
 			<!-- <div id="bouton-ai"><img src="img/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
                 <div id="bouton-psd"><img src="img/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
@@ -152,28 +152,28 @@
 			<div class="small-logo"></div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='wtf'}">
-				<a href="/home.do#wtf" ng-click="activated='wtf'">WTF</a>
+			<div class="premium-ressource" ng-class="{'active': activated=='wtf'}" id="wtf">
+				<a href="${pageContext.request.contextPath }/home.do#wtf" ng-click="activated='wtf'">WTF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='nsfw'}">
-				<a href="/home.do#nsfw" ng-click="activated='nsfw'">NSFW</a>
+			<div class="premium-ressource" ng-class="{'active': activated=='nsfw'}" id="nsfw">
+				<a href="${pageContext.request.contextPath }/home.do#nsfw" ng-click="activated='nsfw'">NSFW</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='animals'}">
-				<a href="/home.do#animals" ng-click="activated='animals'">ANIMALS</a>
+			<div class="premium-ressource" ng-class="{'active': activated=='animals'}" id="animals">
+				<a href="${pageContext.request.contextPath }/home.do#animals" ng-click="activated='animals'">ANIMALS</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='gif'}">
-				<a href="/home.do#gif" ng-click="activated='gif'">GIF</a>
+			<div class="premium-ressource" ng-class="{'active': activated=='gif'}" id="gif">
+				<a href="${pageContext.request.contextPath }/home.do#gif" ng-click="activated='gif'">GIF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='funny'}">
-				<a href="/home.do#funny" ng-click="activated='funny'">FUNNY</a>
+			<div class="premium-ressource" ng-class="{'active': activated=='funny'}" id="funny">
+				<a href="${pageContext.request.contextPath }/home.do#funny" ng-click="activated='funny'">FUNNY</a>
 			</div>
 		</div>
 	</div>
@@ -193,8 +193,8 @@
                     <figure class="white">
                        <%-- <img src="${pageContext.request.contextPath }/resources/img/psd-4.jpg" alt="" /> --%> 
                         <div id="wrapper-part-info">
-                            <div class="part-info-image-single img-panel">
-                                <img src="${dto.cont_image }" alt="" width="628" height="437" />
+                            <!-- <div class="part-info-image-single img-panel"> -->
+                                <%-- <img src="${dto.cont_image }" alt="" width="628" height="437" /> --%>
                                 <!-- <script>
 				       				console.log("slice img 값 : " + "${dto.cont_image}");      				
 				       				
@@ -221,7 +221,7 @@
                                 <%-- <img src="${dto.cont_image }" alt="" width="70%" height="70%" /> --%>
                                 <%-- <img src="${pageContext.request.contextPath }/resources/img/mockup-2.jpg" alt="" width="628" height="437" />
                                 <img src="${pageContext.request.contextPath }/resources/img/mockup-3.jpg" alt="" width="628" height="437" /> --%>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </figure>
                     <div class="wrapper-text-description">
@@ -239,12 +239,14 @@
                         </div>
                         <div class="wrapper-desc">
                             <div class="icon-desc"><img src="${pageContext.request.contextPath }/resources/img/icon-desc.svg" alt="" width="24" height="24" /></div>
-                            <div class="text-desc"><a href="#"><b>${dto.cont_tag }</b></a></div>
+                            <div class="text-desc">
+                           	 <!-- tag 자리 -->
+                            </div>
                         </div>
-                       <div class="wrapper-download">
+                       <%-- <div class="wrapper-download">
                             <div class="icon-download"><img src="${pageContext.request.contextPath }/resources/img/icon-download.svg" alt="" width="19" height="26" /></div>
                             <div class="text-download"><b>share</b></div>
-                        </div>
+                        </div> --%>
                         <div class="wrapper-morefrom">
                             <div class="text-morefrom">More from .psd</div>
                             <div class="image-morefrom">
@@ -362,7 +364,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=5"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -512,8 +514,7 @@
 		}); 
 	}); 
 	*/
-	$(".img-panel").imgLiquid();
-	$(".image-reply-post").imgLiquid();
+	
 	/* $(".img-panel").imgLiquid({
 		fill : true,
 		horizontalAlign : "50%",
@@ -522,28 +523,69 @@
 	
 	// detail page 에서 상단 포커스 맞추기
 	var menu_name = "${sessionMenu}";
+	var dto_menu = "${dto.menu_name}";
+	
 	console.log("session menu name : " + menu_name);
+	console.log("dto menu name : " + dto_menu);
 	
 	// 메뉴이름을 받아와서 active class가 없을 경우에만 active class를 추가하고 형제요소에는 removeclass 수행
 	if("wtf" == menu_name){
-		$("#menus_wtf").addClass("active");
+		$("#wtf").addClass("active");
 	}else if("nsfw" == menu_name){
-		$("#menus_nsfw").addClass("active");
+		$("#nsfw").addClass("active");
 	}else if("animals" == menu_name){
-		$("#menus_animals").addClass("active");
+		$("#animals").addClass("active");
 	}else if("gif" == menu_name){
-		$("#menus_gif").addClass("active");
+		$("#gif").addClass("active");
 	}else if("funny" == menu_name){
-		$("#menus_funny").addClass("active");
+		$("#funny").addClass("active");
 	}else if("top" == menu_name){
-		$("#menus_top").addClass("active");
+		$("#top").addClass("active");
 	}else if("recent" == menu_name){
-		$("#menus_recent").addClass("active");
+		$("#recent").addClass("active");
 	}else if("old" == menu_name){
-		$("#menus_old").addClass("active");
-	}
-	;
+		$("#old").addClass("active");
+	// 진입한 session menu가 search 일 경우에만 menu명을 dto에 있는 menu로 변경 해 줌
+	}else if("search" == menu_name){
+		$("#"+dto_menu).addClass("active");
+	};
 	
+	// tag 잘라서 넣기
+	var org_tag = "${dto.cont_tag }";
+	if(org_tag.indexOf(",") == -1){
+		// ,가 포함되지 않은 하나짜리 일 경우 여기 실행하고
+		// <a href="javascript:ajaxSearch()"><b>${dto.cont_tag }</b></a>
+		$("div.text-desc").append('<a href="javascript:ajaxSearch('+ org_tag +')"><b>#' + org_tag + '</b></a>');
+	}else{
+		// ,가 포함되어 있는 경우 잘라야 한다.
+		var tagArray = org_tag.split(',');
+		for (var i = 0; i < tagArray.length; i++){
+			$("div.text-desc").append('<a href="javascript:ajaxSearch(' + tagArray[i] + ')"><b>#' + tagArray[i] + '</b></a> &nbsp;');
+		};
+	};
+	
+	// image 잘라서 넣기
+    var org_image = "${dto.cont_image}";
+    if(org_image.indexOf(",") == -1){
+		// ,가 포함되지 않은 하나짜리 일 경우 여기 실행하고
+		// <a href="javascript:ajaxSearch()"><b>${dto.cont_tag }</b></a>
+		$("div#wrapper-part-info").append('<div class="part-info-image-single img-panel">'
+				+ '<img src="' + org_image + '" alt="" width="628" height="437" />'
+				+ '</div>');
+	}else{
+		// ,가 포함되어 있는 경우 잘라야 한다.
+		// <div class="part-info-image-single img-panel">
+		// wrapper-part-info
+		var tagArray = org_image.split(',');
+		for (var i = 0; i < tagArray.length; i++){
+			$("div#wrapper-part-info").append('<div class="part-info-image-single img-panel">'
+					+ '<img src="' + tagArray[i] + '" alt="" width="628" height="437" />'
+					+ '</div>');
+		};
+	}; 
+	
+	$(".img-panel").imgLiquid();
+	$(".image-reply-post").imgLiquid();
     </script>
 </body>
 </html>

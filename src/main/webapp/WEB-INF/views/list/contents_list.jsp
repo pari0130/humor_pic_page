@@ -27,6 +27,7 @@
             </section>
         </div>
     </div>
+    <c:if test="${endPageNum lt totalRow }">
     <div id="wrapper-oldnew"> <!-- <div id="wrapper-oldnew"> -->
         <div class="oldnew">            
              <div class="wrapper-loadmore">
@@ -42,6 +43,8 @@
             </div> -->       
         </div>
     </div>
+    </c:if>   
+   
     <div id="wrapper-thank">
         <div class="thank">
             <div class="thank-text">Pic-<span style="letter-spacing:-5px;">h</span>umor</div>
@@ -100,7 +103,7 @@ function loadMore(){
 	   
 	   $.ajax({
         method      : 'get',
-        url         : '/list/contents_jsonList.do?mn=' + menu + '&pageNum=' + pageNum,
+        url         : '${pageContext.request.contextPath }/list/contents_jsonList.do?mn=' + menu + '&pageNum=' + pageNum,
         // json 형태로 보내기 위해서 JSON.stringify(arr)
         /* data        : JSON.stringify(arr), */
         /* SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
@@ -125,7 +128,6 @@ function loadMore(){
     			console.log("image : " + this.cont_image_fill);
     			console.log("title : " + this.cont_title);    			
     			// image section 추가 하는 append
-    			// $("#main-container-image").delay(1250).animate({opacity:'1'},500);
     			var item = '<figure class="img-panel ' + pageNum + '">'
  					+ '<a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=' + this.cont_id + '&mn=' + this.menu_name +'">'
  					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" />'
@@ -136,19 +138,7 @@ function loadMore(){
  					+ '</figure>';
  				console.log("item : " + item);
  				$(item).appendTo("section.work").hide();
- 				/* $("figure." + pageNum).hide().fadeIn(1000); */
- 				/* $("section.work").append(item); */ 				
- 				/* item.animate({opacity:'1'},500); */
-    			/* $("section.work")
-	 			.append('<figure class="img-panel">'
-	 					+ '<a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=' + this.cont_id + '&mn=' + this.menu_name +'">'
-	 					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" />'
-	 					+ '</a>'
-	 					+ '<div id="wrapper-part-info">'
-	 					+ '<div id="part-info">' + this.cont_title + '</div>'
-	 					+ '</div>'
-	 					+ '</figure>').fadeIn(2000); */
-	 					/* .animate({opacity:'1'},500); */       			   			
+ 				      			   			
     		}); // each문 종료
     		
     		$("#loadmore").hide();	
@@ -165,7 +155,7 @@ function loadMore(){
     			$("figure." + pageNum).show();
     			// endrow랑 totalrow랑 비교해서 행의 전체 row보다 커질경우 더보기 버튼을 숨긴다.
         		if(endrow >= totalrow){        			
-        			$("#wrapper-loadmore").css("display", "none");        			
+        			$("#wrapper-oldnew").css("display", "none");        			
         		}else{
         			$("#loadmore").show();	
         		};
@@ -173,6 +163,22 @@ function loadMore(){
 
     } // success 종료
 }); // ajax 종료
+};
+
+// search 검색 상태에서는 메뉴 포커스 지우기
+var menu_name = "${sessionMenu}";
+var act_menu = $("div.active").attr("id");
+console.log("session menu name : " + menu_name);
+console.log("active menu name : " + act_menu);
+/* if("search" == menu_name){
+	$("div.object").removeClass("active");
+}; */
+
+// sessionMenu와 div.active id의 값을 가져와서 비교 후 다를 경우 remove active 후 
+// sessionMenu에 해당하는 menu에 add active
+if(menu_name != act_menu){
+	$("div.active").removeClass("active");
+	$("#"+menu_name).addClass("active");
 };
 
 </script>

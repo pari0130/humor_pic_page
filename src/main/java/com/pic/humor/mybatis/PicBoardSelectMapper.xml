@@ -63,51 +63,76 @@
 	<select id="getContList_top" parameterType="picBoardDto" resultType="picBoardDto">
 		SELECT <include refid="picAll"/> 
 		FROM  (	SELECT result1.*, ROWNUM rnum
-				    FROM  (  SELECT  *
-				             FROM   (   SELECT * FROM picboard_wtf    
-				                        UNION ALL     
-				                        SELECT * FROM picboard_nsfw      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_animals      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_gif      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_funny)
-				             ORDER BY cont_view_count DESC) result1
+			    FROM  (  SELECT  *
+			             FROM   (   SELECT * FROM picboard_wtf    
+			                        UNION ALL     
+			                        SELECT * FROM picboard_nsfw      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_animals      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_gif      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_funny
+			                     )
+			             ORDER BY cont_view_count DESC
+			           ) result1
 				)
       WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	<select id="getContList_recent" parameterType="picBoardDto" resultType="picBoardDto">
 		SELECT <include refid="picAll"/> 
 		FROM  (	SELECT result1.*, ROWNUM rnum
-				    FROM  (  SELECT  *
-				             FROM   (   SELECT * FROM picboard_wtf    
-				                        UNION ALL     
-				                        SELECT * FROM picboard_nsfw      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_animals      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_gif      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_funny)
-				             ORDER BY cont_date DESC) result1
+			    FROM  (  SELECT  *
+			             FROM   (   SELECT * FROM picboard_wtf    
+			                        UNION ALL     
+			                        SELECT * FROM picboard_nsfw      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_animals      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_gif      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_funny
+			                     )
+			             ORDER BY cont_date DESC
+			           ) result1
 				)
       WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	<select id="getContList_old" parameterType="picBoardDto" resultType="picBoardDto">
 		SELECT <include refid="picAll"/> 
 		FROM  (	SELECT result1.*, ROWNUM rnum
-				    FROM  (  SELECT  *
-				             FROM   (   SELECT * FROM picboard_wtf    
-				                        UNION ALL     
-				                        SELECT * FROM picboard_nsfw      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_animals      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_gif      
-				                        UNION ALL     
-				                        SELECT * FROM picboard_funny)
-				             ORDER BY cont_date ASC) result1
+			    FROM  (  SELECT  *
+			             FROM   (   SELECT * FROM picboard_wtf    
+			                        UNION ALL     
+			                        SELECT * FROM picboard_nsfw      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_animals      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_gif      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_funny
+			                     )
+			             ORDER BY cont_date ASC
+			          ) result1
+				)
+      WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getContList_search" parameterType="picBoardDto" resultType="picBoardDto">
+		SELECT <include refid="picAll"/> 
+		FROM  (	SELECT result1.*, ROWNUM rnum
+			    FROM  (  SELECT  *
+			             FROM   (   SELECT * FROM picboard_wtf WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'   
+			                        UNION ALL     
+			                        SELECT * FROM picboard_nsfw WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_animals WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_gif WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'      
+			                        UNION ALL     
+			                        SELECT * FROM picboard_funny WHERE cont_title LIKE '%'||#{cont_title}||'%' OR cont_tag LIKE '%'||#{cont_tag}||'%'
+			                     )
+			             ORDER BY cont_date ASC
+			          ) result1
 				)
       WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -146,6 +171,21 @@
 		  SELECT * FROM picboard_gif gif
 		  UNION ALL
 		  SELECT * FROM picboard_funny funny
+		)		
+	</select>
+	<select id="getListCount_search" parameterType="String" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM 
+		(
+		  SELECT * FROM picboard_wtf WHERE cont_title LIKE '%'||#{keyword}||'%' OR cont_tag LIKE '%'||#{keyword}||'%'
+		  UNION ALL
+		  SELECT * FROM picboard_nsfw WHERE cont_title LIKE '%'||#{keyword}||'%' OR cont_tag LIKE '%'||#{keyword}||'%'
+		  UNION ALL
+		  SELECT * FROM picboard_animals WHERE cont_title LIKE '%'||#{keyword}||'%' OR cont_tag LIKE '%'||#{keyword}||'%'
+		  UNION ALL
+		  SELECT * FROM picboard_gif WHERE cont_title LIKE '%'||#{keyword}||'%' OR cont_tag LIKE '%'||#{keyword}||'%'
+		  UNION ALL
+		  SELECT * FROM picboard_funny WHERE cont_title LIKE '%'||#{keyword}||'%' OR cont_tag LIKE '%'||#{keyword}||'%'
 		)		
 	</select>
 	

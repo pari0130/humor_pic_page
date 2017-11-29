@@ -374,4 +374,73 @@ function getQuerystring(paramName){
 	   }
 } 
 
+// search 구현
+
+function ajaxSearch(org_tag){
+	var keyword = org_tag;
+	console.log("tag 검색값 : " + keyword);
+    	$.ajax({
+            method      : 'POST',
+            url         : '/list/ajaxSearch.do',
+            // json 형태로 보내기 위해서 JSON.stringify(arr)
+            data        : keyword,
+            /*SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움
+            dataType	: "json", */
+            contentType	: "application/json; charset=UTF-8",
+            error       : function(request, status, error) {
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+                console.log("실패");
+            },
+            success     : function() {		            	
+        		console.log("검색값 전달 성공");
+        		// 성공 후         		
+        		location.href="/home.do#/search";
+	        }
+    	});
+}
+
+var searchCnt = 0;
+searchCnt = Number(searchCnt);
+$('#tip_search_input').keypress(function(event){
+    if ( event.which == 13 ) {
+    	var keyword = $("#tip_search_input").val();
+    	console.log("검색값 : " + keyword);
+	    	$.ajax({
+	            method      : 'POST',
+	            url         : '/list/ajaxSearch.do',
+	            // json 형태로 보내기 위해서 JSON.stringify(arr)
+	            data        : keyword,
+	             /*SyntaxError Unexpected end of JSON input 가 발생하여 datatype을 지움*/
+	            /*dataType	: "json", */
+	            contentType	: "application/json; charset=UTF-8",
+	            error       : function(request, status, error) {
+	                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	                console.log("실패");
+	                return false;
+	            },
+	            success     : function() {		            	
+	        		console.log("검색값 전달 성공");
+	        		removeClass("active");
+	        		/*$("#hidden_search").click();*/
+	        		/*location.href="/home.do#/search";
+	        		history.pushState(null, null, "/list/search");*/
+	        		/*$("#hidden_search").click();*/
+	        		
+	        		/*location.reload();	        		
+        			location.href="/home.do#/search";*/
+	        		// 성공 후         		
+	        		/*if(searchCnt == 0){
+	        			searchCnt = searchCnt + 1;
+	        			$("#tip_search_input").val("");
+	        			location.href="/home.do#/search";
+	        			$("#hidden_search").click();
+	        			$('#search_form').submit();           			            		
+	            	}else if(searchCnt >= 1){
+	            		location.reload();
+	            		location.href="/home.do#/search";
+	            	}*/
+		        }
+		    });
+    }
+});
 

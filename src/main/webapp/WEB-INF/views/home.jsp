@@ -58,6 +58,8 @@
 		.when("/animals", {templateUrl:"/list/contents_list.do?mn=animals"})
 		.when("/gif", {templateUrl:"/list/contents_list.do?mn=gif"})
 		.when("/funny", {templateUrl:"/list/contents_list.do?mn=funny"})
+		// 검색
+		.when("/search", {templateUrl:"/list/contents_list.do?mn=search"})
 		.otherwise({rediredTo:"/"});
 	});
 	myApp.controller("navCtrl", function($scope){
@@ -110,7 +112,7 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=3 "></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=2 "></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
