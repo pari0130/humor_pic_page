@@ -14,7 +14,8 @@
 	            <c:forEach var="tmp" items="${list }">
 	                <figure class="img-panel"> <%-- ${pageContext.request.contextPath } --%> 				
 	                    <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${tmp.menu_name}">
-	       					<img src="${tmp.cont_image_fill }" class="lazy" alt="" />	       					       					
+	       					<img src="${tmp.cont_image_fill }" class="lazy" alt="" />	
+	       					<dl></dl>       					       					
 	       				</a>	                
 	                    <div id="wrapper-part-info">
 	                        <%-- <div class="part-info-image"><img src="${pageContext.request.contextPath }/resources/img/icon-psd.svg" alt="" width="28" height="28" /></div> --%>
@@ -27,7 +28,7 @@
             </section>
         </div>
     </div>
-    <c:if test="${endPageNum lt totalRow }">
+    <c:if test="${endRowNum lt totalRow }">
     <div id="wrapper-oldnew"> <!-- <div id="wrapper-oldnew"> -->
         <div class="oldnew">            
              <div class="wrapper-loadmore">
@@ -50,9 +51,9 @@
             <div class="thank-text">Pic-<span style="letter-spacing:-5px;">h</span>umor</div>
         </div>
     </div>
-    <div id="main-container-footer">
+    <!-- <div id="main-container-footer">
         <div class="container-footer">
-            <!-- <div id="row-1f">
+            <div id="row-1f">
                 <div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">What is Platz</span>
                     <br>Platz is a blog showcasing hand-picked free themes, design stuff, free fonts and other resources for web designers.</div>
             </div>
@@ -63,7 +64,7 @@
             <div id="row-3f">
                 <div class="text-row-3f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Get in touch!</span>
                     <br>Subscribe our RSS or follow us on Facebook, Google+, Pinterest or Dribbble to keep updated.</div>
-            </div> -->
+            </div>
             <div id="row-4f">
                 <div class="text-row-4f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Newsletter</span>
                     <br>You will be informed monthly about the latest content avalaible.</div>
@@ -74,10 +75,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div id="wrapper-copyright">
         <div class="copyright">
-            <div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="https://dcrazed.com/">Dcrazed</a></div>
+            <div class="copy-text object">Copyright © 2018. Made by CHO D.H</div>
             <div class="wrapper-navbouton">
                 <div class="google object">g</div>
                 <div class="facebook object">f</div>
@@ -130,7 +131,7 @@ function loadMore(){
     			// image section 추가 하는 append
     			var item = '<figure class="img-panel ' + pageNum + '">'
  					+ '<a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=' + this.cont_id + '&mn=' + this.menu_name +'">'
- 					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" />'
+ 					+ '<img src="' + this.cont_image_fill +'" class="lazy" alt="" /><dl></dl> '
  					+ '</a>'
  					+ '<div id="wrapper-part-info">'
  					+ '<div id="part-info">' + this.cont_title + '</div>'

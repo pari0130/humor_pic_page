@@ -62,9 +62,9 @@
 		<!-- Username & Password Login form -->
 		<div class="modal_popup">
 			<div class="user_upload">
-				<form action="${pageContext.request.contextPath}/upload.do?url=?${pageContext.request.servletPath}" method="post" id="upload_form">
+				<form id="upload_form">
 					<label>Title</label>
-					<input type="text" name="cont_title" id="cont_title"/>
+					<input type="text" name="cont_title" id="up_title"/>
 					<br />
 					<label id="upload_tag">Tag</label>
 					<!-- <input id="input-tag" type="text" data-role="tagsinput"/> -->
@@ -96,13 +96,13 @@
 					<div id="photo_div" style="text-align: center">
 						<p>Up to 10 images can be added.</p>
 					</div>
-					<input type="hidden" name="cont_tag" id="cont_tag" value="">
-					<input type="hidden" name="cont_menu" id="cont_menu" value="">
-					<input type="hidden" name="cont_image" id="cont_image" value="">
-					<input type="hidden" name="cont_image_fill" id="cont_image_fill" value="">
-					<input type="hidden" name="user_id" id="user_id" value="${user_id }"> 
-					<input type="hidden" name="user_name" id="user_name" value="${user_name }">
-					<input type="hidden" name="user_provider" id="user_provider" value="${provider }">
+					<input type="hidden" name="cont_tag" id="up_tag" value="">
+					<input type="hidden" name="cont_menu" id="up_menu" value="">
+					<input type="hidden" name="cont_image" id="up_image" value="">
+					<input type="hidden" name="cont_image_fill" id="up_image_fill" value="">
+					<input type="hidden" name="user_id" id="up_id" value="${user_id }"> 
+					<input type="hidden" name="user_name" id="up_name" value="${user_name }">
+					<input type="hidden" name="user_provider" id="up_provider" value="${provider }">
 					<div class="action_btns">
 						<div class="one_half">
 							<a href="javascript:" id="upload_widget_opener" class="btn back_btn">

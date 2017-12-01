@@ -57,7 +57,7 @@ public class HumorPicController {
 		return mView;
 	}
 	
-	@RequestMapping("/list/contents_detail")
+	@RequestMapping({"/list/contents_detail", "/WEB-INF/views/list/contents_detail" })
 	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session, @RequestParam int cont_id){
 		System.out.println("detail : " + cont_id);
 		
@@ -71,66 +71,40 @@ public class HumorPicController {
 	}
 	
 	@RequestMapping("/upload")
-	public ModelAndView picUpload(HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardDto dto){
-		ModelAndView mView = new ModelAndView();
+	@ResponseBody
+	public void picUpload(@RequestBody String paramData, HttpServletRequest request, @ModelAttribute PicBoardDto dto){
+		/*ModelAndView mView = new ModelAndView();*/
+		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+	    resultMap = JSONArray.fromObject(paramData);
+	    
+	    for (Map<String, Object> map : resultMap) {
+	    	
+	    	System.out.println("======================================");
+	    	System.out.println("Upload ajax 데이터 map 확인");
+	    	System.out.println("upload menu : " + map.get("cont_menu"));
+	    	System.out.println("upload tag : " + map.get("cont_tag"));
+	    	System.out.println("upload image : " + map.get("cont_image"));
+	    	System.out.println("upload image fill : " + map.get("cont_image_fill"));
+	    	System.out.println("id : " + map.get("user_id"));
+	    	System.out.println("name : " + map.get("user_name"));
+	    	System.out.println("provider : " + map.get("user_provider"));
+	    	System.out.println("======================================");
+	    	
+	    	dto.setCont_tag((String) map.get("cont_tag"));//글번호로 사용한다. 
+	    	dto.setCont_image((String) map.get("cont_image"));//글번호로 사용한다. 
+	    	dto.setCont_image_fill((String) map.get("cont_image_fill"));//글번호로 사용한다. 
+	    	dto.setCont_title((String) map.get("cont_title"));//글번호로 사용한다. 	    	
+	    	dto.setUser_id((String) map.get("user_id"));//글번호로 사용한다.
+	    	dto.setUser_name((String) map.get("user_name"));//글번호로 사용한다. 
+	    	dto.setUser_provider((String) map.get("user_provider"));//글번호로 사용한다.	    	
+	    	
+	    }
 		
-		String url = request.getParameter("url");
-		System.out.println("url 주소 : " + url);
-		System.out.println("callback url : " + url);
-		
-		System.out.println("========upload controller 구간 start======");
-		System.out.println("menu : " + request.getParameter("cont_menu"));
-		System.out.println("title : " + dto.getCont_title());
-		System.out.println("tag : " + dto.getCont_tag());
-		System.out.println("image : " + dto.getCont_image());
-		System.out.println("image_fill : " + dto.getCont_image_fill());
-		System.out.println("user_id : " + dto.getUser_id());
-		System.out.println("user_name : " + dto.getUser_name());
-		System.out.println("user_provider : " + dto.getUser_provider());
-		System.out.println("========upload controller 구간 end======");
-		
-		/*
-		// 사진이 여러장일 경우 대표 이미지만 저장하기 위함
-		String orgImg = dto.getCont_image();
-		System.out.println("orgImg : " + orgImg);
-		int idx = orgImg.indexOf(",");
-		System.out.println("idx값 : " + idx);
-		// , 문자가 없는 1장의 사진일때는 idx값이 -1이 된다. 0이상일때만 처음 사진을 잘라서 저장한다.
-		if(idx > 0){
-			// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
-			String saveImg = orgImg.substring(0, idx);
-			System.out.println("saveImg : " + saveImg);
-			dto.setCont_image(saveImg);
-		}
-		*/	
-		
-		mView=picService.insertPics(request, dto);
-		
-		mView.setViewName("redirect:/home.do");
-		return mView;
+		/*mView=picService.insertPics(request, dto);*/
+		picService.insertPics(request, dto);
+
 	}
 	
-	/*
-	//덧글 입력 요청 처리
-	@RequestMapping("/list/insertcomment")
-	public String commentInsert(HttpSession session, HttpServletRequest request, @ModelAttribute PicBoardCmtDto dto){
-		// @ModelAttribute 어노테이션을 이용해서 덧글 정보를 얻어온다.
-		
-		System.out.println("contents : " + dto.getCmt_contents());
-		//서비스 객체를 이용해서 덧글이 저장될수 있도록 한다. 
-		picService.commentInsert(request, dto);
-		
-		System.out.println("댓글 cont_id = " + request.getParameter("cont_id"));
-		System.out.println("댓글 mn = " + request.getParameter("mn"));
-		
-		//원글의 글번호를 읽어와서		
-		String cont_id = request.getParameter("cont_id");
-		String mn = request.getParameter("mn");
-				
-		
-		//리다일렉트 응답할때 사용한다. 
-		return "redirect:/list/contents_detail.do?cont_id="+cont_id+"&mn="+mn;
-	}*/
 	
 	@RequestMapping("/list/insertcomment")
 	@ResponseBody

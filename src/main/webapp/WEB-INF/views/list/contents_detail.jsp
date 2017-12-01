@@ -86,9 +86,13 @@
 			<a href="${pageContext.request.contextPath }/test2.do">test2.do</a> --%>
 		</div>
 		<div id="main_tip_search">
-			<form>
+			<form action="${pageContext.request.contextPath }/home.do#/search" method="post" id="search_form">			
+			<!-- <form onsubmit="return false" id="search_form"> -->
 				<input type="text" name="search" id="tip_search_input" list="search"
 					autocomplete=off required>
+					<!-- ajax로 session에 담고 action 요청에는 ngroute 요청이 되도록 설정한다.
+					ngroute에서 search.jsp 요청에 대해 list로 viewname 되도록 하면..? -->
+				<!-- <a href="#/search" style="display:none" id="hidden_search"></a> -->
 			</form>
 		</div>
 		<div id="stripes"></div>
@@ -250,8 +254,10 @@
                             <div class="text-download"><b>share</b></div>
                         </div>  --%>
                         <div class="wrapper-morefrom">
-                            <div class="text-morefrom">More contents.</div>
-                            <div class="image-morefrom">
+                        	<c:if test="${not empty randomList}">
+                       		   <div class="text-morefrom">More contents.</div>
+                       		   <div class="image-morefrom">
+                            </c:if>
                             <c:if test="${not empty randomList}">
 					            <c:forEach var="tmp" items="${randomList }">					      
 					              <a href="${pageContext.request.contextPath }/list/contents_detail.do?cont_id=${tmp.cont_id}&mn=${tmp.menu_name}">
@@ -279,7 +285,7 @@
                         <div class="name-reply-post">Igor vlademir</div> <!-- profile name -->
                         <div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
                     </div> --%>
-                    <div class="post-reply-main">
+	  				<div class="post-reply-main">
 	                    <c:forEach var="tmp" items="${commentList }">
 	                    <div class="post-reply-2">
 	                        <%-- <div class="image-reply-post" style="background-image: URL(${tmp.user_image})"> --%>
@@ -292,7 +298,14 @@
 	                    </c:forEach>
                     </div>
                     <div class="post-send">
-                        <div id="main-post-send">
+                     <c:choose>
+					  	<c:when test="${empty commentList }">
+					  	 <div id="main-post-send" style="margin-left : 8px">	  	
+					  	</c:when>
+					  	<c:otherwise>
+				  		 <div id="main-post-send">
+				  		</c:otherwise>
+	  				</c:choose>	
                             <div id="title-post-send">Add your comment</div>
                             <form id="comment"> <%-- method="post" action="${pageContext.request.contextPath }/list/insertcomment.do?cont_id=${dto.cont_id}&mn=${dto.menu_name}" --%>
                                 <fieldset>
@@ -321,10 +334,10 @@
         </div>
         <div id="wrapper-thank">
             <div class="thank">
-                <div class="thank-text">bu<span style="letter-spacing:-5px;">rs</span>tfly</div>
+                <div class="thank-text">Pic-<span style="letter-spacing:-5px;">h</span>umor</div>
             </div>
         </div>
-        <div id="main-container-footer">
+        <!-- <div id="main-container-footer">
             <div class="container-footer">
                 <div id="row-1f">
                     <div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">What is Burstfly</span>
@@ -348,10 +361,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="wrapper-copyright">
             <div class="copyright">
-                <div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="http://designscrazed.org/">Dcrazed</a></div>
+                <div class="copy-text object">Copyright © 2018. Made by CHO D.H</div>
                 <div class="wrapper-navbouton">
                     <div class="google object">g</div>
                     <div class="facebook object">f</div>
@@ -373,7 +386,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/fastclick.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-colors-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.animate-shadow-min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=2"></script>
     <!-- MODAL -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.leanModal.min.js"></script>
     <!-- UPLOAD > cloudinary -->
@@ -566,9 +579,9 @@
 	if(org_tag.indexOf(",") == -1){
 		// ,가 포함되지 않은 하나짜리 일 경우 여기 실행하고
 		$("div.text-desc").append('<tag class="cont_tag" id="tag0"></tag>');
-		$("tag.cont_tag").append('<span><a href="javascript:ajaxSearch('+ org_tag +')">#' + org_tag + '</a></span>');
-				/* + '<div class="cont_tag">'
-				+ '<span><a href="javascript:ajaxSearch('+ org_tag +')">' + + org_tag + '</a></span>'
+		$("tag.cont_tag").append('<span><a onclick="ajaxSearch(this)" id="' + org_tag + '">#' + org_tag + '</a></span>');
+				/* + '<div class="cont_tag"> onclick="ajaxSearch()"'
+				+ '<span><a href="javascript:ajaxSearch('+ org_tag +')">' + + org_tag + '</a></span> ${pageContext.request.contextPath }/home.do#/search'
 				+ '</div>'); */
 	}else{
 		// ,가 포함되어 있는 경우 잘라야 한다.
@@ -576,9 +589,9 @@
 		
 		for (var i = 0; i < tagArray.length; i++){
 			$("div.text-desc").append('<tag class="cont_tag" id="tag' + i + '"></tag>');
-			$("tag.cont_tag#tag"+i).append('<span><a href="javascript:ajaxSearch('+  tagArray[i] +')">#' + tagArray[i] + '</a></span>');
+			$("tag.cont_tag#tag"+i).append('<span><a onclick="ajaxSearch(this)" id="'+  tagArray[i] +'">#' + tagArray[i] + '</a></span>');
 			/*  $("div.text-desc").append(					
-					+ '<tag class="cont_tag">'
+					+ '<tag class="cont_tag"> onclick="ajaxSearch()"'
 					+ '<a href="javascript:ajaxSearch('+ tagArray[i] +')">'
 					+ '<span>' + tagArray[i] + '</span></a>'
 					+ '</tag>'); */
@@ -607,6 +620,13 @@
 	
 	$(".img-panel").imgLiquid();
 	$(".image-reply-post").imgLiquid();
+	
+	
+	
+		/*function ajaxSearch(){*/
+		
+		
+		
     </script>
 </body>
 </html>

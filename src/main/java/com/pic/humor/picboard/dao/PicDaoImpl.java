@@ -21,11 +21,14 @@ public class PicDaoImpl implements PicDao{
 	public void insertPics(HttpServletRequest request, PicBoardDto dto) {
 		// TODO Auto-generated method stub
 		System.out.println("insert pics dao 진입완료  DB 전");
-		String cont_menu = request.getParameter("cont_menu");
+		String cont_menu = request.getParameter("mn");
 		System.out.println("cont_menu : " + cont_menu);
 		// TODO Auto-generated method stub
 		if(cont_menu.equals("WTF")){
 			session.insert("picUpdate.insert_wtf", dto);
+			System.out.println("+++++++++++++++++++++++++++++++++++++");
+			System.out.println("cont_id : " + dto.getCont_id());
+			System.out.println("+++++++++++++++++++++++++++++++++++++");
 			System.out.println("insert_wtf DB 완료");
 		}else if(cont_menu.equals("NSFW")){
 			session.insert("picUpdate.insert_nsfw", dto);
@@ -147,6 +150,7 @@ public class PicDaoImpl implements PicDao{
 		System.out.println("getData dao 진입완료  DB 전");
 		String menu = request.getParameter("mn");
 		System.out.println("getData 요청 menu : " + menu);
+		System.out.println("getData 요청 cont_id : " + cont_id);
 		// TODO Auto-generated method stub
 		if(menu.equals("wtf")){
 			System.out.println("getData DB 완료");

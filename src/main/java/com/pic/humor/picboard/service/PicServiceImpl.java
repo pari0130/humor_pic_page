@@ -16,7 +16,7 @@ import com.pic.humor.picboard.dto.PicBoardDto;
 public class PicServiceImpl implements PicService{
 	
 	//한페이지에서 나타낼 로우의 갯수
-	private static final int PAGE_ROW_COUNT=3;
+	private static final int PAGE_ROW_COUNT=50;
 	//하단 디스플레이 페이지 갯수
 	private static final int PAGE_DISPLAY_COUNT=1;
 	
@@ -24,17 +24,30 @@ public class PicServiceImpl implements PicService{
 	private PicDao picDao;
 	
 	@Override
-	public ModelAndView insertPics(HttpServletRequest request, PicBoardDto dto) {
+	public void insertPics(HttpServletRequest request, PicBoardDto dto) {
 		System.out.println("service 진입  dao 전");
 		picDao.insertPics(request, dto);
+
+		System.out.println("========insertPics service 구간 start======");
+		System.out.println("menu : " + request.getParameter("mn"));
+		System.out.println("cont_id : " + dto.getCont_id());
+		System.out.println("title : " + dto.getCont_title());
+		System.out.println("tag : " + dto.getCont_tag());
+		System.out.println("image : " + dto.getCont_image());
+		System.out.println("image_fill : " + dto.getCont_image_fill());
+		System.out.println("user_id : " + dto.getUser_id());
+		System.out.println("user_name : " + dto.getUser_name());
+		System.out.println("user_provider : " + dto.getUser_provider());
+		System.out.println("========insertPics service 구간 end======");
 		
-		ModelAndView mView = new ModelAndView();
+		/*ModelAndView mView = new ModelAndView();*/
+		
 		/*twitter 로그인 후 home 으로 돌아갔을때 환영팝업이 뜨도록 msg 설정*/
     	/*String alertMsg = "swal('upload success!!', " +  "'정상적으로 업로드 되었습니다.', 'success');";
     	System.out.println("insert alert Msg : " + alertMsg);	    	
     	mView.addObject("alertMsg", alertMsg);*/
     	
-		return mView;
+		/*return mView;*/
 		
 	}
 
@@ -52,7 +65,7 @@ public class PicServiceImpl implements PicService{
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 		//전체 row의 갯수 구하기
 		int totalRow=picDao.getListCount(request);
-		System.out.println("page total : " + totalRow);
+		
 		//전체페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -71,13 +84,15 @@ public class PicServiceImpl implements PicService{
 		
 		// 검색 키워드가 있을 경우 처리
 		String keyword = (String) request.getSession().getAttribute("sessionKeyword");
+		System.out.println("keyword : " + keyword);
 		if(keyword != null){
 			dto.setKeyword_title(keyword);
 			dto.setKeyword_tag(keyword);
 			System.out.println("list service의 dto getTitle : " + dto.getKeyword_title());
 			System.out.println("list service의 dto gettag : " + dto.getKeyword_tag());
 		};
-		
+		System.out.println("page total : " + totalRow);
+		System.out.println("page end : " + endRowNum);
 		//Dao 를 이용해서 글목록을 얻어온다.
 		List<PicBoardDto> list=picDao.getContList(request, dto);
 		System.out.println("cont list " + list);
@@ -139,6 +154,7 @@ public class PicServiceImpl implements PicService{
 		
 		// 검색 키워드가 있을 경우 처리
 		String keyword = (String) request.getSession().getAttribute("sessionKeyword");
+		System.out.println("keyword : " + keyword);
 		if(keyword != null){
 			dto.setKeyword_title(keyword);
 			dto.setKeyword_tag(keyword);
@@ -170,7 +186,7 @@ public class PicServiceImpl implements PicService{
 	@Override
 	public ModelAndView detail(HttpServletRequest request, int cont_id) {
 		PicBoardDto dto=picDao.getData(request, cont_id);
-
+		
 		//덛글 목록을 얻어온다.
 		List<PicBoardCmtDto> commentList=picDao.getCmtList(request, cont_id);
 		//ModelAndView 객체를 생성해서 Model 을 담고
@@ -180,7 +196,7 @@ public class PicServiceImpl implements PicService{
 		mView.addObject("commentList", commentList);
 		
 		// detail page의 추천 data 처리
-		// org_tag는 getData 해서 가저온 tag 목록이고 하위로 tag값 뽑기
+		// org_tag는 getData 해서 가저온 tag 목록이고 하위로 tag값 뽑기		
 		String org_tag = (String) dto.getCont_tag();
 		System.out.println("org_tag : " + org_tag);
 		int idx = org_tag.indexOf(",");
@@ -200,6 +216,8 @@ public class PicServiceImpl implements PicService{
 			System.out.println("detail service의 dto getTitle : " + dto.getKeyword_title());
 			System.out.println("detail service의 dto gettag : " + dto.getKeyword_tag());
 		}
+		
+		
 		
 		
 		List<PicBoardDto> randomList=picDao.getRandomCont(request, dto);

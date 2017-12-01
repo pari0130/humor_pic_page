@@ -375,10 +375,13 @@ function getQuerystring(paramName){
 } 
 
 // search 구현
+function ajaxSearch(e){
+	var keyword = String($(e).attr('id'));
+	/* var keyword2 = String($(e).val());
+	var keyword3 = $(e).val(); */
 
-function ajaxSearch(org_tag){
-	var keyword = org_tag;
 	console.log("tag 검색값 : " + keyword);
+	/* console.log("tag 검색값 : " + $(this).attr('id')); */
     	$.ajax({
             method      : 'POST',
             url         : '/list/ajaxSearch.do',
@@ -390,14 +393,17 @@ function ajaxSearch(org_tag){
             error       : function(request, status, error) {
                 alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
                 console.log("실패");
+                return false;
             },
             success     : function() {		            	
         		console.log("검색값 전달 성공");
+        		/* alert("검색값 전달 겅공"); */
+  
         		// 성공 후         		
         		location.href="/home.do#/search";
 	        }
     	});
-}
+};
 
 var searchCnt = 0;
 searchCnt = Number(searchCnt);
@@ -444,3 +450,9 @@ $('#tip_search_input').keypress(function(event){
     }
 });
 
+// 메뉴 이동시 scroll top 조정
+$("div.object").click(function(){
+	  $('body,html').animate({
+          scrollTop: 0
+      }, 400);
+});

@@ -14,10 +14,10 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=7' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=5' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=2" /> 
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=9" /> 
     <!-- UPLOAD > TAG -->
     <link href="${pageContext.request.contextPath }/resources/css/tagify.css?ver=1" rel="stylesheet">
     <!-- LOADING PROGRESS -->
@@ -96,7 +96,7 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
     <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=3"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js?ver=1"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.localScroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-animate-css-rotate-scale.js"></script>
@@ -112,14 +112,14 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js?ver=2"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=2 "></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?var=31"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
    	<!-- 카톡 로그인 연동 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/cus.kakao-login.js?ver=1"></script>
     <!-- ALERT -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=1"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.sweetalert.min.js?ver=7"></script>
     <!-- LOADING PROGRESS -->
     <script src="${pageContext.request.contextPath }/resources/js/g-spinner.min.js?ver=1"></script>
     	
