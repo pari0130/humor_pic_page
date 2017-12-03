@@ -347,8 +347,8 @@ function logout(){
    if(window.location.pathname != "/home.do"){	   
 	   /*getQueryString 함수를 이용해서 url주소 parameter 값을 받아온다.*/
 	   url = window.location.pathname+"?cont_id="+getQuerystring('cont_id')+"&mn="+getQuerystring('mn');
-	   alert("url : " + url);
-	   alert("encoding url : " + encodeURIComponent(url));	 
+	  /* alert("url : " + url);
+	   alert("encoding url : " + encodeURIComponent(url));	 */
    }else{
 	   url = window.location.pathname;   
    }	

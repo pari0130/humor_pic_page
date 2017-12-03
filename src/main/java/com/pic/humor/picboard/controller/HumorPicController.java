@@ -35,9 +35,9 @@ public class HumorPicController {
 	@RequestMapping("/list/contents_list")
 	public ModelAndView contentsList(HttpServletRequest request,@RequestParam(defaultValue="1") int pageNum){			
 		ModelAndView mView=picService.getContList(request, pageNum);
-		System.out.println("con list pageNum " + pageNum);
+		/*System.out.println("con list pageNum " + pageNum);
 		//view 페이지 설정하고 
-		System.out.println("contents list controller");
+		System.out.println("contents list controller");*/
 		mView.setViewName("list/contents_list");
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
@@ -48,24 +48,24 @@ public class HumorPicController {
 	public ModelAndView contentsJsonList(HttpServletRequest request,int pageNum){			
 		ModelAndView mView=picService.getContJsonList(request, pageNum);
 		//view 페이지 설정하고 
-		System.out.println("contents json list controller");
-		System.out.println("pagenum : " + pageNum);
+		/*System.out.println("contents json list controller");
+		System.out.println("pagenum : " + pageNum);*/
 		mView.setViewName("jsonView");
 		String menu = (String) request.getSession().getAttribute("sessionMenu");
-		System.out.println("session menu : " + menu);
+		/*System.out.println("session menu : " + menu);*/
 		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 	}
 	
 	@RequestMapping({"/list/contents_detail", "/WEB-INF/views/list/contents_detail" })
 	public ModelAndView contentsDetail(HttpServletRequest request, HttpSession session, @RequestParam int cont_id){
-		System.out.println("detail : " + cont_id);
+		/*System.out.println("detail : " + cont_id);*/
 		
 		ModelAndView mView = picService.detail(request, cont_id);
 		
 		//조회수 증가 시키기
 		picService.increaseViewCount(request, cont_id);
-		System.out.println("조회수 증가 뒷부분");
+		/*System.out.println("조회수 증가 뒷부분");*/
 		mView.setViewName("list/contents_detail");
 		return mView;
 	}
@@ -79,7 +79,7 @@ public class HumorPicController {
 	    
 	    for (Map<String, Object> map : resultMap) {
 	    	
-	    	System.out.println("======================================");
+	    	/*System.out.println("======================================");
 	    	System.out.println("Upload ajax 데이터 map 확인");
 	    	System.out.println("upload menu : " + map.get("cont_menu"));
 	    	System.out.println("upload tag : " + map.get("cont_tag"));
@@ -88,7 +88,7 @@ public class HumorPicController {
 	    	System.out.println("id : " + map.get("user_id"));
 	    	System.out.println("name : " + map.get("user_name"));
 	    	System.out.println("provider : " + map.get("user_provider"));
-	    	System.out.println("======================================");
+	    	System.out.println("======================================");*/
 	    	
 	    	dto.setCont_tag((String) map.get("cont_tag"));//글번호로 사용한다. 
 	    	dto.setCont_image((String) map.get("cont_image"));//글번호로 사용한다. 
@@ -116,13 +116,13 @@ public class HumorPicController {
 	    
 	    for (Map<String, Object> map : resultMap) {
 	    	
-	    	System.out.println("댓글 ajax 데이터 map 확인");
+	    	/*System.out.println("댓글 ajax 데이터 map 확인");
 	    	System.out.println("provider : " + map.get("user_provider"));
 	    	System.out.println("id : " + map.get("user_id"));
 	    	System.out.println("name : " + map.get("user_name"));
 	    	System.out.println("image : " + map.get("user_image"));
 	    	System.out.println("cmt : " + map.get("cmt_comments"));
-	    	System.out.println("cmt_group : " + map.get("cmt_cont_group"));	    
+	    	System.out.println("cmt_group : " + map.get("cmt_cont_group"));	  */  
 	    	
 	    	dto.setUser_id((String) map.get("user_id"));//글번호로 사용한다.
 	    	dto.setUser_name((String) map.get("user_name"));//글번호로 사용한다. 
@@ -132,10 +132,10 @@ public class HumorPicController {
 	    	dto.setCmt_cont_group(Integer.parseInt((String) map.get("cmt_cont_group")));//글번호로 사용한다.
 	    }
 	    
-	    System.out.println("댓글 contents : " + dto.getCmt_contents());
+	   /* System.out.println("댓글 contents : " + dto.getCmt_contents());
 		//서비스 객체를 이용해서 덧글이 저장될수 있도록 한다. 
 		System.out.println("댓글  cont_id = " + request.getParameter("cont_id"));
-		System.out.println("댓글  mn = " + request.getParameter("mn"));
+		System.out.println("댓글  mn = " + request.getParameter("mn"));*/
 		 
 	    picService.commentInsert(request, dto);
 	}

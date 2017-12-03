@@ -72,25 +72,25 @@ public class SocialServiceImpl implements SocialService {
 			String twImg = "https://twitter.com/" + accessToken.getScreenName() + "/profile_image?size=bigger";
 			
 			// twitter session 저장
-			System.out.println("twitter 데이터 확인");
+			/*System.out.println("twitter 데이터 확인");
 	    	System.out.println("provider : " + "twitter");
 	    	System.out.println("id : " + accessToken.getUserId()); //트위터의 사용자 아이디
 	    	System.out.println("name : " + accessToken.getScreenName()); //트워터에 표시되는 사용자명
-	    	System.out.println("image : " + twImg); //트워터에 표시되는 프로필이미지 
+	    	System.out.println("image : " + twImg);*/ //트워터에 표시되는 프로필이미지 
 	    	request.getSession().setAttribute("provider", "twitter");
 	    	request.getSession().setAttribute("user_id", accessToken.getUserId());
 	    	request.getSession().setAttribute("user_name", accessToken.getScreenName());
 	    	request.getSession().setAttribute("user_image", twImg);
 	    	/*twitter 로그인 후 home 으로 돌아갔을때 환영팝업이 뜨도록 msg 설정*/
 	    	String alertMsg = "swal('Login success!!', " +  "'" + accessToken.getScreenName()+ " 님 환영합니다.', 'success');";
-	    	System.out.println("alert Msg : " + alertMsg);
+	    	/*System.out.println("alert Msg : " + alertMsg);*/
 	    	// callback page 이동 후 요청 url로 이동할때 msg를 띄우기 위함
 	    	request.getSession().setAttribute("twAlertMsg", alertMsg);
 	    	/*mView.addObject("alertMsg", alertMsg);*/
 			
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
-			System.out.println("call 실패");
+			/*System.out.println("call 실패");*/
 			e.printStackTrace();
 		}					
 		return mView;
@@ -103,11 +103,11 @@ public class SocialServiceImpl implements SocialService {
 	    resultMap = JSONArray.fromObject(paramData);
 	    
 	    for (Map<String, Object> map : resultMap) {
-	    	System.out.println("ajax 데이터 map 확인");
+	    	/*System.out.println("ajax 데이터 map 확인");
 	    	System.out.println("provider : " + map.get("provider"));
 	    	System.out.println("id : " + map.get("id"));
 	    	System.out.println("name : " + map.get("name"));
-	    	System.out.println("image : " + map.get("image"));
+	    	System.out.println("image : " + map.get("image"));*/
 	    	request.getSession().setAttribute("provider", map.get("provider"));
 	    	request.getSession().setAttribute("user_id", map.get("id"));
 	    	request.getSession().setAttribute("user_name", map.get("name"));

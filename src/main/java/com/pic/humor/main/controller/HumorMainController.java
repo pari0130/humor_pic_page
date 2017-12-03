@@ -36,7 +36,7 @@ public class HumorMainController {
 		ModelAndView mView=socialService.twCallbackService(request, response);
 		// 돌아갈 url값을 session에서 받는다.
 		String url = (String) session.getAttribute("tw_CallBackUrl");
-		System.out.println("orgUrl : " + url);
+		/*System.out.println("orgUrl : " + url);*/
 		// .do로 끝나므로 . 으로 구분하여 저장
 		/*int idx = orgUrl.indexOf(".");*/
 		// 0번째 문자부터 .이 되는 부분까지 잘라서 url에 저장
@@ -49,7 +49,7 @@ public class HumorMainController {
 			url = orgUrl;
 		}*/
 		
-		System.out.println("callback url : " + url);
+		/*System.out.println("callback url : " + url);*/
 		mView.addObject("url", url);
 		mView.setViewName("nav/callback");
 		return mView;
@@ -91,7 +91,7 @@ public class HumorMainController {
 				
 		ModelAndView mView=new ModelAndView();
 		String url = request.getParameter("url");
-		System.out.println("넘어온  url : " + url);
+		/*System.out.println("넘어온  url : " + url);*/
 		mView.addObject("msg", "로그 아웃 되었습니다.");
 		// 트위터 로그인 후 주소창에 twcallback.do가 찍히므로 logout시 되돌아갈 주소가 잘못될수 있음.
 		if(url.equals("/twcallback.do")){
@@ -102,7 +102,7 @@ public class HumorMainController {
 			url = request.getParameter("url");
 		}
 		mView.addObject("url", url);				
-		System.out.println("넘기는 url : " + url);
+		/*System.out.println("넘기는 url : " + url);*/
 		mView.setViewName("nav/callback");
 		// invalidate 했으므로 modal에 값이 없음 추가 해주기 
 		// twitter login에 대한 url 받아서 home에 넘겨주기

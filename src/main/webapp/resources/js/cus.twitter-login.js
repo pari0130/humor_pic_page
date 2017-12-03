@@ -12,7 +12,7 @@ function twitterlogin() {
     }else{
 	   path = window.location.pathname;   
     }	
-    alert("tw path : " + path);
+    /*alert("tw path : " + path);*/
 	// ajax로 현재 url정보를 저장해준다.
 	$.ajax({
         method      : 'GET',
@@ -24,8 +24,8 @@ function twitterlogin() {
         success     : function(data) {
         	if(data.canUse){
         		console.log("성공");
-        		alert("결과 : "+ data.canUse)
-        		alert("twreturn : " + $("#twReturnUrl").val());
+        		/*alert("결과 : "+ data.canUse)*/
+        		/*alert("twreturn : " + $("#twReturnUrl").val());*/
         		location.href = $("#twReturnUrl").val();
         	}else{
         		alert("실패 : "+ data.canUse)
