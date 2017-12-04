@@ -14,11 +14,12 @@ import com.pic.humor.picboard.dto.PicBoardDto;
 
 @Service
 public class PicServiceImpl implements PicService{
-	
+
 	//한페이지에서 나타낼 로우의 갯수
-	private static final int PAGE_ROW_COUNT=50;
+	private static final int PAGE_ROW_COUNT=20;
 	//하단 디스플레이 페이지 갯수
 	private static final int PAGE_DISPLAY_COUNT=1;
+	
 	
 	@Autowired
 	private PicDao picDao;
@@ -53,6 +54,7 @@ public class PicServiceImpl implements PicService{
 
 	@Override
 	public ModelAndView getContList(HttpServletRequest request, int pageNum) {
+		
 		/*System.out.println("contents list service 진입");*/
 		// detail page 진입시 cont_id + menu 값
 		String menu = request.getParameter("mn");

@@ -80,38 +80,38 @@
 		<div id="wrapper-sorting">
 			<div id="wrapper-title-1">
 				<a href="#/top" ng-click="activated='top'">
-				<div class="top-rated object" id="top" ng-class="{'active': activated=='top'}">Top-rated</div>				
+				<div class="top-rated object objects" id="top" ng-class="{'active': activated=='top'}">Top-rated</div>				
 				</a>
 				<div id="fleche-nav-1"></div>				
 			</div>
 			<div id="wrapper-title-2">
 				<a href="#/recent" ng-click="activated='recent'">
-					<div class="recent object" id="recent" ng-class="{'active': activated=='recent'}">Recent</div>
+					<div class="recent object objects" id="recent" ng-class="{'active': activated=='recent'}">Recent</div>
 				</a>
 				<div id="fleche-nav-2"></div>
 			</div>
 			<div id="wrapper-title-3">
 				<a href="#/old" ng-click="activated='old'">
-					<div class="oldies object" id="old" ng-class="{'active': activated=='old'}">Oldies</div>
+					<div class="oldies object objects" id="old" ng-class="{'active': activated=='old'}">Oldies</div>
 				</a>
 				<div id="fleche-nav-3"></div>
 			</div>
 		</div>
 		<div id="wrapper-bouton-icon" >
 			<a href="#/wtf" ng-click="activated='wtf'">
-				<div class="menus object" id="wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
+				<div class="menus object objects" id="wtf" ng-class="{'active': activated=='wtf'}">WTF</div>
 			</a>
 			<a href="#/nsfw" ng-click="activated='nsfw'">
-				<div class="menus object" id="nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
+				<div class="menus object objects" id="nsfw" ng-class="{'active': activated=='nsfw'}">NSFW</div>
 			</a>
 			<a href="#/animals" ng-click="activated='animals'">
-				<div class="menus object" id="animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
+				<div class="menus object objects" id="animals" ng-class="{'active': activated=='animals'}">ANIMALS</div>
 			</a>
 			<a href="#/gif" ng-click="activated='gif'">
-				<div class="menus object" id="gif" ng-class="{'active': activated=='gif'}">GIF</div>
+				<div class="menus object objects" id="gif" ng-class="{'active': activated=='gif'}">GIF</div>
 			</a>
 			<a href="#/funny" ng-click="activated='funny'">
-				<div class="menus object" id="funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
+				<div class="menus object objects" id="funny" ng-class="{'active': activated=='funny'}">FUNNY</div>
 			</a>
 			<!-- <div id="bouton-ai"><img src="img/icon-ai.svg" alt="illustrator" title="Illustrator" height="28" width="28"></div>
                 <div id="bouton-psd"><img src="img/icon-psd.svg" alt="photoshop" title="Photoshop" height="28" width="28"></div>
@@ -132,27 +132,27 @@
 			<div class="small-logo"></div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='wtf'}" id="wtf">
+			<div class="premium-ressource objects" ng-class="{'active': activated=='wtf'}" id="wtf">
 				<a href="#wtf" ng-click="activated='wtf'">WTF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='nsfw'}" id="nsfw">
+			<div class="premium-ressource objects" ng-class="{'active': activated=='nsfw'}" id="nsfw">
 				<a href="#nsfw" ng-click="activated='nsfw'">NSFW</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='animals'}" id="animals">
+			<div class="premium-ressource objects" ng-class="{'active': activated=='animals'}" id="animals">
 				<a href="#animals" ng-click="activated='animals'">ANIMALS</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='gif'}" id="gif">
+			<div class="premium-ressource objects" ng-class="{'active': activated=='gif'}" id="gif">
 				<a href="#gif" ng-click="activated='gif'">GIF</a>
 			</div>
 		</div>
 		<div id="main-premium-ressource">
-			<div class="premium-ressource" ng-class="{'active': activated=='funny'}" id="funny">
+			<div class="premium-ressource objects" ng-class="{'active': activated=='funny'}" id="funny">
 				<a href="#funny" ng-click="activated='funny'">FUNNY</a>
 			</div>
 		</div>

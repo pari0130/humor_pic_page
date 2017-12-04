@@ -78,7 +78,7 @@
     </div> -->
     <div id="wrapper-copyright">
         <div class="copyright">
-            <div class="copy-text object">Copyright © 2018. Made by CHO D.H</div>
+            <div class="copy-text object">2018 D.H</div>
             <div class="wrapper-navbouton">
                 <div class="google object">g</div>
                 <div class="facebook object">f</div>

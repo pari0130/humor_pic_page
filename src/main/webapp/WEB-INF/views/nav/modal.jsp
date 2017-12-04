@@ -99,10 +99,7 @@
 					<input type="hidden" name="cont_tag" id="up_tag" value="">
 					<input type="hidden" name="cont_menu" id="up_menu" value="">
 					<input type="hidden" name="cont_image" id="up_image" value="">
-					<input type="hidden" name="cont_image_fill" id="up_image_fill" value="">
-					<input type="hidden" name="user_id" id="up_id" value="${user_id }"> 
-					<input type="hidden" name="user_name" id="up_name" value="${user_name }">
-					<input type="hidden" name="user_provider" id="up_provider" value="${provider }">
+					<input type="hidden" name="cont_image_fill" id="up_image_fill" value="">					
 					<div class="action_btns">
 						<div class="one_half">
 							<a href="javascript:" id="upload_widget_opener" class="btn back_btn">
@@ -118,6 +115,10 @@
 					</div>
 				</form>
 			</div>
+			<!-- upload 후 input을 clear 시키므로 바깥으로 뺐음 -->
+			<input type="hidden" name="user_id" id="up_id" value="${user_id }"> 
+			<input type="hidden" name="user_name" id="up_name" value="${user_name }">
+			<input type="hidden" name="user_provider" id="up_provider" value="${provider }">
 		</div>
 	</section>
 </div>

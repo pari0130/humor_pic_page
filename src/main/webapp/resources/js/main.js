@@ -7,6 +7,7 @@ $(document).ready(function() {
 		$("#main-container-image").delay(1250).animate({opacity:'1'},500); /*hwi delay 2500*/
 		/*$("#getAlert").val();*/		
 		
+	    
 	});
 
 /*TRANSITION PAGE*/
@@ -451,7 +452,7 @@ $('#tip_search_input').keypress(function(event){
 });
 
 // 메뉴 이동시 scroll top 조정
-$("div.object").click(function(){
+$("div.objects").click(function(){
 	  $('body,html').animate({
           scrollTop: 0
       }, 400);
