@@ -207,9 +207,25 @@
 		                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
 		            },
 		            success     : function() {            	
+		            	swal("Upload success!!", "", "success", {
+	            			  buttons: {
+	            			    catch: {
+	            			      text: "OK", // 버튼 text
+	            			      value: "catch", // 버튼 눌렀을때 value 값
+	            			    }
+	            			  },
+	            			})
+	            			.then((value) => {
+	            			  switch (value) {
+	            			    case "catch": // value값에 대한 연결 내용
+	            			    	window.location.reload(true);       
+	            			      break;
+	            			}
+	            		}); 
+	            		/*swal("Upload success!", "", "success");
+	            		$(".modal_close").click();*/
+	            			
 	            		
-	            		swal("Upload success!", "", "success");
-	            		$(".modal_close").click();
 		        }
 		    });
 		}

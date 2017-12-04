@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>test</title>
+    <title>PIC-HUMOR</title>
     <!-- Behavioral Meta Data -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- pc버전으로 보이게 하기 위해 수정 -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+    <!-- content width 수정 + user-scalable yes -->
+    <meta name="viewport" content="width=1210px, initial-scale=0.7, maximum-scale=1, user-scalable=yes">
     <link rel="icon" type="image/png" href="img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -396,7 +399,7 @@
     <!-- UPLOAD > TAG -->
     <script src="${pageContext.request.contextPath }/resources/js/jQuery.tagify.js"></script>
     <!-- MODAL 관련 이것저것 js에 담음 -->
-    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/cus.modal-popup.js?ver=1"></script>
     <!-- jquery.lazyload -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.lazyload.js"></script>
     <!-- 카톡 로그인 연동 -->
