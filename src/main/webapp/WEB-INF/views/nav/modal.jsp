@@ -44,7 +44,7 @@
 				</div>
 			</div>
 			<div class="centeredText">
-				<span>WE CAN ONLY DO SOCIAL LOGIN</span>
+				<span>WE CAN ONLY CHOOSE SOCIAL LOGIN</span>
 			</div>
 		</div>
 	</section>
@@ -71,24 +71,24 @@
 					<input name="tags" placeholder="write some tags(ex : tag1, tag2)">
 					<br />
 					<!-- MODAL_UPLOAD > MENUS -->
-					<label>Select the upload menu</label>
+					<label>Please select the menu to upload.</label>
 					<select id="demo-htmlselect" style="width: 100%">
 						<!-- http://i.imgur.com/XkuTj3B.png -->
 						<option value="0" selected="selected"
 							data-imagesrc="${pageContext.request.contextPath }/resources/img/icons/001-funny-skull.png"
-							data-description="Description with LinkedIn">WTF</option>
+							data-description="What the fuck ??!!">WTF</option>
 						<option value="1"
 							data-imagesrc="${pageContext.request.contextPath }/resources/img/icons/012-clown-1.png"
-							data-description="Description with Facebook">NSFW</option>
+							data-description="WARNING - Not Safe For Work">NSFW</option>
 						<option value="2"
 							data-imagesrc="${pageContext.request.contextPath }/resources/img/icons/003-clown-8.png"
-							data-description="Description with Twitter">ANIMALS</option>
+							data-description="A cute and lovely pet">ANIMALS</option>
 						<option value="3"
 							data-imagesrc="${pageContext.request.contextPath }/resources/img/icons/002-goofy-face.png"
-							data-description="Description with Foursquare">GIF</option>
+							data-description="There are various GIF images.">GIF</option>
 						<option value="4"
 							data-imagesrc="${pageContext.request.contextPath }/resources/img/icons/009-clown-3.png"
-							data-description="Description with Foursquare">FUNNY</option>
+							data-description="Share fun and fun images.">FUNNY</option>
 					</select>
 					<!--  <div style="text-align: center">
                        <p>Up to 10 images can be added.</p>

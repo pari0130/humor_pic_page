@@ -71,7 +71,7 @@
 	
 	<insert id="insert_funny" parameterType="picBoardDto" useGeneratedKeys="true" keyProperty="cont_id">
 		<selectKey keyProperty="cont_id" resultType="Integer" order="BEFORE">
-        SELECT picboard_funnu_seq.NEXTVAL FROM dual
+        SELECT picboard_funny_seq.NEXTVAL FROM dual
   	  </selectKey>		
 		INSERT INTO picboard_funny
 		(cont_id, user_id, user_name, user_provider, cont_title, cont_tag, cont_image, cont_image_fill, cont_view_count, cont_date) 

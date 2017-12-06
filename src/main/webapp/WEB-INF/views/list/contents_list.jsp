@@ -182,4 +182,10 @@ if(menu_name != act_menu){
 	$("#"+menu_name).addClass("active");
 };
 
+$("#nsfw").click(function(){
+	setTimeout(function(){        	
+		swal("WARNING!! Not Safe For Work!!", "", "warning");      	
+    }, 1000);	
+});
+
 </script>
