@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath }/resources/img/small-logo-01.png">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,900italic,700italic,700,500italic,400italic,500,300italic,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='${pageContext.request.contextPath }/resources/css/style_pc.css?ver=5' rel='stylesheet' type='text/css'>
+    <link href='${pageContext.request.contextPath }/resources/css/style.css?ver=5' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
     <!-- MODAL -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/modal.css?ver=9" /> 
